@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it" dir="ltr">
   <head>
-    <script src="../js/food_list.js"></script>
+    <link rel="manifest" href="/public/manifest.json">
     <meta name="theme-color" content="#2196F3">
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -17,7 +17,7 @@
     <meta property="og:url" content="">
     <meta property="og:description" content="">
     <link rel="icon" type="image/png" href="" />
-    <link rel="shortcut icon" href="" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/data/images/icon-192x192.png" type="image/x-icon"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -33,8 +33,7 @@
       </div>
 
       <div class="w3-panel w3-center">
-        <select class="w3-select selHide" name="Pizze" id="selectPizze" style="display:none">
-        </select>
+        <select class="w3-select selHide" name="Pizze" id="selectPizze" style="display:none"></select>
 
         <select class="w3-select selHide" name="Panini" id="selectPanini" style="display:none"></select>
 
@@ -42,4 +41,5 @@
       </div>
     </div>
   </body>
+  <script src="../js/food_list.js"></script>
 </html>
