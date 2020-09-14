@@ -1,5 +1,5 @@
 {
-    "pizze": [{
+    "Pizze": [{
         "name": "Marinara",
         "description": "Pomodoro e origano",
         "price": 1,
@@ -40,7 +40,7 @@
         "price": 1,
         "id": "Pizza_7"
     }],
-    "panini": [{
+    "Panini": [{
         "name": "Ventricina",
         "description": "Ventricina e formaggio",
         "price": 1,
@@ -91,7 +91,7 @@
         "price": 1.2,
         "id": "Panino_9"
     }],
-    "dolci": [{
+    "Dolci": [{
         "name": "Bomba nutella",
         "description": "Nutella",
         "price": 1,

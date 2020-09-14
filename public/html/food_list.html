@@ -27,23 +27,18 @@
   <body>
     <div class="w3-container w3-center">
       <div class="w3-panel">
-        <button class="w3-button w3-indigo w3-hover-blue w3-ripple w3-round-large w3-xlarge w3-margin" type="button" name="button" onclick="hide(0)">Pizze</button>
-        <button class="w3-button w3-indigo w3-hover-blue w3-ripple w3-round-large w3-xlarge w3-margin" type="button" name="button" onclick="hide(1)">Panini</button>
-        <button class="w3-button w3-indigo w3-hover-blue w3-ripple w3-round-large w3-xlarge w3-margin" type="button" name="button" onclick="hide(2)">Dolci</button>
+        <button class="w3-button w3-indigo w3-hover-blue w3-ripple w3-round-large w3-xlarge w3-margin" type="button" name="button" onclick="toggleSelect(this)">Pizze</button>
+        <button class="w3-button w3-indigo w3-hover-blue w3-ripple w3-round-large w3-xlarge w3-margin" type="button" name="button" onclick="toggleSelect(this)">Panini</button>
+        <button class="w3-button w3-indigo w3-hover-blue w3-ripple w3-round-large w3-xlarge w3-margin" type="button" name="button" onclick="toggleSelect(this)">Dolci</button>
       </div>
 
       <div class="w3-panel w3-center">
-        <select class="" name="Pizze" id="sel0" style="display:none">
-          <option value="Gatto">Gatto</option>
+        <select class="" name="Pizze" id="selectPizze" style="display:none">
         </select>
 
-        <select class="" name="Panini" id="sel1" style="display:none">
-          <option value="Cane">Cane</option>
-        </select>
+        <select class="" name="Panini" id="selectPanini" style="display:none"></select>
 
-        <select class="" name="Dolci" id="sel2" style="display:none">
-          <option value="Topo">Topo</option>
-        </select>
+        <select class="" name="Dolci" id="selectDolci" style="display:none"></select>
       </div>
     </div>
   </body>
