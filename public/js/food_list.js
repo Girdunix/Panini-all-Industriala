@@ -1,5 +1,5 @@
 function toggleSelect(toShow){
-  let select = document.getElementsByClassName("nomeSelect")
+  let select = document.getElementsByClassName("selHide")
   Array.from(select).forEach(select => {
     select.style.display = "none"
   })
