@@ -1,0 +1,100 @@
+{
+    "pizze": [{
+        "name": "Marinara",
+        "description": "Pomodoro e origano",
+        "price": 1,
+        "id": "Pizza_0"
+    }, {
+        "name": "Margherita",
+        "description": "Pomodoro e mozzarella",
+        "price": 1,
+        "id": "Pizza_1"
+    }, {
+        "name": "Ventricina",
+        "description": "Pomodoro, mozzarella e ventricina",
+        "price": 1,
+        "id": "Pizza_2"
+    }, {
+        "name": "Patate",
+        "description": "Patate e mozzarella",
+        "price": 1,
+        "id": "Pizza_3"
+    }, {
+        "name": "Prosciutto cotto",
+        "description": "Prosciutto cotto, pomodoro e mozzarella",
+        "price": 1,
+        "id": "Pizza_4"
+    }, {
+        "name": "Patate e würstel",
+        "description": "Prosciutto cotto, würstel e mozzarella",
+        "price": 1,
+        "id": "Pizza_5"
+    }, {
+        "name": "Prosciutto cotto e funghi",
+        "description": "Prosciutto cotto, funghi e mozzarella",
+        "price": 1,
+        "id": "Pizza_6"
+    }, {
+        "name": "Würstel",
+        "description": "Pomodoro, würstel e mozzarella",
+        "price": 1,
+        "id": "Pizza_7"
+    }],
+    "panini": [{
+        "name": "Ventricina",
+        "description": "Ventricina e formaggio",
+        "price": 1,
+        "id": "Panino_0"
+    }, {
+        "name": "Salame",
+        "description": "Salame e formaggio",
+        "price": 1,
+        "id": "Panino_1"
+    }, {
+        "name": "Cotto",
+        "description": "Cotto e formaggio",
+        "price": 1,
+        "id": "Panino_2"
+    }, {
+        "name": "Mortadella",
+        "description": "Mortadella",
+        "price": 1,
+        "id": "Panino_3"
+    }, {
+        "name": "Ventricina farcito",
+        "description": "Ventricina, insalata e pomodoro",
+        "price": 1.2,
+        "id": "Panino_4"
+    }, {
+        "name": "Caprese",
+        "description": "Pomodoro e mozzarella",
+        "price": 1.2,
+        "id": "Panino_5"
+    }, {
+        "name": "Crudo farcito",
+        "description": "Crudo, insalata e pomodoro",
+        "price": 1.2,
+        "id": "Panino_6"
+    }, {
+        "name": "Siluro",
+        "description": "Würstel e patatine fritte",
+        "price": 2,
+        "id": "Panino_7"
+    }, {
+        "name": "Tramezzino crudo",
+        "description": "Crudo, pomodoro, insalata e maionese",
+        "price": 1.2,
+        "id": "Panino_8"
+    }, {
+        "name": "Tramezzino cotto",
+        "description": "Cotto, pomodoro, insalata e maionese",
+        "price": 1.2,
+        "id": "Panino_9"
+    }],
+    "dolci": [{
+        "name": "Bomba nutella",
+        "description": "Nutella",
+        "price": 1,
+        "id": "Dolce_0"
+    }]
+}
