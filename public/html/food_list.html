@@ -27,14 +27,22 @@
   <body>
     <div class="">
       <div class="">
-        <button type="button" name="button" onclick="hide()">Pizze</button>
-        <button type="button" name="button" onclick="hide()">Panini</button>
-        <button type="button" name="button" onclick="hide()">Dolci</button>
+        <button type="button" name="button" onclick="hide(0)">Pizze</button>
+        <button type="button" name="button" onclick="hide(1)">Panini</button>
+        <button type="button" name="button" onclick="hide(2)">Dolci</button>
       </div>
 
-      <div class="" id="test">
-        <select class="" name="Test">
+      <div class="">
+        <select class="" name="Pizze" id="sel0" style="display:none">
           <option value="Gatto">Gatto</option>
+        </select>
+
+        <select class="" name="Panini" id="sel1" style="display:none">
+          <option value="Cane">Cane</option>
+        </select>
+
+        <select class="" name="Dolci" id="sel2" style="display:none">
+          <option value="Topo">Topo</option>
         </select>
       </div>
     </div>

@@ -1,8 +1,10 @@
-function hide() {
-  var x = document.getElementById("test");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+function hide(id) {
+  var x = document.getElementById("sel" + id);
+  var num = 3; //il numero di select
+
+  for (var i = 0; i < num; i++) {
+    document.getElementById("sel" + i).style.display = "none";
   }
+
+  x.style.display = "block";
 }
