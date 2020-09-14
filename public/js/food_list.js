@@ -33,7 +33,8 @@ function addToCart(){
   let price = globalFood.price
   let id = globalFood.id
   let foodObj = new Food(type.toLowerCase(),food, description,quantity, price, id)
-  order.addFood(foodObj)
+  globalOrder.addFood(foodObj)
+  renderCart()
 }
 let globalMenu = {}
 async function initializeFood() {
@@ -50,7 +51,22 @@ async function initializeFood() {
     }
   }
 }
-
+function renderCart(){
+  let order = globalOrder.order
+  Object.keys(order).forEach(type => {
+    let cartWrapper = document.getElementById("cart"+type.capitalize())
+    cartWrapper.innerHTML = ""
+    order[type].forEach(food => {
+      let element = document.createElement("div")
+      element.innerHTML += food.name + " x " + food.quantity
+      cartWrapper.appendChild(element)
+    })
+  })
+}
+function toggleCart(){
+  let cart = document.getElementById("cart")
+  cart.classList.toggle("invisible")
+}
 initializeFood()
 class Order {
   constructor() {
@@ -116,4 +132,5 @@ class Food {
     this.id = id
   }
 }
-let order = new Order()
+const globalOrder = new Order()
+String.prototype.capitalize = function(){return this.charAt(0).toUpperCase() + this.slice(1)}

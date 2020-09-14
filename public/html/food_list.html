@@ -34,9 +34,28 @@
           <li><a href="">Ordinazioni</a></li>
         </ul>
       </nav>
-      <a class="cart" href=""><button>Carrello</button></a>
+      <button onclick="toggleCart()">Carrello</button>
     </header>
+    <div id="cart" class="invisible">
+      <div class="cartElement">
+        <span>Pizze</span>
+        <div id="cartPizze">
 
+        </div>
+      </div>
+      <div class="cartElement">
+        <span>Panini</span>
+        <div id="cartPanini">
+
+        </div>
+      </div>
+      <div class="cartElement">
+        <span>Dolci</span>
+        <div id="cartDolci">
+
+        </div>
+      </div>
+    </div>
     <div class="w3-container w3-center">
       <div class="w3-panel">
         <button class="w3-button w3-indigo w3-hover-blue w3-ripple w3-round-large w3-xlarge w3-margin" type="button" name="button" onclick="toggleSelect(this)">Pizze</button>

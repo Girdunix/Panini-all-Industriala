@@ -20,7 +20,7 @@ header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 30px 10%;
+    padding: 1rem;
     background-color: #24252A;
 }
 
@@ -28,7 +28,33 @@ header {
     cursor: pointer;
     margin-right: auto;
 }
-
+#cart{
+    width: 25vw;
+    background-color: #24252ae3;
+    height: 90%;
+    position: absolute;
+    right: 0;
+}
+.cartElement{
+    background-color: #005367;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:1rem;
+    border-radius:0.2rem;
+}
+.cartElement span{
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+.invisible{
+    display: none;
+}
+.cartElement div{
+    color: #b9b9b9;
+}
 .nav_links {
     list-style: none;
 }
@@ -90,6 +116,9 @@ button:hover {
 
 
 @media only screen and (orientation:portrait) {
+    #cart{
+        width: 70vw;
+    }
     .selHide {
         margin: 0 0 10px;
         width: auto;
