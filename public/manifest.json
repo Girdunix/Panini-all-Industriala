@@ -24,8 +24,8 @@
             "type": "image/png"
         }
     ],
-    "start_url": "/",
-    "scope": "/",
+    "start_url": "/public/html/login.html",
+    "scope": "/public/",
     "display": "fullscreen",
     "orientation": "portrait",
     "background_color": "#dad8b3",
