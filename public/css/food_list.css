@@ -84,8 +84,12 @@ button:hover {
 /*.inline span {
     display: none;
 }*/
+#currentType{
+    font-size: 1.2rem;
+}
 
-@media (max-width: 500px) {
+
+@media only screen and (orientation:portrait) {
     .selHide {
         margin: 0 0 10px;
         width: auto;

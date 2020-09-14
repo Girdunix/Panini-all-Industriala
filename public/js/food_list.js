@@ -7,7 +7,11 @@ if ('serviceWorker' in navigator) {
   })
 }
 
+let selectedType = "Pizze"
 function toggleSelect(toShow) {
+  document.getElementById("typeWrapper").style.display = "block"
+  document.getElementById("currentType").innerText = toShow.innerHTML
+  selectedType = toShow.innerHTML
   let select = document.getElementsByClassName("selHide")
   Array.from(select).forEach(select => {
     select.style.display = "none"
@@ -16,8 +20,25 @@ function toggleSelect(toShow) {
   document.getElementById(toShow).style.display = "block"
 }
 
+function addToCart(){
+  let type = selectedType.replace("select","")
+  let select = document.getElementById("select"+selectedType)
+  let food = select.options[select.selectedIndex].value
+  let quantity = parseInt(document.getElementById("quantity").value)
+  document.getElementById("quantity").value = 1
+  let globalFood = globalMenu[type].find(foodName => {
+    return foodName.name == food 
+  })
+  let description = globalFood.description
+  let price = globalFood.price
+  let id = globalFood.id
+  let foodObj = new Food(type.toLowerCase(),food, description,quantity, price, id)
+  order.addFood(foodObj)
+}
+let globalMenu = {}
 async function initializeFood() {
   let menu = await fetch("/data/menu.json").then(data => data.json())
+  globalMenu = menu
   let keys = Object.keys(menu)
   for (let i = 0; i < keys.length; i++) {
     let foodType = document.getElementById("select" + keys[i])
@@ -96,16 +117,3 @@ class Food {
   }
 }
 let order = new Order()
-function addOrder(){
-  let food = new Food("pizze","Margherita","Pomodoro e mozzarella",2,1,2)
-  let food2 = new Food("pizze","Marinara","Pomodoro e origano",1,1,2)
-  let food3 = new Food("pizze","Margherita","Pomodoro e mozzarella",2,1,2)
-  order.addFood(food)
-  order.addFood(food3)
-  order.addFood(food2)
-  order.increaseQuantity("pizze","Margherita")
-  order.reduceQuantity("pizze","Margherita")
-  order.deleteFood("pizze","Marinara")
-  console.log(order)
-}
-addOrder()

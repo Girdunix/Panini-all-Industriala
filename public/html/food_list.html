@@ -44,7 +44,8 @@
         <button class="w3-button w3-indigo w3-hover-blue w3-ripple w3-round-large w3-xlarge w3-margin" type="button" name="button" onclick="toggleSelect(this)">Dolci</button>
       </div>
 
-      <div class="w3-content" style="max-width:500px">
+      <div class="w3-content" style="max-width:500px; display: none" id="typeWrapper">
+        <span id="currentType">Pizza</span>
         <div class="w3-panel w3-center inline">
           <select class="w3-select selHide" name="Pizze" id="selectPizze"></select>
 
@@ -52,14 +53,13 @@
 
           <select class="w3-select selHide" name="Dolci" id="selectDolci"></select>
 
-          <span>X</span><input type="number" min="1" value="1">
+          <span>X</span><input type="number" min="1" value="1" id="quantity">
         </div>
-      </div>
-
-      <div class="w3-container">
-        <button class="w3-button w3-indigo w3-hover-blue w3-ripple w3-round-large w3-xlarge w3-margin" type="button" name="button" onclick="">Aggiungi</button>
-        <br>
-        <button class="w3-button w3-indigo w3-hover-blue w3-ripple w3-round-large w3-xlarge w3-margin" type="button" name="button" onclick="">Ordina</button>
+        <div class="w3-container">
+          <button class="w3-button w3-indigo w3-hover-blue w3-ripple w3-round-large w3-xlarge w3-margin" type="button" name="button" onclick="addToCart()">Aggiungi al carrello</button>
+          <br>
+          <button class="w3-button w3-indigo w3-hover-blue w3-ripple w3-round-large w3-xlarge w3-margin" type="button" name="button" onclick="">Ordina</button>
+        </div>
       </div>
     </div>
   </body>
