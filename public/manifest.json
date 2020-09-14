@@ -1,7 +1,7 @@
 {
-    "name": "AO",
-    "short_name": "AO",
-    "description": "AO SE MAGNA",   
+    "name": "EatSchool",
+    "short_name": "EatSchool",
+    "description": "Applicazione ufficiale dell'I.I.S. Mattei di Vasto per effettuare prenotazioni online al bar scolastico.",
     "icons": [
         {
             "src": "/data/images/icon-192x192.png",
