@@ -28,12 +28,14 @@
 
 <body>
   <div class="main">
-    <p class="sign" align="center">Login</p>
-    <input class="un" type="text" align="center" placeholder="Nome utente">
-    <input class="pass" type="password" align="center" placeholder="Password">
-    <a class="submit" align="center">Entra</a>
+    <p class="sign centerX" >Login</p>
+    <input class="un" type="text" placeholder="Nome utente" id="username">
+    <input class="pass" type="password"  placeholder="Password" id=password>
+    <button class="submit" onclick="login()">Entra</button>
   </div>
-
+  <div id="floatingMessage">
+    Messaggio di errore
+  </div>
 </body>
 <script src="/public/js/indexScript.js"></script>
 </html>

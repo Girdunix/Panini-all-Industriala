@@ -7,6 +7,8 @@ if ('serviceWorker' in navigator) {
   })
 }
 
+//------------------------------------------------------------------------------------------//
+
 let selectedType = "Pizze"
 function toggleSelect(toShow) {
   document.getElementById("typeWrapper").style.display = "block"
@@ -19,6 +21,8 @@ function toggleSelect(toShow) {
   toShow = "select" + toShow.innerHTML
   document.getElementById(toShow).style.display = "block"
 }
+
+//------------------------------------------------------------------------------------------//
 
 function addToCart(){
   let type = selectedType.replace("select","")
@@ -36,6 +40,9 @@ function addToCart(){
   globalOrder.addFood(foodObj)
   renderCart()
 }
+
+//------------------------------------------------------------------------------------------//
+
 let globalMenu = {}
 async function initializeFood() {
   let menu = await fetch("/data/menu.json").then(data => data.json())
@@ -51,6 +58,9 @@ async function initializeFood() {
     }
   }
 }
+
+//------------------------------------------------------------------------------------------//
+
 function renderCart(){
   let order = globalOrder.order
   Object.keys(order).forEach(type => {
@@ -63,11 +73,16 @@ function renderCart(){
     })
   })
 }
+
+//------------------------------------------------------------------------------------------//
+
 function toggleCart(){
   let cart = document.getElementById("cart")
   cart.classList.toggle("invisible")
 }
-initializeFood()
+
+//------------------------------------------------------------------------------------------//
+
 class Order {
   constructor() {
     this.price = 0
@@ -122,6 +137,8 @@ class Order {
 
 }
 
+//------------------------------------------------------------------------------------------//
+
 class Food {
   constructor(type, name, description, quantity, price, id) {
     this.type = type
@@ -132,5 +149,9 @@ class Food {
     this.id = id
   }
 }
+
+//------------------------------------------------------------------------------------------//
+
 const globalOrder = new Order()
 String.prototype.capitalize = function(){return this.charAt(0).toUpperCase() + this.slice(1)}
+initializeFood()
