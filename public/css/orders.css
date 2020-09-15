@@ -25,19 +25,11 @@
     background-color: #48c774;
     color: white;
 }
-.box{
-    width: 350px;
-}
-.column{
-    flex-grow: unset;
-}
+
 @media only screen and (orientation:portrait) {
     .table td{
         padding-top: 0.2rem;
         padding-bottom: 0.2rem;
-    }
-    .box{
-        width: unset;
     }
 }
 
@@ -70,6 +62,6 @@ body > footer {
   width: 115px;
 }
 
-.is-locked-350 {
-  min-width: 360px;
+.is-locked-370 {
+  min-width: 370px;
 }
