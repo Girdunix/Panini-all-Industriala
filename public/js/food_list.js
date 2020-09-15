@@ -21,6 +21,12 @@ function toggleSelect(toShow) {
   Array.from(select).forEach(select => {
     select.style.display = "none"
   })
+  toShow.parentElement.querySelectorAll("*").forEach(button =>{
+    button.style.backgroundColor = "white"
+    button.style.color = "#f14668"
+  })
+  toShow.style.backgroundColor = "#f14668"
+  toShow.style.color = "white"
   //rende visibile il select selezionato
   toShow = "select" + toShow.innerHTML
   document.getElementById(toShow).style.display = "block"
