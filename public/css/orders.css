@@ -25,13 +25,20 @@
     background-color: #48c774;
     color: white;
 }
-
+.box{
+    width: 350px;
+}
+.column{
+    flex-grow: unset;
+}
 @media only screen and (orientation:portrait) {
     .table td{
         padding-top: 0.2rem;
         padding-bottom: 0.2rem;
     }
-
+    .box{
+        width: unset;
+    }
 }
 
 nav {
@@ -59,14 +66,10 @@ body > footer {
   margin-top: 2rem;
 }
 
-.button.is-success{
+.is-locked-115{
   width: 115px;
 }
 
-.button.is-danger {
-  width: 115px;
-}
-
-.block-size-button{
-  min-width: 310px;
+.is-locked-350 {
+  min-width: 360px;
 }
