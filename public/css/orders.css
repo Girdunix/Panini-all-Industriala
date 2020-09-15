@@ -1,150 +1,34 @@
-.ordersWrapper{
-    width: 60vw;
-    background-color: #fff;
-    border-radius: 6px;
-    box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
-    color: #4a4a4a;
-    margin-bottom: 10vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-@media only screen and (orientation:portrait) {
-    .ordersWrapper{
-        width: 90vw;
-    }
-}
-*{
-    -webkit-tap-highlight-color: transparent;
-}
-.class{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.class span{
-    font-size: 2rem;
-    font-weight: 600;
-}
-.order{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-content: center;
-    max-height: 0vh;
-    overflow: auto;
-    overflow-x: hidden;
-    margin: 0.5rem 0;
-}
-
-.foodType{
-    border-bottom: 2px solid #dbdbdb;
-    margin: 0.5rem;
-}
-.food{
-    display: flex;
-    justify-content: space-between;
-}
-.food div{
-    font-size: 1.3rem;
-    color: #6b6b6b;
-}
-.totMoney{
-    display: flex;
-    justify-content: flex-end;
-    font-size: 1.5rem;
-    margin-right: 0.5rem;
-    font-weight: bold;
-}
-.buttonsWrapper{
-    display: flex;
-    justify-content: space-evenly;
-}
-.accept, .deny{
-    width: 45%;
-    border: none;
-    border-radius: 5rem;
-    margin: 0.5rem;
-    font-size: 1.2rem;
-    padding: 0.7rem;
-    font-weight: bold;
-    color:white;
-}
 .classTitle{
     display: flex;
-    align-items: center;
-
+    flex-direction: row;
+    position: relative;
 }
-.classTitle span{
+.className{
     flex: 1;
-    cursor: pointer;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
+    text-align:center;
 }
 .expand{
-    font-size:2.5rem;
-    cursor: pointer;
+    position: absolute;
+    right: 0;
     font-weight: bold;
-    align-self: flex-end;
 }
-.accept{
-    background-color: #48c774;
-}
-.deny{
-    background-color:#f14668;
-}
-.collapse{
+.orderWrapper{
     max-height: 0vh;
+    overflow: auto;
 }
-.table{
-    width: 20vw;
-    margin-top: 2rem;
+#noOrdersSaved{
+    font-size: 1.5rem;
+    color:white;
 }
-.tile{
-    margin-top: 1rem;
-}
-::-webkit-scrollbar{
-	width: 5px;
-}
-  
-  /* Track */
-::-webkit-scrollbar-track {
-    background: #dbdbdb;
-	border-radius: 3px;
-	overflow: hidden;
-  }
-  
-  /* Handle */
-::-webkit-scrollbar-thumb {
-    background: #969696;
-	border-radius: 3px;
-	overflow: hidden;
-  }
-tbody th{
-    font-size: 1.3rem;
-    padding-left: 0 !important;
-}
-.table td{
-    padding: 0.2rem 0.5rem;
-}
-.selectRow{
+.selectedRow{
     background-color: #48c774;
     color: white;
 }
-  /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    opacity:0.6;
-  }
+
 @media only screen and (orientation:portrait) {
-    .table{
-        min-width: 80vw;
+    .table td{
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
     }
-    .order{
-        width: 80vw;
-    }
-}
-.darkMode{
-    filter: invert(1) hue-rotate(180deg);
+
 }

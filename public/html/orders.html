@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ordini</title>
     <link rel="stylesheet" href="../css/bulma.min.css">
+    <link rel="stylesheet" href="../css/orders.css">
     <style>
       nav {
         margin-bottom: 2rem;
@@ -61,8 +62,35 @@
     </nav>
 
     <div class="container">
-      <div class="columns .is-multiline">
-        <div class="column">
+      <div class="columns .is-multiline" id="classWrapper">
+        <div class="column" style="display: none;" id="template">
+          <div class="box">
+            <div class="title is-3 has-text-centered classTitle" onclick="expandOrder(this)">
+              <span class="className"></span>
+              <div class="expand"> ></div>
+            </div>
+            <div class="orderWrapper">
+              <table class="table has-text-left ">
+                <tbody>
+                  
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th></th>
+                    <th></th>
+                    <th class="has-text-right price"></th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <div class="has-text-centered is-hidden">
+              <button class="button is-success is-rounded" onclick="confirmOrder(this)">Conferma</button>
+              <button class="button is-danger is-rounded" onclick="deleteOrder(this)">Annulla</button>
+              </div>
+          </div>
+        </div>
+
+        <div class="column" style="display: none;">
           <div class="box">
             <div class="title is-3 has-text-centered">
               1 BT
@@ -120,79 +148,32 @@
                 </tfoot>
               </table>
               <div class="has-text-centered">
-                <button class="button is-success is-rounded">Conferma</button>
-                <button class="button is-danger is-rounded">Annulla</button>
+                <button class="button is-success is-rounded" onclick="confirmOrder(this)">Conferma</button>
+                <button class="button is-danger is-rounded" onclick="deleteOrder(this)">Annulla</button>
               </div>
             </div>
           </div>
         </div>
+
+      </div>
+    </div>
+    <div class="container confirmedOrders">
+      <div class="columns .is-multiline">
         <div class="column">
-          <div class="box">
-            <div class="title is-3 has-text-centered">
-              1 BT
+          <div class="box" id="confirmWrapper" style="background-color: rgb(39, 43, 45);">
+            <div class="title is-3 has-text-centered classTitle " onclick="expandOrder(this,true)">
+              <span class="className" style="color: white;">Confermati</span>
+              <div class="expand" style="color: white;"> ></div>
             </div>
-            <div>
-              <table class="table has-text-left">
-                <tbody>
-                  <tr>
-                    <th class="title is-5">Pizze</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                  <tr>
-                    <td>&emsp;-&ensp;Margherita</td>
-                    <td class="has-text-centered"></td>
-                    <td class="has-text-right">x5</td>
-                  </tr>
-                  <tr>
-                    <td>&emsp;-&ensp;Patate</td>
-                    <td class="has-text-centered"></td>
-                    <td class="has-text-right">x2</td>
-                  </tr>
-                  <tr>
-                    <th class="title is-5">Panini</th>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>&emsp;-&ensp;Prosciutto</td>
-                    <td class="has-text-centered"></td>
-                    <td class="has-text-right">x3</td>
-                  </tr>
-                  <tr>
-                    <td>&emsp;-&ensp;Ventricina</td>
-                    <td class="has-text-centered"></td>
-                    <td class="has-text-right">x1</td>
-                  </tr>
-                  <tr>
-                    <th class="title is-5">Dolci</th>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>&emsp;-&ensp;Bomba</td>
-                    <td class="has-text-centered"></td>
-                    <td class="has-text-right">x1</td>
-                  </tr>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th></th>
-                    <th></th>
-                    <th class="has-text-right">Totale: 12€</th>
-                  </tr>
-                </tfoot>
-              </table>
-              <div class="has-text-centered">
-                <button class="button is-success is-rounded">Conferma</button>
-                <button class="button is-danger is-rounded">Annulla</button>
+            <div class="orderWrapper" id="confirmedOrders">
+              <div id="noOrdersSaved">
+                Nessun ordine confermato!
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
     <div class="container is-fluid">
       <footer class="footer">
         <div class="content has-text-centered">
@@ -204,6 +185,6 @@
       </footer>
     </div>
   </body>
-  <!--<script src="../scripts/jquery.js"></script>-->
-  <!--<script src="../js/orders.js"></script>-->
+<script src="../scripts/jquery.js"></script>
+<script src="../js/orders.js"></script>
 </html>
