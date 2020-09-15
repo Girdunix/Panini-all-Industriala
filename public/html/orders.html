@@ -7,30 +7,33 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <style>
       nav {
-        margin-bottom: 20px;
+        margin-bottom: 1rem;
+        width: 100vw;
       }
 
       html, body {
           min-height: 100vh;
           display: flex;
           flex-direction: column;
+          align-items: center;
       }
 
       body > footer {
           margin-top: auto;
       }
     </style>
+        <link rel="stylesheet" href="../css/orders.css">
   </head>
 
   <body>
     <nav class="navbar is-dark">
-      <div class="navbar-brand">
+      <div class="/*navbar-brand*/">
 
       </div>
 
       <div class="navbar-end">
         <div class="navbar-item">
-          <div class="buttons">
+          <div class="buttons" style="display: flex; justify-content: flex-end;">
             <a class="button is-light">
               Esci
             </a>
@@ -40,10 +43,46 @@
 
     </nav>
 
-
+    <div class="ordersWrapper">
+      <div class="class">
+        <span>Nome classe</span>
+        <div class="order">
+          <div class="foodType">
+            <span>Pizze</span>
+            <div class="food">
+              <div>Margherita</div><div>x4</div>
+            </div>
+            <div class="food">
+              <div>Patate</div><div>x1</div>
+            </div>
+          </div>
+          <div class="foodType">
+            <span>Panini</span>
+            <div class="food">
+              <div>Ventricina</div><div>x4</div>
+            </div>
+            <div class="food">
+              <div>Tramezzino crudo</div><div>x1</div>
+            </div>
+          </div>
+          <div class="foodType">
+            <span>Dolci</span>
+            <div class="food">
+              <div>Bomba</div><div>x1</div>
+            </div>
+          </div>
+          <div class="totMoney">
+            Tot: 11€
+          </div>
+          <div class="buttonsWrapper">
+            <button class="accept">Conferma</button>
+            <button class="deny">Annulla</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container is-widescreen">
       <div class="tile is-ancestor">
-
         <div class="tile">
           <div class="box has-text-centered">
             <p class="title is-4">Nome classe</p>
@@ -172,7 +211,8 @@
             </div>
           </div>
         </div>
-
+        <div>
+        </div>
       </div>
     </div>
 

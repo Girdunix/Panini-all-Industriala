@@ -1,0 +1,68 @@
+.ordersWrapper{
+    width: 60vw;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
+    color: #4a4a4a;
+    margin-bottom: 10vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media only screen and (orientation:portrait) {
+    .ordersWrapper{
+        width: 80vw;
+    }
+}
+.class{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.class span{
+    font-size: 2rem;
+    font-weight: 600;
+}
+.order{
+    width: 90%;
+    margin: 0.5rem 0;
+}
+.foodType{
+    border-bottom: 2px solid #dbdbdb;
+    margin: 0.5rem;
+}
+.food{
+    display: flex;
+    justify-content: space-between;
+}
+.food div{
+    font-size: 1.3rem;
+    color: #6b6b6b;
+}
+.totMoney{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.buttonsWrapper{
+    display: flex;
+    justify-content: space-evenly;
+}
+.accept, .deny{
+    width: 40%;
+    border: none;
+    border-radius: 0.8rem;
+    margin: 0.5rem;
+    font-size: 1.3rem;
+    padding: 0.7rem;
+    font-weight: bold;
+    color:white;
+}
+.accept{
+    background-color: #48c774;
+}
+.deny{
+    background-color:#f14668;
+}
