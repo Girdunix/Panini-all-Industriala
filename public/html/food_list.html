@@ -20,7 +20,6 @@
     <link rel="shortcut icon" href="/data/images/icon-192x192.png" type="image/x-icon"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="../css/bulma.min.css">
     <link rel="stylesheet" href="../css/food_list.css">
     <title>Ordinazione</title>
@@ -66,10 +65,10 @@
     <!-- Box centrale -->
     <div class="columns is-centered" style="margin-top: 20px">
       <div class="column is-half">
-        <div class="box">
+        <div class="box box-resize-margin">
 
           <!-- Pulsanti selezione cibo -->
-          <div class="buttons is-centered are-medium">
+          <div class="buttons is-centered" style="margin: 0.4rem 0 0">
             <button class="button is-danger is-outlined" type="button" name="button" onclick="toggleSelect(this)">Pizze</button>
             <button class="button is-danger is-outlined" type="button" name="button" onclick="toggleSelect(this)">Panini</button>
             <button class="button is-danger is-outlined" type="button" name="button" onclick="toggleSelect(this)">Dolci</button>
@@ -84,11 +83,11 @@
               </div>
               
               <div class="level-item has-text-centered mx-1">
-                <select class="w3-select selHide" name="Pizze" id="selectPizze"></select>
-      
-                <select class="w3-select selHide" name="Panini" id="selectPanini"></select>
-      
-                <select class="w3-select selHide" name="Dolci" id="selectDolci"></select>
+                <div class="select">
+                  <select class="selHide" name="Pizze" id="selectPizze"></select>
+                  <select class="selHide" name="Panini" id="selectPanini"></select>
+                  <select class="selHide" name="Dolci" id="selectDolci"></select>
+                </div>
               </div>
 
               <div class="level-item has-text-centered mx-1">
@@ -96,7 +95,7 @@
               </div>
 
               <div class="level-item has-text-centered mx-1">
-                <input type="number" min="1" value="1" id="quantity">
+                <input type="number" min="1" value="1" id="quantity" style="width: 100%;">
               </div>
             </div>
 
