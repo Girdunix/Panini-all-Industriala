@@ -4,11 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ordini</title>
-    <script src="../scripts/jquery.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link rel="stylesheet" href="../css/bulma.min.css">
     <style>
       nav {
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
         width: 100vw;
       }
 
@@ -20,13 +19,27 @@
           display: flex;
           flex-direction: column;
           align-items: center;
+          background-color: #f2f2f2;
       }
 
       body > footer {
           margin-top: auto;
       }
+
+      .footer {
+        background-color: #e8e8e8;
+        margin-top: 2rem;
+      }
+      
+      .button.is-success{
+        width: 115px;
+      }
+
+      .button.is-danger {
+        width: 115px;
+      }
+
     </style>
-        <link rel="stylesheet" href="../css/orders.css">
   </head>
 
   <body>
@@ -37,7 +50,7 @@
         <div class="navbar-item">
           <div class="buttons" style="display: flex; justify-content: flex-end;">
             <a class="button is-light" onclick="toggleDarkMode(this)">
-              🌙 
+              🌙
             </a>
             <a class="button is-light">
               Esci
@@ -47,96 +60,53 @@
       </div>
     </nav>
 
-    <div class="ordersWrapper" style="display: none;">
-      <div class="class">
-        <div class="classTitle">
-          <span>1 BT</span>
-          <div class="expand" onclick="expandOrder(this)"> > </div>
-        </div>
-        <div class="order collapse">
-          <div class="foodType">
-            <span>Pizze</span>
-            <div class="food">
-              <div>Margherita</div><div>x4</div>
+    <div class="container">
+      <div class="columns .is-multiline">
+        <div class="column">
+          <div class="box">
+            <div class="title is-3 has-text-centered">
+              1 BT
             </div>
-            <div class="food">
-              <div>Patate</div><div>x1</div>
-            </div>
-          </div>
-          <div class="foodType">
-            <span>Panini</span>
-            <div class="food">
-              <div>Ventricina</div><div>x4</div>
-            </div>
-            <div class="food">
-              <div>Tramezzino crudo</div><div>x1</div>
-            </div>
-          </div>
-          <div class="foodType">
-            <span>Dolci</span>
-            <div class="food">
-              <div>Bomba</div><div>x1</div>
-            </div>
-          </div>
-          <div class="totMoney">
-            Totale: 11€
-          </div>
-          <div class="buttonsWrapper">
-            <button class="accept">Conferma</button>
-            <button class="deny">Annulla</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container is-widescreen">
-      <div class="tile is-ancestor" id="orderWrapper">
-
-        <div class="tile">
-          <div class="box has-text-centered">
-            <div class="classTitle"  onclick="expandOrder(this)">
-              <span>1 BT</span>
-              <div class="expand"> > </div>
-            </div>
-            <div class="order collapse">
+            <div>
               <table class="table has-text-left">
                 <tbody>
                   <tr>
-                    <th>Pizze</th>
+                    <th class="title is-5">Pizze</th>
                     <th></th>
                     <th></th>
                   </tr>
                   <tr>
-                    <td>Margherita</td>
+                    <td>&emsp;-&ensp;Margherita</td>
                     <td class="has-text-centered"></td>
                     <td class="has-text-right">x5</td>
                   </tr>
                   <tr>
-                    <td>Patate</td>
+                    <td>&emsp;-&ensp;Patate</td>
                     <td class="has-text-centered"></td>
                     <td class="has-text-right">x2</td>
                   </tr>
                   <tr>
-                    <th>Panini</th>
+                    <th class="title is-5">Panini</th>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Prosciutto</td>
+                    <td>&emsp;-&ensp;Prosciutto</td>
                     <td class="has-text-centered"></td>
                     <td class="has-text-right">x3</td>
                   </tr>
                   <tr>
-                    <td>Ventricina</td>
+                    <td>&emsp;-&ensp;Ventricina</td>
                     <td class="has-text-centered"></td>
                     <td class="has-text-right">x1</td>
                   </tr>
                   <tr>
-                    <th>Dolci</th>
+                    <th class="title is-5">Dolci</th>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Bomba</td>
+                    <td>&emsp;-&ensp;Bomba</td>
                     <td class="has-text-centered"></td>
                     <td class="has-text-right">x1</td>
                   </tr>
@@ -149,9 +119,73 @@
                   </tr>
                 </tfoot>
               </table>
-              <div class="buttonsWrapper">
-                <button class="accept">Conferma</button>
-                <button class="deny">Annulla</button>
+              <div class="has-text-centered">
+                <button class="button is-success is-rounded">Conferma</button>
+                <button class="button is-danger is-rounded">Annulla</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box">
+            <div class="title is-3 has-text-centered">
+              1 BT
+            </div>
+            <div>
+              <table class="table has-text-left">
+                <tbody>
+                  <tr>
+                    <th class="title is-5">Pizze</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <td>&emsp;-&ensp;Margherita</td>
+                    <td class="has-text-centered"></td>
+                    <td class="has-text-right">x5</td>
+                  </tr>
+                  <tr>
+                    <td>&emsp;-&ensp;Patate</td>
+                    <td class="has-text-centered"></td>
+                    <td class="has-text-right">x2</td>
+                  </tr>
+                  <tr>
+                    <th class="title is-5">Panini</th>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>&emsp;-&ensp;Prosciutto</td>
+                    <td class="has-text-centered"></td>
+                    <td class="has-text-right">x3</td>
+                  </tr>
+                  <tr>
+                    <td>&emsp;-&ensp;Ventricina</td>
+                    <td class="has-text-centered"></td>
+                    <td class="has-text-right">x1</td>
+                  </tr>
+                  <tr>
+                    <th class="title is-5">Dolci</th>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>&emsp;-&ensp;Bomba</td>
+                    <td class="has-text-centered"></td>
+                    <td class="has-text-right">x1</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th></th>
+                    <th></th>
+                    <th class="has-text-right">Totale: 12€</th>
+                  </tr>
+                </tfoot>
+              </table>
+              <div class="has-text-centered">
+                <button class="button is-success is-rounded">Conferma</button>
+                <button class="button is-danger is-rounded">Annulla</button>
               </div>
             </div>
           </div>
@@ -159,15 +193,17 @@
       </div>
     </div>
 
-
-    <footer class="footer">
-      <div class="content has-text-centered">
-        <p>
-          <strong>EatSchool</strong> by 5AINF & 5BINF. The source code is licensed
-          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
-        </p>
-      </div>
-    </footer>
+    <div class="container">
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>EatSchool</strong> by 5AINF & 5BINF. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+          </p>
+        </div>
+      </footer>
+    <div class="container">
   </body>
-  <script src="../js/orders.js"></script>
+  <!--<script src="../scripts/jquery.js"></script>-->
+  <!--<script src="../js/orders.js"></script>-->
 </html>
