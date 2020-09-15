@@ -76,7 +76,7 @@
     flex: 1;
     cursor: pointer;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
 }
 .expand{
@@ -118,7 +118,10 @@
 	border-radius: 3px;
 	overflow: hidden;
   }
-  
+tbody th{
+    font-size: 1.3rem;
+    padding-left: 0 !important;
+}
   /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     opacity:0.6;

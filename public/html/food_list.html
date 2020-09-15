@@ -32,8 +32,8 @@
       <img class="logo" src="" alt="logo">
       <nav>
         <ul class="nav_links">
-          <li><a href="">Home</a></li>
-          <li><a href="">Ordinazioni</a></li>
+          <li><a href="./login.html">Home</a></li>
+          <li><a href="./orders.html">Ordinazioni</a></li>
         </ul>
       </nav>
       <button onclick="toggleCart()">Carrello</button>
@@ -94,11 +94,14 @@
             <div class="buttons is-centered">
               <button class="button is-primary is-outlined" type="button" name="button" onclick="addToCart()">Aggiungi al carrello</button>
               <br>
-              <button class="button is-primary is-outlined" type="button" name="button" onclick="">Ordina</button>
+              <button class="button is-primary is-outlined" type="button" name="button" onclick="placeOrder()">Ordina</button>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div id="floatingMessage">
+      Messaggio di errore
     </div>
   </body>
   <script src="../js/food_list.js"></script>

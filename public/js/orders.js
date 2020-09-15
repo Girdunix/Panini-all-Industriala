@@ -33,8 +33,10 @@ function expandOrder(btn) {
 }
 
 async function initBasicOrder() {
-    let order = await fetch("/data/exampleOrder.json").then(data => data.json())
+    let order = await fetch("/data/exampleOrder2.json").then(data => data.json())
     makeOrder(order)
+    makeOrder(order)
+
 }
 
 function makeOrder(order) {
@@ -49,7 +51,7 @@ function makeOrder(order) {
     let classTitle = document.createElement("div")
     classTitle.className = "classTitle"
     let className = document.createElement("span")
-    className.innerHTML = "Test Class"
+    className.innerHTML = order.class
     let expandBtn = document.createElement("div")
     expandBtn.className = "expand"
     expandBtn.innerHTML = ">"

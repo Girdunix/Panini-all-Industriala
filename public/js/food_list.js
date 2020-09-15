@@ -45,6 +45,7 @@ function addToCart(){
   let foodObj = new Food(type.toLowerCase(),food, description,quantity, price, id)
   globalOrder.addFood(foodObj)
   renderCart()
+  showError("Aggiunto al carrello!",2000)
 }
 
 //------------------------------------------------------------------------------------------//
@@ -92,11 +93,22 @@ function toggleCart(){
 }
 
 //------------------------------------------------------------------------------------------//
-
+function placeOrder(){
+  globalOrder.class = "Nome Classe"
+  let dataStr = "data:text/json;charset=utf-8,"
+  dataStr += encodeURIComponent(JSON.stringify(globalOrder));
+  let dlAnchorElem = document.createElement("a")
+  dlAnchorElem.setAttribute("href", dataStr);
+  dlAnchorElem.setAttribute("download", "order.json");
+  dlAnchorElem.click();
+  dlAnchorElem.remove()
+  showError("Ordine effettuato!",2000)
+}
 class Order {
   //Classe per l'ordine
   constructor() {
     this.price = 0
+    this.class = ""
     this.date = Date.now()
     this.order = {
       pizze: [],
@@ -168,7 +180,25 @@ class Food {
 
 //------------------------------------------------------------------------------------------//
 
+function showError(message,timeout){
+  //funzione che mostra un messaggio di errore fluttuante 
+  let floatingMessage = document.getElementById("floatingMessage")
+  floatingMessage.innerHTML = message
+  if(floatingMessage.style.display == "flex") return
+  floatingMessage.style.display = "flex"
+  floatingMessage.fadeIn()
+  setTimeout(() => {
+     floatingMessage.fadeOut()
+     setTimeout(() => {
+         floatingMessage.style.display = "none"
+     }, 200);
+  }, timeout);
+}
+
+//------------------------------------------------------------------------------------------//
 const globalOrder = new Order()
 //funzione per capitalizzare una stringa, da ciao a Ciao
 String.prototype.capitalize = function(){return this.charAt(0).toUpperCase() + this.slice(1)}
+HTMLElement.prototype.fadeIn = function(){ this.style.animation = "fadeIn 0.2s"}
+HTMLElement.prototype.fadeOut = function(){ this.style.animation = "fadeOut 0.2s"}
 initializeFood()
