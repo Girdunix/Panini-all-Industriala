@@ -79,7 +79,7 @@ header {
     color: #0089a9;
 }
 
-button {
+header button {
     margin-left: 20px;
     padding: 9px 25px;
     background-color: rgba(0, 136, 169, 1);
@@ -89,7 +89,12 @@ button {
     transition: all 0.3s ease 0s;
 }
 
-button:hover {
+header button:focus {
+    outline: 0;
+    box-shadow: 0 0 2pt 0.1pt rgba(0, 136, 169, 1)
+}
+
+header button:hover {
     background-color: rgba(0, 136, 169, 0.8);
 }
 
@@ -118,27 +123,40 @@ button:hover {
 
 .select-button {
     border-radius: 40px;
+    padding: 9px 18px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
 }
 
 .color-red {
     background-color: white;
-    color: #ff4d4d;
-    border: 1px solid #ff4d4d;
+    color: hsl(348, 100%, 61%);
+    border: 1px solid hsl(348, 100%, 61%);
+}
+
+.color-red:focus {
+    outline: 0;
+    box-shadow: 0 0 2pt 0.1pt hsl(348, 100%, 61%);
 }
 
 .color-red:hover {
-    background-color: #ff4d4d;
+    background-color: hsl(348, 100%, 61%);
     color: white;
 }
 
 .color-green {
     background-color: white;
-    color:#33cc00;
-    border: 1px solid #33cc00;
+    color: hsl(141, 71%, 48%);
+    border: 1px solid hsl(141, 71%, 48%);
+}
+
+.color-green:focus {
+    outline: 0;
+    box-shadow: 0 0 2pt 0.1pt hsl(141, 71%, 48%);
 }
 
 .color-green:hover {
-    background-color: #33cc00;
+    background-color: hsl(141, 71%, 48%);
     color: white;
 }
 
@@ -150,6 +168,14 @@ button:hover {
     background-color: #3385ff;
     color: white;
     border: 1px solid #3385ff;
+    padding: 10px 25px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.order-btn:focus {
+    outline: 0;
+    box-shadow: 0 0 2pt 0.1pt #005ce6;
 }
 
 .order-btn:hover {
