@@ -6,41 +6,6 @@
     <title>Ordini</title>
     <link rel="stylesheet" href="../css/bulma.min.css">
     <link rel="stylesheet" href="../css/orders.css">
-    <style>
-      nav {
-        margin-bottom: 2rem;
-        width: 100vw;
-      }
-
-      html, body {
-          min-height: 100vh;
-          margin: 0;
-          padding: 0;
-          overflow-x: hidden;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          background-color: #f2f2f2;
-      }
-
-      body > footer {
-          margin-top: auto;
-      }
-
-      .footer {
-        background-color: #e8e8e8;
-        margin-top: 2rem;
-      }
-
-      .button.is-success{
-        width: 115px;
-      }
-
-      .button.is-danger {
-        width: 115px;
-      }
-
-    </style>
   </head>
 
   <body>
@@ -85,16 +50,16 @@
                 </tfoot>
               </table>
             </div>
-            <div class="has-text-centered is-hidden">
-              <button class="button is-success is-rounded" onclick="confirmOrder(this)">Conferma</button>
+            <div class="has-text-centered is-hidden block-size-button">
               <button class="button is-danger is-rounded" onclick="deleteOrder(this)">Annulla</button>
-              </div>
+              <button class="button is-success is-rounded" onclick="confirmOrder(this)">Conferma</button>
+            </div>
           </div>
         </div>
         <!--Fine template-->
 
         <!--Template dell'ordine statico per testing CSS-->
-        <div class="column" style="display: none">
+        <div class="column">
           <div class="box">
             <div class="title is-3 has-text-centered">
               1 BT
@@ -141,9 +106,9 @@
                   </tr>
                 </tfoot>
               </table>
-              <div class="has-text-centered">
-                <button class="button is-success is-rounded" onclick="confirmOrder(this)">Conferma</button>
+              <div class="has-text-centered block-size-button">
                 <button class="button is-danger is-rounded" onclick="deleteOrder(this)">Annulla</button>
+                <button class="button is-success is-rounded" onclick="confirmOrder(this)">Conferma</button>
               </div>
             </div>
           </div>

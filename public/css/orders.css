@@ -32,3 +32,40 @@
     }
 
 }
+
+nav {
+  margin-bottom: 2rem;
+  width: 100vw;
+}
+
+html, body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f2f2f2;
+}
+
+body > footer {
+    margin-top: auto;
+}
+
+.footer {
+  background-color: #e8e8e8;
+  margin-top: 2rem;
+}
+
+.button.is-success{
+  width: 115px;
+}
+
+.button.is-danger {
+  width: 115px;
+}
+
+.block-size-button{
+  min-width: 310px;
+}
