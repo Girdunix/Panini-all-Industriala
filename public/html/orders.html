@@ -31,7 +31,7 @@
         background-color: #e8e8e8;
         margin-top: 2rem;
       }
-      
+
       .button.is-success{
         width: 115px;
       }
@@ -46,6 +46,7 @@
   <body>
     <nav class="navbar is-dark">
       <div class="/*navbar-brand*/">
+        <!--INSERIRE LOGO PROGETTO-->
       </div>
       <div class="navbar-end">
         <div class="navbar-item">
@@ -61,8 +62,9 @@
       </div>
     </nav>
 
-    <div class="container">
-      <div class="columns .is-multiline" id="classWrapper">
+    <div class="container is-fluid">
+      <div class="columns is-multiline" id="classWrapper">
+        <!--Template dell'ordine che viene clonato con JS-->
         <div class="column" style="display: none;" id="template">
           <div class="box">
             <div class="title is-3 has-text-centered classTitle" onclick="expandOrder(this)">
@@ -70,15 +72,15 @@
               <div class="expand"> ></div>
             </div>
             <div class="orderWrapper">
-              <table class="table has-text-left ">
+              <table class="table has-text-left is-narrow is-fullwidth">
                 <tbody>
-                  
+
                 </tbody>
                 <tfoot>
                   <tr>
                     <th></th>
                     <th></th>
-                    <th class="has-text-right price"></th>
+                    <th colspan="3" class="has-text-right price"></th>
                   </tr>
                 </tfoot>
               </table>
@@ -89,61 +91,53 @@
               </div>
           </div>
         </div>
+        <!--Fine template-->
 
-        <div class="column" style="display: none;">
+        <!--Template dell'ordine statico per testing CSS-->
+        <div class="column" style="display: none">
           <div class="box">
             <div class="title is-3 has-text-centered">
               1 BT
             </div>
             <div>
-              <table class="table has-text-left">
+              <table class="table has-text-left is-narrow is-fullwidth">
                 <tbody>
                   <tr>
-                    <th class="title is-5">Pizze</th>
-                    <th></th>
+                    <th colspan="2" class="title is-5">Pizze</th>
                     <th></th>
                   </tr>
                   <tr>
-                    <td>&emsp;-&ensp;Margherita</td>
-                    <td class="has-text-centered"></td>
+                    <td colspan="2">&emsp;-&ensp;Margherita</td>
                     <td class="has-text-right">x5</td>
                   </tr>
                   <tr>
-                    <td>&emsp;-&ensp;Patate</td>
-                    <td class="has-text-centered"></td>
+                    <td colspan="2">&emsp;-&ensp;Patate</td>
                     <td class="has-text-right">x2</td>
                   </tr>
                   <tr>
-                    <th class="title is-5">Panini</th>
-                    <td></td>
+                    <th colspan="2" class="title is-5">Panini</th>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>&emsp;-&ensp;Prosciutto</td>
-                    <td class="has-text-centered"></td>
+                    <td colspan="2">&emsp;-&ensp;Prosciutto</td>
                     <td class="has-text-right">x3</td>
                   </tr>
                   <tr>
-                    <td>&emsp;-&ensp;Ventricina</td>
-                    <td class="has-text-centered"></td>
+                    <td colspan="2">&emsp;-&ensp;Ventricina</td>
                     <td class="has-text-right">x1</td>
                   </tr>
                   <tr>
-                    <th class="title is-5">Dolci</th>
-                    <td></td>
+                    <th colspan="2" class="title is-5">Dolci</th>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>&emsp;-&ensp;Bomba</td>
-                    <td class="has-text-centered"></td>
+                    <td colspan="2">&emsp;-&ensp;Bomba</td>
                     <td class="has-text-right">x1</td>
                   </tr>
                 </tbody>
                 <tfoot>
                   <tr>
-                    <th></th>
-                    <th></th>
-                    <th class="has-text-right">Totale: 12€</th>
+                    <th colspan="3" class="has-text-right">Totale: 12€</th>
                   </tr>
                 </tfoot>
               </table>
@@ -154,11 +148,14 @@
             </div>
           </div>
         </div>
-
+        <!--Fine template-->
       </div>
     </div>
-    <div class="container confirmedOrders">
-      <div class="columns .is-multiline">
+
+    <br>
+
+    <div class="container is-fluid confirmedOrders">
+      <div class="columns is-multiline">
         <div class="column">
           <div class="box" id="confirmWrapper" style="background-color: rgb(39, 43, 45);">
             <div class="title is-3 has-text-centered classTitle " onclick="expandOrder(this,true)">
@@ -174,6 +171,7 @@
         </div>
       </div>
     </div>
+
     <div class="container is-fluid">
       <footer class="footer">
         <div class="content has-text-centered">

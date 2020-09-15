@@ -36,7 +36,7 @@ function expandOrder(btn,ignore = false) {
         if(ignore) return
         setTimeout(() => {
             btn.parentElement.parentElement.querySelector("button").parentElement.classList.toggle("is-hidden")
-        }, 150);   
+        }, 150);
     }
 }
 
@@ -62,7 +62,7 @@ async function initBasicOrder() {
     makeOrder(order)
     makeOrder(order)
 }
-let globalLayersBackground = ["rgb(27 25 35)","rgb(42 41 51)","white"]  //["#181a1b","#272b2d"] 
+let globalLayersBackground = ["rgb(27 25 35)","rgb(42 41 51)","white"]  //["#181a1b","#272b2d"]
 let globalLayersText = ["#e0e0e0","#4a4a4a"]
 let darkModeToggled = false
 document.querySelector(".navbar").style.backgroundColor = "rgb(39, 43, 45)"
@@ -118,10 +118,9 @@ function makeOrder(order) {
         row.innerHTML = "<th>" + key.capitalize() + "</th><th></th><th></th>"
         tbody.appendChild(row)
         order.order[key].forEach(food => {
-            let row = 
+            let row =
             '<tr onclick="selectRow(this)">'
-            +'<td>-&ensp;'+food.name+'</td>'
-            +'<td class="has-text-centered"></td>'
+            +'<td colspan="2">-&ensp;'+food.name+'</td>'
             +'<td class="has-text-right">x'+food.quantity+'</td>'
             +'</tr>'
             tbody.innerHTML +=row
