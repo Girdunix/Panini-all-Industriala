@@ -1,4 +1,5 @@
 if ('serviceWorker' in navigator) {
+  //service worker per rendere il sito installabile come app
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/public/service-worker.js')
       .then((reg) => {
@@ -11,13 +12,16 @@ if ('serviceWorker' in navigator) {
 
 let selectedType = "Pizze"
 function toggleSelect(toShow) {
+  //Una funzione che mostra il tipo di cibo selezionato, toShow è il pulsate "pizze, panini, dolci"
   document.getElementById("typeWrapper").style.display = "block"
   document.getElementById("currentType").innerText = toShow.innerHTML
   selectedType = toShow.innerHTML
   let select = document.getElementsByClassName("selHide")
+  //prende tutti gli elementi che hanno come classe selHide e li rende invisibili
   Array.from(select).forEach(select => {
     select.style.display = "none"
   })
+  //rende visibile il select selezionato
   toShow = "select" + toShow.innerHTML
   document.getElementById(toShow).style.display = "block"
 }
@@ -30,12 +34,14 @@ function addToCart(){
   let food = select.options[select.selectedIndex].value
   let quantity = parseInt(document.getElementById("quantity").value)
   document.getElementById("quantity").value = 1
+  //trova i dettagli del cibo all'interno dell'ogggetto menu preso dal json
   let globalFood = globalMenu[type].find(foodName => {
     return foodName.name == food 
   })
   let description = globalFood.description
   let price = globalFood.price
   let id = globalFood.id
+  //crea un nuovo oggetto Food e lo aggiunge al carrello
   let foodObj = new Food(type.toLowerCase(),food, description,quantity, price, id)
   globalOrder.addFood(foodObj)
   renderCart()
@@ -45,9 +51,12 @@ function addToCart(){
 
 let globalMenu = {}
 async function initializeFood() {
+  //Fetcha il json menu.json che contiene tutti i dettagli del menu
   let menu = await fetch("/data/menu.json").then(data => data.json())
   globalMenu = menu
   let keys = Object.keys(menu)
+  //itera nell'oggetto e crea le opzioni per i tipi di cibo e le aggiunge al select
+  //keys sono i nomi delle proprietà dell'oggetto, cioè pizze panini dolci
   for (let i = 0; i < keys.length; i++) {
     let foodType = document.getElementById("select" + keys[i])
     for (let j = 0; j < menu[keys[i]].length; j++) {
@@ -63,6 +72,7 @@ async function initializeFood() {
 
 function renderCart(){
   let order = globalOrder.order
+  //prende ogni proprietà nell'oggetto ordine e li aggiunge alla div del tipo corretto nel carrello
   Object.keys(order).forEach(type => {
     let cartWrapper = document.getElementById("cart"+type.capitalize())
     cartWrapper.innerHTML = ""
@@ -84,6 +94,7 @@ function toggleCart(){
 //------------------------------------------------------------------------------------------//
 
 class Order {
+  //Classe per l'ordine
   constructor() {
     this.price = 0
     this.date = Date.now()
@@ -94,9 +105,11 @@ class Order {
     }
 
     this.addFood = function(food){
+      //aggiunge un cibo alla lista, controlla se esiste già, se esiste incrementa solo la quantità
       let isSaved = this.order[food.type].findIndex((savedFood) =>{
         return savedFood.name == food.name
       })
+      //la funzione findIndex trova l'indice dell'elemento, se è -1 vuol dire che non è presente
       if(isSaved !== -1){
         this.order[food.type][isSaved].quantity += food.quantity
       }else{
@@ -106,6 +119,7 @@ class Order {
     }
 
     this.increaseQuantity = function(type,name){
+      //trova l'indice del cibo selezionato e ne incrementa la quantità
       let index = this.order[type].findIndex((savedFood) =>{
         return savedFood.name == name
       })
@@ -114,6 +128,7 @@ class Order {
     }
 
     this.reduceQuantity = function(type,name){
+      //trova l'indice del cibo selezionato e ne decrementa la quantità
       let index = this.order[type].findIndex((savedFood) =>{
         return savedFood.name == name
       })
@@ -124,6 +139,7 @@ class Order {
       }
     }
     this.deleteFood = function(type,name){
+      //trova l'indice del cibo selezionato e lo elimina
       let index = this.order[type].findIndex((savedFood) =>{
         return savedFood.name == name
       })
@@ -153,5 +169,6 @@ class Food {
 //------------------------------------------------------------------------------------------//
 
 const globalOrder = new Order()
+//funzione per capitalizzare una stringa, da ciao a Ciao
 String.prototype.capitalize = function(){return this.charAt(0).toUpperCase() + this.slice(1)}
 initializeFood()

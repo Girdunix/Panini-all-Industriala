@@ -1,4 +1,5 @@
 if ('serviceWorker' in navigator) {
+    //service worker per rendere il sito installabile come app
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/public/service-worker.js')
             .then((reg) => {
@@ -7,12 +8,13 @@ if ('serviceWorker' in navigator) {
     })
 }
 function showError(message,timeout){
+    //funzione che mostra un messaggio di errore fluttuante 
     let floatingMessage = document.getElementById("floatingMessage")
     floatingMessage.innerHTML = message
     if(floatingMessage.style.display == "flex") return
     floatingMessage.style.display = "flex"
     floatingMessage.fadeIn()
-    setTimeout( () => {
+    setTimeout(() => {
        floatingMessage.fadeOut()
        setTimeout(() => {
            floatingMessage.style.display = "none"
@@ -23,7 +25,6 @@ function showError(message,timeout){
 function login(){
     let username = document.getElementById("username").value
     let password = document.getElementById("password").value
-    console.log(username,password)
     if(username && password){
         showError("Login!",2000)
     }else{
