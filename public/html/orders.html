@@ -30,7 +30,7 @@
     <div class="container is-fluid">
       <div class="columns is-multiline" id="classWrapper">
         <!--Template dell'ordine che viene clonato con JS-->
-        <div class="column" style="display: none;" id="template">
+        <div class="column is-locked-350" style="display: none;" id="template">
           <div class="box">
             <div class="title is-3 has-text-centered classTitle" onclick="expandOrder(this)">
               <span class="className"></span>
@@ -50,16 +50,16 @@
                 </tfoot>
               </table>
             </div>
-            <div class="has-text-centered is-hidden block-size-button">
-              <button class="button is-danger is-rounded" onclick="deleteOrder(this)">Annulla</button>
-              <button class="button is-success is-rounded" onclick="confirmOrder(this)">Conferma</button>
+            <div class="has-text-centered is-hidden">
+              <button class="button is-danger is-rounded is-locked-115" onclick="deleteOrder(this)">Annulla</button>
+              <button class="button is-success is-rounded is-locked-115" onclick="confirmOrder(this)">Conferma</button>
             </div>
           </div>
         </div>
         <!--Fine template-->
 
         <!--Template dell'ordine statico per testing CSS-->
-        <div class="column" style="display: none;">
+        <div class="column is-locked-350" style="display: none;">
           <div class="box">
             <div class="title is-3 has-text-centered">
               1 BT
@@ -106,9 +106,9 @@
                   </tr>
                 </tfoot>
               </table>
-              <div class="has-text-centered block-size-button">
-                <button class="button is-danger is-rounded" onclick="deleteOrder(this)">Annulla</button>
-                <button class="button is-success is-rounded" onclick="confirmOrder(this)">Conferma</button>
+              <div class="has-text-centered">
+                <button class="button is-danger is-rounded is-locked-115" onclick="deleteOrder(this)">Annulla</button>
+                <button class="button is-success is-rounded is-locked-115" onclick="confirmOrder(this)">Conferma</button>
               </div>
             </div>
           </div>
@@ -121,7 +121,7 @@
 
     <div class="container is-fluid confirmedOrders">
       <div class="columns is-multiline">
-        <div class="column">
+        <div class="column is-locked-350">
           <div class="box" id="confirmWrapper" style="background-color: rgb(39, 43, 45);">
             <div class="title is-3 has-text-centered classTitle " onclick="expandOrder(this,true)">
               <span class="className" style="color: white;">Confermati</span>
