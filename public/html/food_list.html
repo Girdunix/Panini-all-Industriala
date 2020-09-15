@@ -59,6 +59,8 @@
 
         </div>
       </div>
+
+      <button class="order-btn" type="button" name="button" onclick="placeOrder()">Ordina</button>
     </div>
     <!-- Fine sezione carrello -->
 
@@ -86,17 +88,15 @@
               </div>
             
               <div class="select-quantity">
-                <button class="select-button color-green" type="button" name="button">+</button>
-                <span id="quantity">1</span>
                 <button class="select-button color-red" type="button" name="button">-</button>
+                <span id="quantity">1</span>
+                <button class="select-button color-green" type="button" name="button">+</button>
               </div>
             </div>
 
             <!-- Pulsanti carrello e ordina -->
-            <div class="buttons is-centered" style="margin-top: 2rem;">
+            <div class="buttons is-centered" style="margin-top: 1rem;">
               <button class="button is-primary is-outlined" type="button" name="button" onclick="addToCart()">Aggiungi al carrello</button>
-              <br>
-              <button class="button is-primary is-outlined" type="button" name="button" onclick="placeOrder()">Ordina</button>
             </div>
           </div>
         </div>
