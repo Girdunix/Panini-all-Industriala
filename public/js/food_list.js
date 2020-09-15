@@ -34,12 +34,18 @@ function toggleSelect(toShow) {
 
 //------------------------------------------------------------------------------------------//
 
+function changeNum(num){
+  num = parseInt(document.getElementById("quantity").innerHTML) + num
+  if(num > 0){
+    document.getElementById("quantity").innerHTML = num
+  }
+}
 function addToCart(){
   let type = selectedType.replace("select","")
   let select = document.getElementById("select"+selectedType)
   let food = select.options[select.selectedIndex].value
-  let quantity = parseInt(document.getElementById("quantity").value)
-  document.getElementById("quantity").value = 1
+  let quantity = parseInt(document.getElementById("quantity").innerHTML)
+  document.getElementById("quantity").innerHTML = 1
   //trova i dettagli del cibo all'interno dell'ogggetto menu preso dal json
   let globalFood = globalMenu[type].find(foodName => {
     return foodName.name == food 
@@ -53,7 +59,9 @@ function addToCart(){
   renderCart()
   showError("Aggiunto al carrello!",2000)
 }
-
+function hideCart(){
+  document.getElementById("cart").classList.add("invisible")
+}
 //------------------------------------------------------------------------------------------//
 
 let globalMenu = {}
