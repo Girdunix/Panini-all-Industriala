@@ -26,13 +26,6 @@
     color: white;
 }
 
-@media only screen and (orientation:portrait) {
-    .table td{
-        padding-top: 0.2rem;
-        padding-bottom: 0.2rem;
-    }
-}
-
 nav {
   margin-bottom: 2rem;
   width: 100vw;
@@ -63,5 +56,5 @@ body > footer {
 }
 
 .is-locked-370 {
-  min-width: 370px;
+  min-width: 375px;
 }
