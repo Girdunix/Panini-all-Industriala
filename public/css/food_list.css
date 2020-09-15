@@ -3,15 +3,28 @@
 /*--- Page white space fix ---*/
 
 body {
-    overflow-x: hidden;
+    overflow: hidden;
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
 }
 
+html{
+    overflow: hidden;
+}
+#touch{
+    width: 100vw;
+    flex-grow: 1;
+}
 /*--- NAVBAR CSS START ---*/
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 li, a, button {
@@ -37,9 +50,10 @@ header {
 #cart{
     width: 25vw;
     background-color: #24252ae3;
-    height: 90%;
+    height: calc(100% - 3rem - 18px);
     position: absolute;
     right: 0;
+    bottom: 0;
     z-index: 1;
 }
 .cartElement{
@@ -107,8 +121,13 @@ button:hover {
     margin: 0 5px;
 }
 
+.select-quantity {
+    margin: 10px 0;
+}
+
 .select-bar .select {
-    margin-right: 20px;
+    margin: 0 20px;
+    width: 200px;
 }
 
 .select-button {
@@ -137,9 +156,26 @@ button:hover {
     color: white;
 }
 
+.order-btn {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #3385ff;
+    color: white;
+    border: 1px solid #3385ff;
+}
+
+.order-btn:hover {
+    background-color: #005ce6;
+    border-color: #005ce6;
+    color: white;
+}
+
+
 .selHide{
     display: none;
-    width: auto;
+    width: 100%;
 }
 
 .level-item {

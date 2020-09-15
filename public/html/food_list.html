@@ -38,7 +38,6 @@
       <button onclick="toggleCart()">Carrello</button>
     </header>
     <!-- Fine navbar -->
-
     <!-- Inzio sezione carrello -->
     <div id="cart" class="invisible">
       <div class="cartElement">
@@ -59,11 +58,14 @@
 
         </div>
       </div>
+
+      <button class="order-btn" type="button" name="button" onclick="placeOrder()">Ordina</button>
     </div>
     <!-- Fine sezione carrello -->
 
+
     <!-- Box centrale -->
-    <div class="columns is-centered" style="margin-top: 20px">
+    <div class="columns is-centered" style="margin-top: 20px" onclick="hideCart()">
       <div class="column is-half">
         <div class="box box-resize-margin">
 
@@ -73,7 +75,6 @@
             <button class="button is-danger is-outlined" type="button" name="button" onclick="toggleSelect(this)">Panini</button>
             <button class="button is-danger is-outlined" type="button" name="button" onclick="toggleSelect(this)">Dolci</button>
           </div>
-    
         
           <div class="container is-fluid" style="display: none; margin-top: 1rem" id="typeWrapper">
             <!-- Riga di selezione cibo -->
@@ -86,23 +87,24 @@
               </div>
             
               <div class="select-quantity">
-                <button class="select-button color-green" type="button" name="button">+</button>
+                <button class="select-button color-red" type="button" name="button" onclick="changeNum(-1)">-</button>
                 <span id="quantity">1</span>
-                <button class="select-button color-red" type="button" name="button">-</button>
+                <button class="select-button color-green" type="button" name="button" onclick="changeNum(1)">+</button>
               </div>
             </div>
 
             <!-- Pulsanti carrello e ordina -->
-            <div class="buttons is-centered" style="margin-top: 2rem;">
+            <div class="buttons is-centered" style="margin-top: 1rem;">
               <button class="button is-primary is-outlined" type="button" name="button" onclick="addToCart()">Aggiungi al carrello</button>
-              <br>
-              <button class="button is-primary is-outlined" type="button" name="button" onclick="placeOrder()">Ordina</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- Riempie lo spazio rimanente per chiudere il menu -->
+    <div id="touch" onclick="hideCart()">
 
+    </div>
     <!-- Messaggio di errore -->
     <div id="floatingMessage">
       Messaggio di errore
