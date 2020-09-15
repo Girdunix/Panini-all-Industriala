@@ -14,7 +14,7 @@ let selectedType = "Pizze"
 function toggleSelect(toShow) {
   //Una funzione che mostra il tipo di cibo selezionato, toShow è il pulsate "pizze, panini, dolci"
   document.getElementById("typeWrapper").style.display = "block"
-  document.getElementById("currentType").innerText = toShow.innerHTML
+  //document.getElementById("currentType").innerText = toShow.innerHTML
   selectedType = toShow.innerHTML
   let select = document.getElementsByClassName("selHide")
   //prende tutti gli elementi che hanno come classe selHide e li rende invisibili

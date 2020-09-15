@@ -77,25 +77,18 @@
         
           <div class="container is-fluid" style="display: none; margin-top: 1rem" id="typeWrapper">
             <!-- Riga di selezione cibo -->
-            <div class="level">
-              <div class="level-item has-text-centered mx-1">
-                <span id="currentType">Pizza</span>
-              </div>
+            <div class="select-bar">
               
-              <div class="level-item has-text-centered mx-1">
-                <div class="select">
-                  <select class="selHide" name="Pizze" id="selectPizze"></select>
-                  <select class="selHide" name="Panini" id="selectPanini"></select>
-                  <select class="selHide" name="Dolci" id="selectDolci"></select>
-                </div>
+              <div class="select">
+                <select class="selHide" name="Pizze" id="selectPizze"></select>
+                <select class="selHide" name="Panini" id="selectPanini"></select>
+                <select class="selHide" name="Dolci" id="selectDolci"></select>
               </div>
-
-              <div class="level-item has-text-centered mx-1">
-                <span>X</span>
-              </div>
-
-              <div class="level-item has-text-centered mx-1">
-                <input type="number" min="1" value="1" id="quantity" style="width: 100%;">
+            
+              <div class="select-quantity">
+                <button class="select-button color-green" type="button" name="button">+</button>
+                <span id="quantity">1</span>
+                <button class="select-button color-red" type="button" name="button">-</button>
               </div>
             </div>
 
