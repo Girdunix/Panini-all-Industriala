@@ -61,6 +61,10 @@ async function initBasicOrder() {
     order = await fetch("/data/exampleOrder2.json").then(data => data.json())
     makeOrder(order)
     makeOrder(order)
+    makeOrder(order)
+    makeOrder(order)
+    makeOrder(order)
+
 }
 let globalLayersBackground = ["rgb(27 25 35)","rgb(42 41 51)","white"]  //["#181a1b","#272b2d"]
 let globalLayersText = ["#e0e0e0","#4a4a4a"]

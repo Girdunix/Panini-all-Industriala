@@ -95,6 +95,48 @@ button:hover {
 
 /*--- NAVBAR CSS END ---*/
 
+.select-bar {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    justify-content: center;
+    align-items: center
+}
+
+.select-quantity > * {
+    margin: 0 5px;
+}
+
+.select-bar .select {
+    margin-right: 20px;
+}
+
+.select-button {
+    border-radius: 40px;
+}
+
+.color-red {
+    background-color: white;
+    color: #ff4d4d;
+    border: 1px solid #ff4d4d;
+}
+
+.color-red:hover {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.color-green {
+    background-color: white;
+    color:#33cc00;
+    border: 1px solid #33cc00;
+}
+
+.color-green:hover {
+    background-color: #33cc00;
+    color: white;
+}
+
 .selHide{
     display: none;
     width: auto;

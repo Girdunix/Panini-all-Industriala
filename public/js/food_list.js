@@ -14,13 +14,19 @@ let selectedType = "Pizze"
 function toggleSelect(toShow) {
   //Una funzione che mostra il tipo di cibo selezionato, toShow è il pulsate "pizze, panini, dolci"
   document.getElementById("typeWrapper").style.display = "block"
-  document.getElementById("currentType").innerText = toShow.innerHTML
+  //document.getElementById("currentType").innerText = toShow.innerHTML
   selectedType = toShow.innerHTML
   let select = document.getElementsByClassName("selHide")
   //prende tutti gli elementi che hanno come classe selHide e li rende invisibili
   Array.from(select).forEach(select => {
     select.style.display = "none"
   })
+  toShow.parentElement.querySelectorAll("*").forEach(button =>{
+    button.style.backgroundColor = "white"
+    button.style.color = "#f14668"
+  })
+  toShow.style.backgroundColor = "#f14668"
+  toShow.style.color = "white"
   //rende visibile il select selezionato
   toShow = "select" + toShow.innerHTML
   document.getElementById(toShow).style.display = "block"
