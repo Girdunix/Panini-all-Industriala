@@ -1,9 +1,9 @@
 function expandOrder(btn) {
     let element = btn.parentElement.getElementsByClassName("order")[0]
         btn = btn.getElementsByClassName("expand")[0]
-    if (element.style.maxHeight != "70vh") {
+    if (element.style.maxHeight != "80vh") {
         $(element).animate({
-            "max-height": "70vh"
+            "max-height": "80vh"
         }, 600)
         $(btn).animate({
             borderSpacing: 90
@@ -38,7 +38,35 @@ async function initBasicOrder() {
     makeOrder(order)
 
 }
-
+let globalLayersBackground = ["rgb(27 25 35)","rgb(42 41 51)"]  //["#181a1b","#272b2d"] 
+let globalLayersText = ["#e0e0e0"]
+let darkModeToggled = false
+document.querySelector(".navbar").style.backgroundColor = "rgb(39, 43, 45)"
+function toggleDarkMode(btn){
+    layersColor = globalLayersBackground
+    textColor = globalLayersText
+    btn.innerHTML = "☀️"
+    if(darkModeToggled){
+        layersColor = ["white","white"]
+        textColor = ["#4a4a4a"]
+        btn.innerHTML = "🌙"
+    }
+    darkModeToggled = !darkModeToggled
+    document.body.style.backgroundColor = layersColor[0]
+    document.querySelectorAll(".box").forEach((e) =>{
+        e.style.backgroundColor = layersColor[1]
+        e.style.color = textColor[0]
+    })
+    document.querySelectorAll("table").forEach((e) =>{
+        e.style.backgroundColor = layersColor[1]
+        e.style.color = textColor[0]
+    })
+    document.querySelectorAll("th").forEach((e) =>{
+        e.style.color = textColor[0]
+    })
+    document.querySelector("footer").style = " background-color:"+layersColor[1]+"; color:"+textColor[0]
+    document.querySelector("strong").style = "color:"+textColor[0]
+}
 function makeOrder(order) {
     let orderWrapper = document.getElementById("orderWrapper")
     let tile = document.createElement("div")
@@ -74,6 +102,9 @@ function makeOrder(order) {
         tbody.appendChild(row)
         order.order[key].forEach(food => {
             let row = document.createElement("tr")
+            row.addEventListener("click",function(){
+                this.classList.toggle("selectRow") 
+            })
             let name = document.createElement("td")
             name.innerHTML = food.name
             name.style = "width: 100%;"
@@ -92,7 +123,7 @@ function makeOrder(order) {
     let space2 = document.createElement("th")
     let price = document.createElement("th")
     price.innerText = "Totale: " + order.price + "€"
-    price.style = "width: 100%;"
+    price.style = "width: 100%; white-space:nowrap;"
     price.className = "has-text-right"
     console.log(order)
     footRow.append(space, space2, price)

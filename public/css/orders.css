@@ -14,6 +14,9 @@
         width: 90vw;
     }
 }
+*{
+    -webkit-tap-highlight-color: transparent;
+}
 .class{
     width: 100%;
     display: flex;
@@ -34,6 +37,7 @@
     overflow-x: hidden;
     margin: 0.5rem 0;
 }
+
 .foodType{
     border-bottom: 2px solid #dbdbdb;
     margin: 0.5rem;
@@ -80,7 +84,7 @@
     font-weight: bold;
 }
 .expand{
-    font-size:2rem;
+    font-size:2.5rem;
     cursor: pointer;
     font-weight: bold;
     align-self: flex-end;
@@ -122,15 +126,25 @@ tbody th{
     font-size: 1.3rem;
     padding-left: 0 !important;
 }
+.table td{
+    padding: 0.2rem 0.5rem;
+}
+.selectRow{
+    background-color: #48c774;
+    color: white;
+}
   /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     opacity:0.6;
   }
 @media only screen and (orientation:portrait) {
     .table{
-        min-width: 70vw;
+        min-width: 80vw;
     }
     .order{
-        width: 70vw;
+        width: 80vw;
     }
+}
+.darkMode{
+    filter: invert(1) hue-rotate(180deg);
 }
