@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ordini</title>
+    <script src="../scripts/jquery.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <style>
       nav {
@@ -13,6 +14,9 @@
 
       html, body {
           min-height: 100vh;
+          margin: 0;
+          padding: 0;
+          overflow-x: hidden;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -40,65 +44,112 @@
       </div>
     </nav>
 
+    <div class="ordersWrapper" style="display: none;">
+      <div class="class">
+        <div class="classTitle">
+          <span>1 BT</span>
+          <div class="expand" onclick="expandOrder(this)"> > </div>
+        </div>
+        <div class="order collapse">
+          <div class="foodType">
+            <span>Pizze</span>
+            <div class="food">
+              <div>Margherita</div><div>x4</div>
+            </div>
+            <div class="food">
+              <div>Patate</div><div>x1</div>
+            </div>
+          </div>
+          <div class="foodType">
+            <span>Panini</span>
+            <div class="food">
+              <div>Ventricina</div><div>x4</div>
+            </div>
+            <div class="food">
+              <div>Tramezzino crudo</div><div>x1</div>
+            </div>
+          </div>
+          <div class="foodType">
+            <span>Dolci</span>
+            <div class="food">
+              <div>Bomba</div><div>x1</div>
+            </div>
+          </div>
+          <div class="totMoney">
+            Totale: 11€
+          </div>
+          <div class="buttonsWrapper">
+            <button class="accept">Conferma</button>
+            <button class="deny">Annulla</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container is-widescreen">
-      <div class="tile is-ancestor">
+      <div class="tile is-ancestor" id="orderWrapper">
+
         <div class="tile">
           <div class="box has-text-centered">
-            <p class="title is-4">Nome classe</p>
-            <table class="table has-text-left">
-              <tbody>
-                <tr>
-                  <th>Pizze</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-                <tr>
-                  <td>Margherita</td>
-                  <td class="has-text-centered"></td>
-                  <td class="has-text-right">x5</td>
-                </tr>
-                <tr>
-                  <td>Patate</td>
-                  <td class="has-text-centered"></td>
-                  <td class="has-text-right">x2</td>
-                </tr>
-                <tr>
-                  <th>Panini</th>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Prosciutto</td>
-                  <td class="has-text-centered"></td>
-                  <td class="has-text-right">x3</td>
-                </tr>
-                <tr>
-                  <td>Ventricina</td>
-                  <td class="has-text-centered"></td>
-                  <td class="has-text-right">x1</td>
-                </tr>
-                <tr>
-                  <th>Dolci</th>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Bomba</td>
-                  <td class="has-text-centered"></td>
-                  <td class="has-text-right">x1</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th></th>
-                  <th></th>
-                  <th>Totale: €€</th>
-                </tr>
-              </tfoot>
-            </table>
-            <div class="box centered">
-              <button class="button is-success is-rounded">Conferma</button>
-              <button class="button is-danger is-rounded">Annulla</button>
+            <div class="classTitle"  onclick="expandOrder(this)">
+              <span>1 BT</span>
+              <div class="expand"> > </div>
+            </div>
+            <div class="order collapse">
+              <table class="table has-text-left">
+                <tbody>
+                  <tr>
+                    <th>Pizze</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <td>Margherita</td>
+                    <td class="has-text-centered"></td>
+                    <td class="has-text-right">x5</td>
+                  </tr>
+                  <tr>
+                    <td>Patate</td>
+                    <td class="has-text-centered"></td>
+                    <td class="has-text-right">x2</td>
+                  </tr>
+                  <tr>
+                    <th>Panini</th>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Prosciutto</td>
+                    <td class="has-text-centered"></td>
+                    <td class="has-text-right">x3</td>
+                  </tr>
+                  <tr>
+                    <td>Ventricina</td>
+                    <td class="has-text-centered"></td>
+                    <td class="has-text-right">x1</td>
+                  </tr>
+                  <tr>
+                    <th>Dolci</th>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Bomba</td>
+                    <td class="has-text-centered"></td>
+                    <td class="has-text-right">x1</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th></th>
+                    <th></th>
+                    <th class="has-text-right">Totale: 12€</th>
+                  </tr>
+                </tfoot>
+              </table>
+              <div class="buttonsWrapper">
+                <button class="accept">Conferma</button>
+                <button class="deny">Annulla</button>
+              </div>
             </div>
           </div>
         </div>
@@ -115,4 +166,5 @@
       </div>
     </footer>
   </body>
+  <script src="../js/orders.js"></script>
 </html>

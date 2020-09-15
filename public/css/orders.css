@@ -11,7 +11,7 @@
 }
 @media only screen and (orientation:portrait) {
     .ordersWrapper{
-        width: 80vw;
+        width: 90vw;
     }
 }
 .class{
@@ -25,7 +25,13 @@
     font-weight: 600;
 }
 .order{
-    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    max-height: 0vh;
+    overflow: auto;
+    overflow-x: hidden;
     margin: 0.5rem 0;
 }
 .foodType{
@@ -44,6 +50,7 @@
     display: flex;
     justify-content: flex-end;
     font-size: 1.5rem;
+    margin-right: 0.5rem;
     font-weight: bold;
 }
 .buttonsWrapper{
@@ -51,18 +58,76 @@
     justify-content: space-evenly;
 }
 .accept, .deny{
-    width: 40%;
+    width: 45%;
     border: none;
-    border-radius: 0.8rem;
+    border-radius: 5rem;
     margin: 0.5rem;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     padding: 0.7rem;
     font-weight: bold;
     color:white;
+}
+.classTitle{
+    display: flex;
+    align-items: center;
+
+}
+.classTitle span{
+    flex: 1;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.expand{
+    font-size:2rem;
+    cursor: pointer;
+    font-weight: bold;
+    align-self: flex-end;
 }
 .accept{
     background-color: #48c774;
 }
 .deny{
     background-color:#f14668;
+}
+.collapse{
+    max-height: 0vh;
+}
+.table{
+    width: 20vw;
+    margin-top: 2rem;
+}
+.tile{
+    margin-top: 1rem;
+}
+::-webkit-scrollbar{
+	width: 5px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #dbdbdb;
+	border-radius: 3px;
+	overflow: hidden;
+  }
+  
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #969696;
+	border-radius: 3px;
+	overflow: hidden;
+  }
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    opacity:0.6;
+  }
+@media only screen and (orientation:portrait) {
+    .table{
+        min-width: 70vw;
+    }
+    .order{
+        width: 70vw;
+    }
 }
