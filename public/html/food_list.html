@@ -76,23 +76,32 @@
           </div>
     
         
-          <div class="container is-fluid" style="display: none" id="typeWrapper">
+          <div class="container is-fluid" style="display: none; margin-top: 1rem" id="typeWrapper">
             <!-- Riga di selezione cibo -->
             <div class="level">
-              <span id="currentType">Pizza</span>
-              <div class="w3-panel w3-center inline">
+              <div class="level-item has-text-centered mx-1">
+                <span id="currentType">Pizza</span>
+              </div>
+              
+              <div class="level-item has-text-centered mx-1">
                 <select class="w3-select selHide" name="Pizze" id="selectPizze"></select>
       
                 <select class="w3-select selHide" name="Panini" id="selectPanini"></select>
       
                 <select class="w3-select selHide" name="Dolci" id="selectDolci"></select>
-      
-                <span>X</span><input type="number" min="1" value="1" id="quantity">
+              </div>
+
+              <div class="level-item has-text-centered mx-1">
+                <span>X</span>
+              </div>
+
+              <div class="level-item has-text-centered mx-1">
+                <input type="number" min="1" value="1" id="quantity">
               </div>
             </div>
 
             <!-- Pulsanti carrello e ordina -->
-            <div class="buttons is-centered">
+            <div class="buttons is-centered" style="margin-top: 2rem;">
               <button class="button is-primary is-outlined" type="button" name="button" onclick="addToCart()">Aggiungi al carrello</button>
               <br>
               <button class="button is-primary is-outlined" type="button" name="button" onclick="placeOrder()">Ordina</button>
