@@ -159,7 +159,7 @@ function makeOrder(order) {
     let classWrapper = document.getElementById("classWrapper")
     let keys = Object.keys(order.order)
     let tbody = template.querySelector("tbody")
-    template.querySelector(".price").innerHTML = "Totale: "+order.price+"€"
+    template.querySelector(".price").innerHTML = "Totale: "+order.price.toFixed(2)+"€"
     keys.forEach(key => {
         let row = document.createElement("tr")
         row.innerHTML = "<th>" + key.capitalize() + "</th><th></th><th></th>"

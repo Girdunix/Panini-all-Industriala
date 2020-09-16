@@ -4,6 +4,9 @@
     position: relative;
     cursor: pointer;
 }
+*{
+  -webkit-tap-highlight-color: transparent;
+}
 .className{
     flex: 1;
     text-align:center;

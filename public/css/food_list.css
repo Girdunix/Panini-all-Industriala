@@ -209,13 +209,9 @@ header button:hover {
 .order-btn {
     display: block;
     width: 80%;
-    margin: 0 auto;
-    border-radius: 5px;
-    background-color: #3385ff;
-    color: white;
-    border: 1px solid #3385ff;
-    padding: 10px 25px;
     cursor: pointer;
+    border-radius: 3rem;
+    margin: 1rem auto;
     transition: all 0.3s ease 0s;
 }
 
