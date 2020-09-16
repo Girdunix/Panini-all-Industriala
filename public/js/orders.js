@@ -40,6 +40,8 @@ function expandOrder(btn,ignore = false) {
     }
 }
 
+//-----------------------------------------------------------------------------//
+
 let confirmedOrdersWrapper = document.getElementById("confirmedOrders")
 function confirmOrder(order){
     document.getElementById("noOrdersSaved").style.display = "none"
@@ -50,22 +52,60 @@ function confirmOrder(order){
     clonedNode.querySelector(".orderWrapper").style.maxHeight = "0vh"
     order.parentElement.parentElement.parentElement.remove()
 }
+
+//-----------------------------------------------------------------------------//
+
 function deleteOrder(order){
     if(confirm("Sicuro di voler annullare l'ordine?")){
-        order.parentElement.parentElement.parentElement.remove()
+        let request = new XMLHttpRequest();
+        request.open("POST", "/removeOrder");
+        request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
+        request.onload = (res) => {
+            let response = JSON.parse(res.target.response)
+            if(response.sent){
+                console.log(response.message)
+                order.parentElement.parentElement.parentElement.remove()
+            }else{
+              //showError("Errore!",2000)
+              console.log(response.message)
+            }
+        };
+        request.onerror = function (e) {
+          console.log(e)
+        };
+        let name = order.parentElement.parentElement.parentElement.querySelector(".className").innerHTML
+        console.log(name)
+        request.send(JSON.stringify({password:"test",username:"master", name:name}))
     }
 }
+
+//-----------------------------------------------------------------------------//
+
 async function initBasicOrder() {
-    let order = await fetch("/data/exampleOrder.json").then(data => data.json())
-    makeOrder(order)
-    order = await fetch("/data/exampleOrder2.json").then(data => data.json())
-    makeOrder(order)
-    makeOrder(order)
-    makeOrder(order)
-    makeOrder(order)
-    makeOrder(order)
+    let request = new XMLHttpRequest();
+    request.open("POST", "/getOrders");
+    request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
+    request.onload = (res) => {
+        let response = JSON.parse(res.target.response)
+        console.log(response)
+        if(response.sent){
+          response.message.forEach(order =>{
+            makeOrder(order)
+          })
+        }else{
+          //showError("Errore!",2000)
+          console.log(response.message)
+        }
+    };
+    request.onerror = function (e) {
+      console.log(e)
+    };
+    request.send(JSON.stringify({password:"test",username:"master"}))
 
 }
+
+//-----------------------------------------------------------------------------//
+
 let globalLayersBackground = ["rgb(27 25 35)","rgb(42 41 51)","white"]  //["#181a1b","#272b2d"]
 let globalLayersText = ["#e0e0e0","#4a4a4a"]
 let darkModeToggled = false
@@ -109,6 +149,9 @@ function toggleDarkMode(btn){
     document.getElementById("confirmWrapper").querySelector(".expand").style.color = textColor[1]
     document.getElementById("confirmWrapper").querySelector(".className").style.color = textColor[1]
 }
+
+//-----------------------------------------------------------------------------//
+
 function makeOrder(order) {
     let template = document.getElementById("template").cloneNode(true)
     template.style.display = "block"
@@ -132,9 +175,15 @@ function makeOrder(order) {
     })
     classWrapper.appendChild(template)
 }
+
+//-----------------------------------------------------------------------------//
+
 function selectRow(row){
     row.classList.toggle("selectedRow")
 }
+
+//-----------------------------------------------------------------------------//
+
 initBasicOrder()
 String.prototype.capitalize = function () {
     return this.charAt(0).toUpperCase() + this.slice(1)

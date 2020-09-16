@@ -1,7 +1,7 @@
 if ('serviceWorker' in navigator) {
   //service worker per rendere il sito installabile come app
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/public/service-worker.js')
+    navigator.serviceWorker.register('/service-worker.js')
       .then((reg) => {
         console.log('Service worker registered.', reg)
       })
@@ -114,9 +114,24 @@ function placeOrder(){
   let dlAnchorElem = document.createElement("a")
   dlAnchorElem.setAttribute("href", dataStr);
   dlAnchorElem.setAttribute("download", "order.json");
-  dlAnchorElem.click();
+  //dlAnchorElem.click(); //per scaricare
   dlAnchorElem.remove()
-  showError("Ordine effettuato!",2000)
+  let request = new XMLHttpRequest();
+  request.open("POST", "/placeOrder");
+  request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
+  request.onload = (res) => {
+      let response = JSON.parse(res.target.response)
+      if(response.sent){
+        showError(response.message,2000)
+      }else{
+        showError("Errore!",2000)
+      }
+  };
+  request.onerror = function (e) {
+    console.log(e)
+  };
+  globalOrder.class = document.getElementById("className").value
+  request.send(JSON.stringify(globalOrder))
 }
 class Order {
   //Classe per l'ordine
