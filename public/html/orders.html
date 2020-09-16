@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="manifest" href="/manifest.json">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
     <title>Ordini</title>
     <link rel="stylesheet" href="../css/bulma.min.css">
     <link rel="stylesheet" href="../css/orders.css">
@@ -50,7 +51,7 @@
                 </tfoot>
               </table>
             </div>
-            <div class="has-text-centered is-hidden">
+            <div class="has-text-centered" style="display: none;">
               <button class="button is-danger is-rounded is-locked-115" onclick="deleteOrder(this)">Annulla</button>
               <button class="button is-success is-rounded is-locked-115" onclick="confirmOrder(this)">Conferma</button>
             </div>

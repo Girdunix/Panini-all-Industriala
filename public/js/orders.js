@@ -1,3 +1,13 @@
+if ('serviceWorker' in navigator) {
+    //service worker per rendere il sito installabile come app
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => {
+          console.log('Service worker registered.', reg)
+        })
+    })
+  }
+  
 function expandOrder(btn,ignore = false) {
     let element = btn.parentElement.getElementsByClassName("orderWrapper")[0]
         btn = btn.getElementsByClassName("expand")[0]
@@ -17,7 +27,7 @@ function expandOrder(btn,ignore = false) {
         }, 'linear');
         if(ignore) return
         setTimeout(() => {
-            btn.parentElement.parentElement.querySelector("button").parentElement.classList.toggle("is-hidden")
+            btn.parentElement.parentElement.querySelector("button").parentElement.style.display = "block"
         }, 300);
     } else {
         $(element).animate({
@@ -35,7 +45,7 @@ function expandOrder(btn,ignore = false) {
         }, 'linear');
         if(ignore) return
         setTimeout(() => {
-            btn.parentElement.parentElement.querySelector("button").parentElement.classList.toggle("is-hidden")
+            btn.parentElement.parentElement.querySelector("button").parentElement.style.display = "none"
         }, 150);
     }
 }

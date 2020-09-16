@@ -17,7 +17,6 @@ MongoClient.connect(mongoKey, function (err, db1) {
     app.post("/placeOrder", async function (req, res) {
         await orders.insertOne(req.body)
         res.send({sent:true, message:"Ordine inviato!"})
-        console.log("Ordine effettuato")
     })
     app.post("/getOrders",async function (req,res){
         let body = req.body
