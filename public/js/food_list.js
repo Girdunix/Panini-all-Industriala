@@ -11,6 +11,7 @@ if ('serviceWorker' in navigator) {
 //------------------------------------------------------------------------------------------//
 
 let selectedType = "Pizze"
+
 function toggleSelect(toShow) {
   //Una funzione che mostra il tipo di cibo selezionato, toShow è il pulsate "pizze, panini, dolci"
   document.getElementById("typeWrapper").style.display = "block"
@@ -21,7 +22,7 @@ function toggleSelect(toShow) {
   Array.from(select).forEach(select => {
     select.style.display = "none"
   })
-  toShow.parentElement.querySelectorAll("*").forEach(button =>{
+  toShow.parentElement.querySelectorAll("*").forEach(button => {
     button.style.backgroundColor = "white"
     button.style.color = "#f14668"
   })
@@ -34,32 +35,34 @@ function toggleSelect(toShow) {
 
 //------------------------------------------------------------------------------------------//
 
-function changeNum(num){
+function changeNum(num) {
   num = parseInt(document.getElementById("quantity").innerHTML) + num
-  if(num > 0){
+  if (num > 0) {
     document.getElementById("quantity").innerHTML = num
   }
 }
-function addToCart(){
-  let type = selectedType.replace("select","")
-  let select = document.getElementById("select"+selectedType)
+
+function addToCart() {
+  let type = selectedType.replace("select", "")
+  let select = document.getElementById("select" + selectedType)
   let food = select.options[select.selectedIndex].value
   let quantity = parseInt(document.getElementById("quantity").innerHTML)
   document.getElementById("quantity").innerHTML = 1
   //trova i dettagli del cibo all'interno dell'ogggetto menu preso dal json
   let globalFood = globalMenu[type].find(foodName => {
-    return foodName.name == food 
+    return foodName.name == food
   })
   let description = globalFood.description
   let price = globalFood.price
   let id = globalFood.id
   //crea un nuovo oggetto Food e lo aggiunge al carrello
-  let foodObj = new Food(type.toLowerCase(),food, description,quantity, price, id)
+  let foodObj = new Food(type.toLowerCase(), food, description, quantity, price, id)
   globalOrder.addFood(foodObj)
   renderCart()
-  showError("Aggiunto al carrello!",2000)
+  showError("Aggiunto al carrello!", 2000)
 }
-function hideCart(){
+
+function hideCart() {
   document.getElementById("cart").classList.add("invisible")
 }
 //------------------------------------------------------------------------------------------//
@@ -85,29 +88,52 @@ async function initializeFood() {
 
 //------------------------------------------------------------------------------------------//
 
-function renderCart(){
+function changeQuantity(amount,food,type){
+  if(amount === 1){
+    globalOrder.increaseQuantity(type,food)
+  }else{
+    globalOrder.reduceQuantity(type,food)
+  }
+  renderCart()
+}
+function renderCart() {
   let order = globalOrder.order
   //prende ogni proprietà nell'oggetto ordine e li aggiunge alla div del tipo corretto nel carrello
+  let cart = document.getElementById("cartTable")
+  let cartWrapper = cart.parentElement.parentElement.parentElement.parentElement
+  cartWrapper.classList.add("invisible")
+  document.getElementById("cartText").innerHTML = "Il carrello è vuoto!"
+  cart.innerHTML = ""
   Object.keys(order).forEach(type => {
-    let cartWrapper = document.getElementById("cart"+type.capitalize())
-    cartWrapper.innerHTML = ""
+    let row = document.createElement("tr")
+    row.innerHTML = "<th>" + type.capitalize() + "</th><th></th><th></th>"
+    if(order[type].length > 0) cart.append(row)
     order[type].forEach(food => {
-      let element = document.createElement("div")
-      element.innerHTML += food.name + " x " + food.quantity
-      cartWrapper.appendChild(element)
+      document.getElementById("cartText").innerHTML = "Il tuo ordine:"
+      let innerRow = document.createElement("tr")
+      cartWrapper.classList.remove("invisible")
+      innerRow.className = "underlined"
+      innerRow.innerHTML =
+        '<tr>' +
+        '<td colspan="2">' + food.name + '</td>' +
+        '<td class="has-text-right quantityRow">x' + food.quantity + "&ensp;" +
+        `<button onclick="changeQuantity(-1,'`+food.name+`','`+type+`')">-</button>`+
+        `<button onclick="changeQuantity(1,'`+food.name+`','`+type+`')">+</button>`+
+        '</tr>'
+      cart.append(innerRow)
     })
   })
 }
 
 //------------------------------------------------------------------------------------------//
 
-function toggleCart(){
+function toggleCart() {
   let cart = document.getElementById("cart")
   cart.classList.toggle("invisible")
 }
 
 //------------------------------------------------------------------------------------------//
-function placeOrder(){
+function placeOrder() {
   globalOrder.class = "Nome Classe"
   let dataStr = "data:text/json;charset=utf-8,"
   dataStr += encodeURIComponent(JSON.stringify(globalOrder));
@@ -120,12 +146,14 @@ function placeOrder(){
   request.open("POST", "/placeOrder");
   request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
   request.onload = (res) => {
-      let response = JSON.parse(res.target.response)
-      if(response.sent){
-        showError(response.message,2000)
-      }else{
-        showError("Errore!",2000)
-      }
+    let response = JSON.parse(res.target.response)
+    if (response.sent) {
+      showError(response.message, 2000)
+      globalOrder = new Order()
+      renderCart()
+    } else {
+      showError("Errore!", 2000)
+    }
   };
   request.onerror = function (e) {
     console.log(e)
@@ -145,46 +173,46 @@ class Order {
       dolci: []
     }
 
-    this.addFood = function(food){
+    this.addFood = function (food) {
       //aggiunge un cibo alla lista, controlla se esiste già, se esiste incrementa solo la quantità
-      let isSaved = this.order[food.type].findIndex((savedFood) =>{
+      let isSaved = this.order[food.type].findIndex((savedFood) => {
         return savedFood.name == food.name
       })
       //la funzione findIndex trova l'indice dell'elemento, se è -1 vuol dire che non è presente
-      if(isSaved !== -1){
+      if (isSaved !== -1) {
         this.order[food.type][isSaved].quantity += food.quantity
-      }else{
+      } else {
         this.order[food.type].push(food)
       }
       this.price += food.price * food.quantity
     }
 
-    this.increaseQuantity = function(type,name){
+    this.increaseQuantity = function (type, name) {
       //trova l'indice del cibo selezionato e ne incrementa la quantità
-      let index = this.order[type].findIndex((savedFood) =>{
+      let index = this.order[type].findIndex((savedFood) => {
         return savedFood.name == name
       })
       this.order[type][index].quantity += 1
       this.price += this.order[type][index].price
     }
 
-    this.reduceQuantity = function(type,name){
+    this.reduceQuantity = function (type, name) {
       //trova l'indice del cibo selezionato e ne decrementa la quantità
-      let index = this.order[type].findIndex((savedFood) =>{
+      let index = this.order[type].findIndex((savedFood) => {
         return savedFood.name == name
       })
       this.order[type][index].quantity -= 1
       this.price -= this.order[type][index].price
-      if(this.order[type][index].quantity < 1){
+      if (this.order[type][index].quantity < 1) {
         this.order[type].splice(index, 1)
       }
     }
-    this.deleteFood = function(type,name){
+    this.deleteFood = function (type, name) {
       //trova l'indice del cibo selezionato e lo elimina
-      let index = this.order[type].findIndex((savedFood) =>{
+      let index = this.order[type].findIndex((savedFood) => {
         return savedFood.name == name
       })
-      if(index !== -1){
+      if (index !== -1) {
         let price = this.order[type][index].quantity * this.order[type][index].price
         this.order[type].splice(index, 1)
         this.price -= price
@@ -209,25 +237,31 @@ class Food {
 
 //------------------------------------------------------------------------------------------//
 
-function showError(message,timeout){
+function showError(message, timeout) {
   //funzione che mostra un messaggio di errore fluttuante 
   let floatingMessage = document.getElementById("floatingMessage")
   floatingMessage.innerHTML = message
-  if(floatingMessage.style.display == "flex") return
+  if (floatingMessage.style.display == "flex") return
   floatingMessage.style.display = "flex"
   floatingMessage.fadeIn()
   setTimeout(() => {
-     floatingMessage.fadeOut()
-     setTimeout(() => {
-         floatingMessage.style.display = "none"
-     }, 200);
+    floatingMessage.fadeOut()
+    setTimeout(() => {
+      floatingMessage.style.display = "none"
+    }, 200);
   }, timeout);
 }
 
 //------------------------------------------------------------------------------------------//
-const globalOrder = new Order()
+let globalOrder = new Order()
 //funzione per capitalizzare una stringa, da ciao a Ciao
-String.prototype.capitalize = function(){return this.charAt(0).toUpperCase() + this.slice(1)}
-HTMLElement.prototype.fadeIn = function(){ this.style.animation = "fadeIn 0.2s"}
-HTMLElement.prototype.fadeOut = function(){ this.style.animation = "fadeOut 0.2s"}
+String.prototype.capitalize = function () {
+  return this.charAt(0).toUpperCase() + this.slice(1)
+}
+HTMLElement.prototype.fadeIn = function () {
+  this.style.animation = "fadeIn 0.2s"
+}
+HTMLElement.prototype.fadeOut = function () {
+  this.style.animation = "fadeOut 0.2s"
+}
 initializeFood()

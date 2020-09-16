@@ -102,7 +102,27 @@ header {
 .nav_links li a:hover {
     color: #0089a9;
 }
+.quantityRow{
+    padding: 0;
+    display: inline-flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-left: auto;
+}
 
+.underlined{
+    border-bottom: 1px solid #dbdbdb;
+}
+.underlined *{
+    border: none !important;
+}
+.quantityRow button{
+    padding: 0 0.5rem;
+    color: #005367;
+    border: none;
+    margin-left: 0.2rem;
+    border-radius: 0.2rem;
+}
 header button {
     margin-left: 20px;
     padding: 9px 25px;
@@ -223,8 +243,15 @@ header button:hover {
 .level-item {
     flex-shrink: 1;
 }
-
+#cartText{
+    width: 100%;
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+    margin-top: 1.5rem;
+}
 #floatingMessage {
+    z-index: 5;
     display: none;
     justify-content: center;
     align-items: center;
@@ -264,7 +291,9 @@ header button:hover {
 }
 
 @media only screen and (orientation:portrait) {
-    
+    .lessPadding{
+        padding:0.2rem;
+    }
     .box-resize-margin {
         margin: 0 10px;
     }

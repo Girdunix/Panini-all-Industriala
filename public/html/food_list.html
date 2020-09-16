@@ -41,26 +41,28 @@
     <!-- Fine navbar -->
     <!-- Inzio sezione carrello -->
     <div id="cart" class="invisible">
-      <div class="cartElement">
-        <span>Pizze</span>
-        <div id="cartPizze">
+      <div id="cartText">Il carrello è vuoto!</div>
+      <div class="column invisible">
+        <div class="box lessPadding">
+          <div class="orderWrapper">
+            <table class="table has-text-left is-narrow is-fullwidth">
+              <tbody id="cartTable">
+              </tbody>
 
+              <tfoot>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th colspan="3" class="has-text-right price"></th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <div class="has-text-centered">
+            <button class="button is-success is-rounded is-locked-115" onclick="placeOrder()">Ordina</button>
+          </div>
         </div>
       </div>
-      <div class="cartElement">
-        <span>Panini</span>
-        <div id="cartPanini">
-
-        </div>
-      </div>
-      <div class="cartElement">
-        <span>Dolci</span>
-        <div id="cartDolci">
-
-        </div>
-      </div>
-
-      <button class="order-btn" type="button" name="button" onclick="placeOrder()">Ordina</button>
     </div>
     <!-- Fine sezione carrello -->
 
