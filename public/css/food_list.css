@@ -10,13 +10,15 @@ body {
     flex-direction: column;
 }
 
-html{
+html {
     overflow: hidden;
 }
-#touch{
+
+#touch {
     width: 100vw;
     flex-grow: 1;
 }
+
 /*--- NAVBAR CSS START ---*/
 
 * {
@@ -49,7 +51,8 @@ header {
     max-height: 5vh;
     border-radius: 50%;
 }
-#cart{
+
+#cart {
     width: 25vw;
     background-color: #24252ae3;
     height: calc(100% - 3rem - 18px);
@@ -58,7 +61,8 @@ header {
     bottom: 0;
     z-index: 1;
 }
-.cartElement{
+
+.cartElement {
     background-color: #005367;
     display: flex;
     flex-direction: column;
@@ -67,17 +71,21 @@ header {
     margin:1rem;
     border-radius:0.2rem;
 }
-.cartElement span{
+
+.cartElement span {
     font-size: 1.2rem;
     margin-bottom: 1rem;
     color: white;
 }
-.invisible{
+
+.invisible {
     display: none;
 }
-.cartElement div{
+
+.cartElement div {
     color: #b9b9b9;
 }
+
 .nav_links {
     list-style: none;
 }
@@ -216,11 +224,7 @@ header button:hover {
     flex-shrink: 1;
 }
 
-#currentType{
-    font-size: 1.2rem;
-}
-
-#floatingMessage{
+#floatingMessage {
     display: none;
     justify-content: center;
     align-items: center;
@@ -237,23 +241,27 @@ header button:hover {
     right: 0;
     margin-left: auto;
     margin-right: auto;
-  }
-  @keyframes fadeIn{
+}
+
+@keyframes fadeIn {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
-  }
-  @keyframes fadeOut{
+}
+
+@keyframes fadeOut {
     0% {
         opacity: 1;
     }
+
     100% {
         opacity: 0;
     }
-  }
+}
 
 @media only screen and (orientation:portrait) {
     
@@ -261,12 +269,12 @@ header button:hover {
         margin: 0 10px;
     }
 
-    #cart{
+    #cart {
         width: 70vw;
     }
     
-    #floatingMessage{
+    #floatingMessage {
         border-radius: 0.8rem;
         width: 60vw;
-      }
+    }
 }
