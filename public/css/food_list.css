@@ -48,14 +48,14 @@ header {
 .logo {
     cursor: pointer;
     margin-right: auto;
-    max-height: 5vh;
+    max-height: 4vh;
     border-radius: 50%;
 }
 
 #cart {
     width: 25vw;
     background-color: #24252ae3;
-    height: calc(100% - 3rem - 18px);
+    height: calc(100% - 2rem - 18px);
     position: absolute;
     right: 0;
     bottom: 0;
@@ -118,10 +118,11 @@ header {
 }
 .quantityRow button{
     padding: 0 0.5rem;
-    color: #005367;
+    color: black;
     border: none;
     margin-left: 0.2rem;
     border-radius: 0.2rem;
+    font-weight: bold;
 }
 header button {
     margin-left: 20px;
@@ -179,12 +180,19 @@ header button:hover {
     color: hsl(348, 100%, 61%);
     border: 1px solid hsl(348, 100%, 61%);
 }
-
+.plusBtn{
+    background-color: #48c7748f;
+}
+.minusBtn{
+    background-color: hsl(348deg 94% 80%);
+}
 .color-red:focus {
     outline: 0;
     box-shadow: 0 0 2pt 0.1pt hsl(348, 100%, 61%);
 }
-
+.foodType{
+    font-size: 1.2rem;
+}
 .color-red:hover {
     background-color: hsl(348, 100%, 61%);
     color: white;
@@ -228,7 +236,9 @@ header button:hover {
 
 #className{
     max-width: 20vw;
-    margin-right: 1rem;
+    margin-left: 1rem;
+
+    text-align: center;
 }
 
 .selHide{
@@ -287,6 +297,9 @@ header button:hover {
 }
 
 @media only screen and (orientation:portrait) {
+    header{
+        padding: 0.6rem;
+    }
     .lessPadding{
         padding:0.2rem;
     }

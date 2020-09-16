@@ -26,6 +26,7 @@ function toggleSelect(toShow) {
     button.style.backgroundColor = "white"
     button.style.color = "#f14668"
   })
+  document.getElementById("quantity").innerHTML = "1"
   toShow.style.backgroundColor = "#f14668"
   toShow.style.color = "white"
   //rende visibile il select selezionato
@@ -107,6 +108,7 @@ function renderCart() {
   cart.innerHTML = ""
   Object.keys(order).forEach(type => {
     let row = document.createElement("tr")
+    row.className = "foodType"
     row.innerHTML = "<th>" + type.capitalize() + "</th><th></th><th></th>"
     if(order[type].length > 0) cart.append(row)
     order[type].forEach(food => {
@@ -118,8 +120,8 @@ function renderCart() {
         '<tr>' +
         '<td colspan="2">' + food.name + '</td>' +
         '<td class="has-text-right quantityRow">x' + food.quantity + "&ensp;" +
-        `<button onclick="changeQuantity(-1,'`+food.name+`','`+type+`')">-</button>`+
-        `<button onclick="changeQuantity(1,'`+food.name+`','`+type+`')">+</button>`+
+        `<button class="minusBtn" onclick="changeQuantity(-1,'`+food.name+`','`+type+`')">-</button>`+
+        `<button class="plusBtn" onclick="changeQuantity(1,'`+food.name+`','`+type+`')">+</button>`+
         '</tr>'
       cart.append(innerRow)
     })
