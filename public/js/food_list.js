@@ -102,7 +102,7 @@ function renderCart() {
   let cart = document.getElementById("cartTable")
   let cartWrapper = cart.parentElement.parentElement.parentElement.parentElement
   cartWrapper.classList.add("invisible")
-  document.getElementById("cartPrice").innerHTML = "Totale: "+ globalOrder.price.price.toFixed(2) + "€"
+  document.getElementById("cartPrice").innerHTML = "Totale: "+ globalOrder.price.toFixed(2) + "€"
   document.getElementById("cartText").innerHTML = "Il carrello è vuoto!"
   cart.innerHTML = ""
   Object.keys(order).forEach(type => {
