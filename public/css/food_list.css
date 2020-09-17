@@ -22,7 +22,6 @@ body {
 }
 #touch {
     width: 100vw;
-    flex-grow: 1;
 }
 
 /*--- NAVBAR CSS START ---*/
@@ -64,9 +63,6 @@ nav {
     height: 100%;
     flex-direction: column;
     flex: 1;
-}
-.container{
-    flex: unset;
 }
 .cartElement {
     background-color: #005367;

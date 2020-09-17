@@ -8,10 +8,6 @@
 * {
   -webkit-tap-highlight-color: transparent;
 }
-.container{
-  flex-grow: unset !important;
-  margin-top: auto !important;
-}
 .className {
   flex: 1;
   text-align: center;
