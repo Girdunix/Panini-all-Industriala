@@ -1,6 +1,7 @@
 if ('serviceWorker' in navigator) {
   //service worker per rendere il sito installabile come app
   window.addEventListener('load', () => {
+    return //da rimuovere in production
     navigator.serviceWorker.register('/service-worker.js')
       .then((reg) => {
         console.log('Service worker registered.', reg)
