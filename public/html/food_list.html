@@ -22,8 +22,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
   <link rel="stylesheet" href="../css/bulma.min.css">
-  <link rel="stylesheet" href="../css/food_list.css">
   <link rel="stylesheet" href="../css/bulma.extension.css">
+  <link rel="stylesheet" href="../css/food_list.css">
 
   <title>Ordinazione</title>
 </head>
@@ -70,33 +70,14 @@
       </div>
 
       <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <nav>
-              <ul class="nav_links">
-                <li id="showOrders"><a href="/html/orders.html">Ordinazioni</a></li>
-              </ul>
-            </nav>
-            <button onclick="toggleCart()">Carrello</button>
-          </div>
-        </div>
+        <a class="navbar-item" id="showOrders" href="/html/orders.html">Ordinazioni</a>
+        <button class="nav-btn navbar-item" onclick="toggleCart()">Carrello</button>
       </div>
     </div>
   </nav>
   <!--Fine Navbar-->
 
-  <!-- Inizio navbar -->
-  <header>
-    <img class="logo" src="/data/images/icon-192x192.png" alt="logo"
-      onclick="document.location.href='/html/login.html'">
-    <nav>
-      <ul class="nav_links">
-        <li id="showOrders"><a href="/html/orders.html">Ordinazioni</a></li>
-      </ul>
-    </nav>
-    <button onclick="toggleCart()">Carrello</button>
-  </header>
-  <!-- Fine navbar -->
+  
   <div class="contentWrapper">
     <!-- Inzio sezione carrello -->
     <div id="cart" class="invisible">

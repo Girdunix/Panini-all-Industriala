@@ -21,6 +21,12 @@ html {
 
 /*--- NAVBAR CSS START ---*/
 
+/*Nav fix*/
+nav {
+    margin: 0px;
+    width: 100vw;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -37,14 +43,6 @@ button {
     font-size: 16px;
     color: #edf0f1;
     text-decoration: none;
-}
-
-header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 1rem;
-    background-color: #24252A;
 }
 
 .logo {
@@ -143,8 +141,8 @@ header {
     font-weight: bold;
 }
 
-header button {
-    margin-left: 20px;
+.nav-btn {
+    margin: auto 20px;
     padding: 9px 25px;
     background-color: rgba(0, 136, 169, 1);
     border: none;
@@ -153,12 +151,12 @@ header button {
     transition: all 0.3s ease 0s;
 }
 
-header button:focus {
+.nav-btn:focus {
     outline: 0;
     box-shadow: 0 0 2pt 0.1pt rgba(0, 136, 169, 1)
 }
 
-header button:hover {
+.nav-btn:hover {
     background-color: rgba(0, 136, 169, 0.8);
 }
 
