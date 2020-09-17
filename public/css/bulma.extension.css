@@ -26,3 +26,9 @@ body > footer {
 .is-receipt {
   min-width: 375px;
 }
+
+@media screen and (min-width: 1024px) {
+  .navbar {
+      min-height: 4.30rem;
+  }
+}
