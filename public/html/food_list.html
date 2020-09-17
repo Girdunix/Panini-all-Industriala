@@ -23,10 +23,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
   <link rel="stylesheet" href="../css/bulma.min.css">
   <link rel="stylesheet" href="../css/food_list.css">
+  <link rel="stylesheet" href="../css/bulma.extension.css">
+
   <title>Ordinazione</title>
 </head>
 
 <body>
+  <!--Navbar-->
+  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item">
+        <img src="../data/images/icon-192x192.png" width="28" height="28">
+      </a>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          Home
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Altro
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              Chi siamo
+            </a>
+            <a class="navbar-item">
+              Contatti
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">
+              Segnala un problma
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <nav>
+              <ul class="nav_links">
+                <li id="showOrders"><a href="/html/orders.html">Ordinazioni</a></li>
+              </ul>
+            </nav>
+            <button onclick="toggleCart()">Carrello</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!--Fine Navbar-->
+
   <!-- Inizio navbar -->
   <header>
     <img class="logo" src="/data/images/icon-192x192.png" alt="logo"
