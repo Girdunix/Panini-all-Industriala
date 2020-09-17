@@ -219,6 +219,27 @@ nav {
     color: white;
 }
 
+.nav-btn {
+    margin: auto 20px;
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 169, 1);
+    font-size: 17px;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.nav-btn:focus {
+    outline: 0;
+    box-shadow: 0 0 2pt 0.1pt rgba(0, 136, 169, 1)
+}
+
+.nav-btn:hover {
+    background-color: rgba(0, 136, 169, 0.8);
+}
+
 #className {
     max-width: 20vw;
     margin-left: 1rem;
