@@ -24,6 +24,7 @@ body > footer {
 .footer {
   background-color: #e8e8e8;
   margin-top: 2rem;
+  padding: 3rem 1.5rem 0;
 }
 
 /*Set the min-width of class="box" used to create receipt*/
