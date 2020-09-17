@@ -1,6 +1,7 @@
 if ('serviceWorker' in navigator) {
     //service worker per rendere il sito installabile come app
     window.addEventListener('load', () => {
+        return //da rimuovere in production
         navigator.serviceWorker.register('/service-worker.js')
             .then((reg) => {
                 console.log('Service worker registered.', reg)
@@ -12,10 +13,11 @@ function expandOrder(btn, ignore = false) {
     let element = btn.parentElement.getElementsByClassName("orderWrapper")[0]
     btn = btn.getElementsByClassName("expand")[0]
     let expandHeight = "70vh"
+        //se è su pc, usare una max width minore così da non riempire lo schermo
     if (screen.width > screen.height) {
         expandHeight = "60vh"
     }
-
+        //se non è stato aperto, esegui animazione e ruota il pulsante
     if (element.style.maxHeight == "0vh") {
         $(element).animate({
             "max-height": expandHeight
@@ -30,12 +32,14 @@ function expandOrder(btn, ignore = false) {
             },
             duration: 200
         }, 'linear');
+        //se è su mobile, esegui un animazione per scrollare fino all'elemento se su mobile
         if (screen.width < screen.height) {
             setTimeout(() => {
                 goToElement(element)
             }, 200);
         }
         if (ignore) return
+        //una volta che l'animazione è finita, mostra i pulsanti per conferma/annulla
         setTimeout(() => {
             btn.parentElement.parentElement.querySelector("button").parentElement.style.display = "block"
         }, 300);
@@ -65,9 +69,11 @@ function expandOrder(btn, ignore = false) {
 let confirmedOrdersWrapper = document.getElementById("confirmedOrders")
 
 function confirmOrder(order) {
+    //muove l'ordine confermato nella sezione di ordini confermati 
     document.getElementById("noOrdersSaved").style.display = "none"
     let clonedNode = order.parentElement.parentElement.parentElement.cloneNode(true)
     clonedNode.style.padding = 0
+    //elimina il vecchio elemento
     clonedNode.querySelector(".is-success").remove()
     confirmedOrdersWrapper.appendChild(clonedNode)
     clonedNode.querySelector(".expand").click()
@@ -81,6 +87,7 @@ function deleteOrder(order) {
     if (confirm("Sicuro di voler annullare l'ordine?")) {
         let request = new XMLHttpRequest();
         request.open("POST", "/removeOrder");
+        //invia una richiesta post per l'eliminazione di un ordine
         request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
         request.onload = (res) => {
             let response = JSON.parse(res.target.response)
@@ -106,12 +113,14 @@ function deleteOrder(order) {
 //-----------------------------------------------------------------------------//
 
 async function initPage() {
+    //render della pagina, aggiungendo gli ordini ricevuti dal server
     let request = new XMLHttpRequest();
     request.open("POST", "/getOrders");
     request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
     request.onload = (res) => {
         let response = JSON.parse(res.target.response)
         if (response.sent) {
+            //render di ogni ordine ricevuto dal server
             response.message.forEach(order => {
                 makeOrder(order)
             })
