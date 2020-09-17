@@ -37,3 +37,8 @@ body > footer {
       min-height: 4.30rem;
   }
 }
+
+* {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
