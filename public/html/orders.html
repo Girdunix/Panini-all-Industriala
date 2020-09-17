@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
     <title>Ordini</title>
     <link rel="stylesheet" href="../css/bulma.min.css">
+    <link rel="stylesheet" href="../css/bulma.extension.css">
     <link rel="stylesheet" href="../css/orders.css">
   </head>
 
   <body>
+    <!--Navbar-->
     <nav class="navbar is-dark">
       <div class="/*navbar-brand*/">
         <!--INSERIRE LOGO PROGETTO-->
@@ -27,14 +29,19 @@
         </div>
       </div>
     </nav>
+
+    <!--Messaggio di errore-->
     <div id="floatingMessage">
       Messaggio di errore
     </div>
+
+    <!--Ordini da confermare-->
     <div class="container is-fluid">
-      <div class="columns is-multiline is-centered" id="classWrapper">
+      <div class="columns is-multiline is-centered is-mobile" id="classWrapper">
+
         <!--Template dell'ordine che viene clonato con JS-->
-        <div class="column" style="display: none;" id="template">
-          <div class="box is-locked-370">
+        <div class="column is-narrow" style="display: none;" id="template">
+          <div class="box is-receipt">
             <div class="title is-3 has-text-centered classTitle" onclick="expandOrder(this)">
               <span class="className"></span>
               <div class="expand"> ></div>
@@ -54,16 +61,16 @@
               </table>
             </div>
             <div class="has-text-centered" style="display: none;">
-              <button class="button is-danger is-rounded is-locked-115" onclick="deleteOrder(this)">Annulla</button>
-              <button class="button is-success is-rounded is-locked-115" onclick="confirmOrder(this)">Conferma</button>
+              <button class="button is-danger is-rounded" style="width: 115px" onclick="deleteOrder(this)">Annulla</button>
+              <button class="button is-success is-rounded" style="width: 115px" onclick="confirmOrder(this)">Conferma</button>
             </div>
           </div>
         </div>
         <!--Fine template-->
 
-        <!--Template dell'ordine statico per testing CSS-->
-        <div class="column" style="display: none;">
-          <div class="box is-locked-370">
+        <!--TEMPLATE SCONTRINO-->
+        <div class="column is-narrow">
+          <div class="box is-receipt">
             <div class="title is-3 has-text-centered">
               1 BT
             </div>
@@ -110,20 +117,22 @@
                 </tfoot>
               </table>
               <div class="has-text-centered">
-                <button class="button is-danger is-rounded is-locked-115" onclick="deleteOrder(this)">Annulla</button>
-                <button class="button is-success is-rounded is-locked-115" onclick="confirmOrder(this)">Conferma</button>
+                <button class="button is-danger is-rounded" style="width: 115px" onclick="deleteOrder(this)">Annulla</button>
+                <button class="button is-success is-rounded" style="width: 115px" onclick="confirmOrder(this)">Conferma</button>
               </div>
             </div>
           </div>
         </div>
-        <!--Fine template-->
+        <!--FINE TEMPLATE SCONTRINO-->
+
       </div>
     </div>
 
     <br>
 
+    <!--Ordini confermati-->
     <div class="container is-fluid confirmedOrders">
-      <div class="columns is-multiline">
+      <div class="columns is-multiline is-centered is-mobile">
         <div class="column">
           <div class="box" id="confirmWrapper" style="background-color: rgb(39, 43, 45);">
             <div class="title is-3 has-text-centered classTitle " onclick="expandOrder(this,true)">
@@ -140,15 +149,14 @@
       </div>
     </div>
 
-    <div class="container is-fluid">
-      <footer class="footer">
+    <!--Footer-->
+    <div class="container is-fluid footer">
         <div class="content has-text-centered">
           <p>
-            <strong>EatSchool</strong> by 5AINF & 5BINF. The source code is licensed
+            <strong>EatSchool</strong> by 5AINF & 5BINF in "I.I.S. Mattei Vasto" - 2020. The source code is licensed
             <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
           </p>
         </div>
-      </footer>
     </div>
   </body>
 <script src="../scripts/jquery.js"></script>
