@@ -75,9 +75,9 @@ function deleteOrder(order) {
             let response = JSON.parse(res.target.response)
             if (response.sent) {
                 order.parentElement.parentElement.parentElement.remove()
+                showError(response.message,2000)
             } else {
-                //showError("Errore!",2000)
-                console.log(response.message)
+                showError(response.message,2000)
             }
         };
         request.onerror = function (e) {
@@ -85,8 +85,8 @@ function deleteOrder(order) {
         };
         let name = order.parentElement.parentElement.parentElement.querySelector(".className").innerHTML
         request.send(JSON.stringify({
-            password: "test",
-            username: "master",
+            password: globalCredentials.password,
+            username: globalCredentials.username,
             name: name
         }))
     }

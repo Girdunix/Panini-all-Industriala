@@ -71,7 +71,7 @@ MongoClient.connect(mongoKey, async function (err, db1) {
         let body = req.body
         if(body.password == masterUser.password && body.username == masterUser.name){
             orders.deleteOne({class:body.name})
-            res.send({sent:true, message: "Cancellato!"})
+            res.send({sent:true, message: "Ordine cancellato!"})
         }else{
             res.send({sent:false, message:"Errore!"})
         }
