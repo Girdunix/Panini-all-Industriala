@@ -11,34 +11,89 @@ const port = process.env.PORT || 8090
 
 //----------------------------------------------------------------------------------------------//
 
-MongoClient.connect(mongoKey, function (err, db1) {
-    const db = db1.db("db");
+MongoClient.connect(mongoKey, async function (err, db1) {
+    const db =  db1.db("db");
     const orders = db.collection("Orders")
+    const users = db.collection("Users")
+    const masterUser = await users.findOne({name:"Paninaro"})
+
+    //-------------------------------------------------------------//
+
     app.post("/placeOrder", async function (req, res) {
-        await orders.insertOne(req.body)
-        res.send({sent:true, message:"Ordine inviato!"})
+        let order = req.body.order
+        let credentials = req.body.credentials
+        let user = await users.findOne({name: credentials.username, password: credentials.password})
+        if(user == null){
+            res.send({sent:false, message:"Non sei loggato!"})
+        }else{
+            let alreadyExists = await orders.findOne({class:credentials.username})
+            if(alreadyExists == null){
+                await orders.insertOne(order)
+                res.send({sent:true, message:"Ordine inviato!"})
+            }else{
+                res.send({sent:false, message:"Hai già inviato un ordine!"})
+            }
+
+        }
     })
+    
+    //-------------------------------------------------------------//
+    
     app.post("/getOrders",async function (req,res){
         let body = req.body
-        if(body.password == "test" && body.username == "master"){
+        if(body.password == masterUser.password && body.username == masterUser.name){
             let toSend = await orders.find().toArray()
             res.send({sent:true, message: toSend})
         }else{
-            res.send({sent:false, message:"Errore!"})
+            res.send({sent:false, message:"Credenziali sbagliate!"})
         }
     })
+    
+    //-------------------------------------------------------------//
+    
+    app.post("/login",async function (req,res){
+        let body = req.body
+        let exists = await users.findOne({name:body.username})
+        if(exists === null){
+            res.send({sent:false, message:"Credenziali sbagliate!"})
+        }else{
+            if(exists.password == body.password){
+                res.send({sent:true, message:"Login effettuato!"})
+            }else{
+                res.send({sent:false, message:"Credenziali sbagliate!"})
+            }
+        }
+    })
+    
+    //-------------------------------------------------------------//
+    
     app.post("/removeOrder",async function (req,res){
         let body = req.body
-        if(body.password == "test" && body.username == "master"){
+        if(body.password == masterUser.password && body.username == masterUser.name){
             orders.deleteOne({class:body.name})
             res.send({sent:true, message: "Cancellato!"})
         }else{
             res.send({sent:false, message:"Errore!"})
         }
-    })  
+    })
+
+    //-------------------------------------------------------------//
+    
+    return
+    let csvAlunni = leggiFile("./public/data/Alunni_2020.CSV")
+    let alunni = elaboraDatiAlunni(csvAlunni,";")
+    let classi = alunni.map(e => e[3])
+    classi = uniq(classi)
+    classi.forEach(e =>{
+        let classObj = {
+            name: e,
+            password: "test_"+e
+        }
+        users.insertOne(classObj)
+    })
 })
 app.get("/", function (req, res) {
-    res.sendFile(__dirname + "/public/html/food_list.html")
+    res.redirect("/html/login.html")
 })
 
 
@@ -53,7 +108,21 @@ var server = app.listen(port, () => {
 
 //----------------------------------------------------------------------------------------------//
 //----------------------------------------------------------------------------------------------//
-
 function leggiFile(path){
    return fs.readFileSync(path,"utf8")
+}
+function uniq(a) {
+    return a.sort().filter(function(item, pos, ary) {
+        return !pos || item != ary[pos - 1];
+    });
+}
+function elaboraDatiAlunni(testo,delimitatore){
+    let righe = testo.split("\n")
+    let dati = []
+    righe.forEach(riga => {
+        riga = riga.replace("\r","")
+        let argomenti = riga.split(delimitatore)
+        dati.push(argomenti)
+    })
+    return dati
 }

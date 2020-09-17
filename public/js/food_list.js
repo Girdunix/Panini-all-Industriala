@@ -13,6 +13,7 @@ if ('serviceWorker' in navigator) {
 let selectedType = "Pizze"
 
 function toggleSelect(toShow) {
+  document.getElementById("addToCart").disabled = true
   //Una funzione che mostra il tipo di cibo selezionato, toShow è il pulsate "pizze, panini, dolci"
   document.getElementById("typeWrapper").style.display = "block"
   //document.getElementById("currentType").innerText = toShow.innerHTML
@@ -32,6 +33,7 @@ function toggleSelect(toShow) {
   //rende visibile il select selezionato
   toShow = "select" + toShow.innerHTML
   document.getElementById(toShow).style.display = "block"
+  document.getElementById(toShow).selectedIndex = 0
 }
 
 //------------------------------------------------------------------------------------------//
@@ -44,6 +46,7 @@ function changeNum(num) {
 }
 
 function addToCart() {
+  document.getElementById("addToCart").disabled = true
   let type = selectedType.replace("select", "")
   let select = document.getElementById("select" + selectedType)
   let food = select.options[select.selectedIndex].value
@@ -61,6 +64,7 @@ function addToCart() {
   globalOrder.addFood(foodObj)
   renderCart()
   showError("Aggiunto al carrello!", 2000)
+  document.getElementById("select"+selectedType).selectedIndex = 0
 }
 
 function hideCart() {
@@ -78,6 +82,12 @@ async function initializeFood() {
   //keys sono i nomi delle proprietà dell'oggetto, cioè pizze panini dolci
   for (let i = 0; i < keys.length; i++) {
     let foodType = document.getElementById("select" + keys[i])
+    let option = document.createElement("option")
+    option.value = "Seleziona"
+    option.innerHTML = "Seleziona"
+    option.selected = true
+    option.disabled = true
+    foodType.appendChild(option)
     for (let j = 0; j < menu[keys[i]].length; j++) {
       let option = document.createElement("option")
       option.value = menu[keys[i]][j].name
@@ -136,8 +146,15 @@ function toggleCart() {
 }
 
 //------------------------------------------------------------------------------------------//
+
+function enableAddToCart(){
+  document.getElementById("addToCart").disabled = false
+}
+
+//------------------------------------------------------------------------------------------//
+
 function placeOrder() {
-  globalOrder.class = "Nome Classe"
+
   let dataStr = "data:text/json;charset=utf-8,"
   dataStr += encodeURIComponent(JSON.stringify(globalOrder));
   let dlAnchorElem = document.createElement("a")
@@ -155,14 +172,18 @@ function placeOrder() {
       globalOrder = new Order()
       renderCart()
     } else {
-      showError("Errore!", 2000)
+      showError(response.message, 2000)
     }
   };
   request.onerror = function (e) {
     console.log(e)
   };
-  globalOrder.class = document.getElementById("className").value
-  request.send(JSON.stringify(globalOrder))
+  globalOrder.class = globalCredentials.username
+  let orderToSend = {
+    order: globalOrder,
+    credentials: globalCredentials
+  }
+  request.send(JSON.stringify(orderToSend))
 }
 class Order {
   //Classe per l'ordine
@@ -268,3 +289,13 @@ HTMLElement.prototype.fadeOut = function () {
   this.style.animation = "fadeOut 0.2s"
 }
 initializeFood()
+let globalCredentials = localStorage.getItem("credentials")
+if(globalCredentials == null){
+  globalCredentials = false
+  document.getElementById("classNamePage").innerHTML = "Non loggato"
+}else{
+  globalCredentials = JSON.parse(globalCredentials)
+  document.getElementById("classNamePage").innerHTML = globalCredentials.username
+}
+
+if(globalCredentials.username != "Paninaro") document.getElementById("showOrders").style.display = "none"

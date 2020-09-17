@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html lang="it" dir="ltr">
-  <head>
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#2196F3">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="apple-touch-icon" href="">
-    <meta property="og:image" content="">
-    <meta property="og:site_name" content="">
-    <meta property="og:title" content="">
-    <meta property="og:url" content="">
-    <meta property="og:description" content="">
-    <link rel="icon" type="image/png" href="" />
-    <link rel="shortcut icon" href="/data/images/icon-192x192.png" type="image/x-icon"/>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-    <link rel="stylesheet" href="../css/bulma.min.css">
-    <link rel="stylesheet" href="../css/food_list.css">
-    <title>Ordinazione</title>
-  </head>
 
-  <body>
-    <!-- Inizio navbar -->
-    <header>
-      <img class="logo" src="/data/images/icon-192x192.png" alt="logo" onclick="document.location.href='login.html'" >
-      <input type="text" id="className" class="input" placeholder="Class" value="Class"> 
-      <nav>
-        <ul class="nav_links">
-          <li><a href="/html/orders.html">Ordinazioni</a></li>
-        </ul>
-      </nav>
-      <button onclick="toggleCart()">Carrello</button>
-    </header>
-    <!-- Fine navbar -->
+<head>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2196F3">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" href="">
+  <meta property="og:image" content="">
+  <meta property="og:site_name" content="">
+  <meta property="og:title" content="">
+  <meta property="og:url" content="">
+  <meta property="og:description" content="">
+  <link rel="icon" type="image/png" href="" />
+  <link rel="shortcut icon" href="/data/images/icon-192x192.png" type="image/x-icon" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+  <link rel="stylesheet" href="../css/bulma.min.css">
+  <link rel="stylesheet" href="../css/food_list.css">
+  <title>Ordinazione</title>
+</head>
+
+<body>
+  <!-- Inizio navbar -->
+  <header>
+    <img class="logo" src="/data/images/icon-192x192.png" alt="logo"
+      onclick="document.location.href='/html/login.html'">
+    <nav>
+      <ul class="nav_links">
+        <li id="showOrders"><a href="/html/orders.html">Ordinazioni</a></li>
+      </ul>
+    </nav>
+    <button onclick="toggleCart()">Carrello</button>
+  </header>
+  <!-- Fine navbar -->
+  <div class="contentWrapper">
     <!-- Inzio sezione carrello -->
     <div id="cart" class="invisible">
       <div id="cartText">Il carrello è vuoto!</div>
@@ -65,29 +67,35 @@
     </div>
     <!-- Fine sezione carrello -->
 
-
+    <div class="columns is-centered" style="margin-top: 1rem">
+      <div id="classNamePage">
+      </div>
+    </div>
     <!-- Box centrale -->
-    <div class="columns is-centered" style="margin-top: 4rem">
+    <div class="columns is-centered" style="margin-top: 3rem">
       <div class="column is-half">
         <div class="box box-resize-margin">
 
           <!-- Pulsanti selezione cibo -->
           <div class="buttons is-centered" style="margin: 0.4rem 0 0">
-            <button class="button is-danger is-outlined" type="button" name="button" onclick="toggleSelect(this)">Pizze</button>
-            <button class="button is-danger is-outlined" type="button" name="button" onclick="toggleSelect(this)">Panini</button>
-            <button class="button is-danger is-outlined" type="button" name="button" onclick="toggleSelect(this)">Dolci</button>
+            <button class="button is-danger is-outlined" type="button" name="button"
+              onclick="toggleSelect(this)">Pizze</button>
+            <button class="button is-danger is-outlined" type="button" name="button"
+              onclick="toggleSelect(this)">Panini</button>
+            <button class="button is-danger is-outlined" type="button" name="button"
+              onclick="toggleSelect(this)">Dolci</button>
           </div>
-        
+
           <div class="container is-fluid invisible" style="margin-top: 1rem" id="typeWrapper">
             <!-- Riga di selezione cibo -->
             <div class="select-bar">
-              
+
               <div class="select">
-                <select class="selHide" name="Pizze" id="selectPizze"></select>
-                <select class="selHide" name="Panini" id="selectPanini"></select>
-                <select class="selHide" name="Dolci" id="selectDolci"></select>
+                <select class="selHide" name="Pizze" id="selectPizze" onchange="enableAddToCart()"></select>
+                <select class="selHide" name="Panini" id="selectPanini" onchange="enableAddToCart()"></select>
+                <select class="selHide" name="Dolci" id="selectDolci" onchange="enableAddToCart()"></select>
               </div>
-            
+
               <div class="select-quantity">
                 <button class="select-button color-red" type="button" name="button" onclick="changeNum(-1)">-</button>
                 <span id="quantity">1</span>
@@ -97,7 +105,8 @@
 
             <!-- Pulsanti carrello e ordina -->
             <div class="buttons is-centered" style="margin-top: 1rem;">
-              <button class="button is-primary" type="button" name="button" onclick="addToCart()">Aggiungi al carrello</button>
+              <button class="button is-primary" type="button" name="button" id="addToCart" onclick="addToCart()"
+                disabled>Aggiungi al carrello</button>
             </div>
           </div>
         </div>
@@ -108,12 +117,15 @@
     <div id="touch" onclick="hideCart()">
 
     </div>
-    
+
     <!-- Messaggio di errore -->
     <div id="floatingMessage">
       Messaggio di errore
     </div>
 
-  </body>
-  <script src="../js/food_list.js"></script>
+  </div>
+
+</body>
+<script src="../js/food_list.js"></script>
+
 </html>

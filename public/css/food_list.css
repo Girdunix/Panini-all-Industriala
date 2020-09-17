@@ -55,11 +55,17 @@ header {
 #cart {
     width: 25vw;
     background-color: #24252ae3;
-    height: calc(100% - 2rem - 18px);
+    height: 100%;
     position: absolute;
     right: 0;
     bottom: 0;
     z-index: 1;
+}
+.contentWrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .cartElement {
@@ -94,7 +100,11 @@ header {
     display: inline-block;
     padding: 0px 20px;
 }
-
+#classNamePage{
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+}
 .nav_links li a {
     transition: all 0.3s ease 0s;
 }
