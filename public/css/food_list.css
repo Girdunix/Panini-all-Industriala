@@ -35,16 +35,6 @@ nav {
     -webkit-tap-highlight-color: transparent;
 }
 
-li,
-a,
-button {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: #edf0f1;
-    text-decoration: none;
-}
-
 .logo {
     cursor: pointer;
     margin-right: auto;
@@ -93,27 +83,10 @@ button {
     color: #b9b9b9;
 }
 
-.nav_links {
-    list-style: none;
-}
-
-.nav_links li {
-    display: inline-block;
-    padding: 0px 20px;
-}
-
 #classNamePage {
     font-size: 3rem;
     font-weight: bold;
     text-align: center;
-}
-
-.nav_links li a {
-    transition: all 0.3s ease 0s;
-}
-
-.nav_links li a:hover {
-    color: #0089a9;
 }
 
 .quantityRow {
@@ -139,25 +112,6 @@ button {
     margin-left: 0.2rem;
     border-radius: 0.2rem;
     font-weight: bold;
-}
-
-.nav-btn {
-    margin: auto 20px;
-    padding: 9px 25px;
-    background-color: rgba(0, 136, 169, 1);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-}
-
-.nav-btn:focus {
-    outline: 0;
-    box-shadow: 0 0 2pt 0.1pt rgba(0, 136, 169, 1)
-}
-
-.nav-btn:hover {
-    background-color: rgba(0, 136, 169, 0.8);
 }
 
 /*--- NAVBAR CSS END ---*/
