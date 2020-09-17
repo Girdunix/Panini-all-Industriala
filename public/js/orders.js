@@ -73,6 +73,7 @@ function confirmOrder(order) {
     document.getElementById("noOrdersSaved").style.display = "none"
     let clonedNode = order.parentElement.parentElement.parentElement.cloneNode(true)
     clonedNode.style.padding = 0
+    clonedNode.style.marginTop = "1rem"
     //elimina il vecchio elemento
     clonedNode.querySelector(".is-success").remove()
     confirmedOrdersWrapper.appendChild(clonedNode)

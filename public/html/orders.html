@@ -16,8 +16,8 @@
   <!--Navbar-->
   <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item">
-        <img src="../data/images/icon-192x192.png">
+      <a class="navbar-item" onclick="document.location.href='food_list.html'">
+        <img src="../data/images/icon-192x192.png" width="28" height="28" >
       </a>
 
       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
@@ -177,7 +177,7 @@
   <div class="container is-fluid confirmedOrders">
     <div class="columns is-multiline is-centered is-mobile">
       <div class="column">
-        <div class="box" id="confirmWrapper" style="background-color: rgb(39, 43, 45); padding: 0.8rem;">
+        <div class="box is-receipt" id="confirmWrapper" style="background-color: rgb(39, 43, 45); padding: 0.8rem;">
           <div class="title is-3 has-text-centered classTitle " onclick="expandOrder(this,true)">
             <span class="className" style="color: white;">Confermati</span>
             <div class="expand" style="color: white;"> ></div>
