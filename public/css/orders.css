@@ -1,25 +1,30 @@
-.classTitle{
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    cursor: pointer;
+.classTitle {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  cursor: pointer;
 }
-*{
+
+* {
   -webkit-tap-highlight-color: transparent;
 }
-.className{
-    flex: 1;
-    text-align:center;
+
+.className {
+  flex: 1;
+  text-align: center;
 }
-.expand{
-    position: absolute;
-    right: 0;
-    font-weight: bold;
+
+.expand {
+  position: absolute;
+  right: 0;
+  font-weight: bold;
 }
-.orderWrapper{
-    max-height: 0vh;
-    overflow: auto;
+
+.orderWrapper {
+  max-height: 0vh;
+  overflow: auto;
 }
+
 #floatingMessage {
   z-index: 5;
   display: none;
@@ -39,58 +44,63 @@
   margin-left: auto;
   margin-right: auto;
 }
+
 @keyframes fadeIn {
   0% {
-      opacity: 0;
+    opacity: 0;
   }
 
   100% {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
 @keyframes fadeOut {
   0% {
-      opacity: 1;
+    opacity: 1;
   }
 
   100% {
-      opacity: 0;
+    opacity: 0;
   }
 }
-#noOrdersSaved{
-    font-size: 1.5rem;
-    color:white;
+
+#noOrdersSaved {
+  font-size: 1.5rem;
+  color: white;
 }
-.selectedRow{
-    background-color: #48c774;
-    color: white;
+
+.selectedRow {
+  background-color: #48c774;
+  color: white;
 }
-::-webkit-scrollbar{
-	width: 5px;
+
+::-webkit-scrollbar {
+  width: 5px;
 }
-  
-  /* Track */
+
+/* Track */
 ::-webkit-scrollbar-track {
-    background:#cdcdcd;
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  
-  /* Handle */
+  background: #cdcdcd;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+/* Handle */
 ::-webkit-scrollbar-thumb {
-    background: rgb(116 116 116);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  
-  /* Handle on hover */
+  background: rgb(116 116 116);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    opacity:0.6;
-  }
+  opacity: 0.6;
+}
+
 @media only screen and (orientation:portrait) {
   #floatingMessage {
-      border-radius: 0.8rem;
-      width: 60vw;
+    border-radius: 0.8rem;
+    width: 60vw;
   }
 }

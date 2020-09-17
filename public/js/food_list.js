@@ -64,7 +64,7 @@ function addToCart() {
   globalOrder.addFood(foodObj)
   renderCart()
   showError("Aggiunto al carrello!", 2000)
-  document.getElementById("select"+selectedType).selectedIndex = 0
+  document.getElementById("select" + selectedType).selectedIndex = 0
 }
 
 function hideCart() {
@@ -99,28 +99,29 @@ async function initializeFood() {
 
 //------------------------------------------------------------------------------------------//
 
-function changeQuantity(amount,food,type){
-  if(amount === 1){
-    globalOrder.increaseQuantity(type,food)
-  }else{
-    globalOrder.reduceQuantity(type,food)
+function changeQuantity(amount, food, type) {
+  if (amount === 1) {
+    globalOrder.increaseQuantity(type, food)
+  } else {
+    globalOrder.reduceQuantity(type, food)
   }
   renderCart()
 }
+
 function renderCart() {
   let order = globalOrder.order
   //prende ogni proprietà nell'oggetto ordine e li aggiunge alla div del tipo corretto nel carrello
   let cart = document.getElementById("cartTable")
   let cartWrapper = cart.parentElement.parentElement.parentElement.parentElement
   cartWrapper.classList.add("invisible")
-  document.getElementById("cartPrice").innerHTML = "Totale: "+ globalOrder.price.toFixed(2) + "€"
+  document.getElementById("cartPrice").innerHTML = "Totale: " + globalOrder.price.toFixed(2) + "€"
   document.getElementById("cartText").innerHTML = "Il carrello è vuoto!"
   cart.innerHTML = ""
   Object.keys(order).forEach(type => {
     let row = document.createElement("tr")
     row.className = "foodType"
     row.innerHTML = "<th>" + type.capitalize() + "</th><th></th><th></th>"
-    if(order[type].length > 0) cart.append(row)
+    if (order[type].length > 0) cart.append(row)
     order[type].forEach(food => {
       document.getElementById("cartText").innerHTML = "Il tuo ordine:"
       let innerRow = document.createElement("tr")
@@ -130,8 +131,8 @@ function renderCart() {
         '<tr>' +
         '<td colspan="2">' + food.name + '</td>' +
         '<td class="has-text-right quantityRow">x' + food.quantity + "&ensp;" +
-        `<button class="minusBtn" onclick="changeQuantity(-1,'`+food.name+`','`+type+`')">-</button>`+
-        `<button class="plusBtn" onclick="changeQuantity(1,'`+food.name+`','`+type+`')">+</button>`+
+        `<button class="minusBtn" onclick="changeQuantity(-1,'` + food.name + `','` + type + `')">-</button>` +
+        `<button class="plusBtn" onclick="changeQuantity(1,'` + food.name + `','` + type + `')">+</button>` +
         '</tr>'
       cart.append(innerRow)
     })
@@ -147,7 +148,7 @@ function toggleCart() {
 
 //------------------------------------------------------------------------------------------//
 
-function enableAddToCart(){
+function enableAddToCart() {
   document.getElementById("addToCart").disabled = false
 }
 
@@ -290,12 +291,12 @@ HTMLElement.prototype.fadeOut = function () {
 }
 initializeFood()
 let globalCredentials = localStorage.getItem("credentials")
-if(globalCredentials == null){
+if (globalCredentials == null) {
   globalCredentials = false
   document.getElementById("classNamePage").innerHTML = "Non loggato"
-}else{
+} else {
   globalCredentials = JSON.parse(globalCredentials)
   document.getElementById("classNamePage").innerHTML = globalCredentials.username
 }
 
-if(globalCredentials.username != "Paninaro") document.getElementById("showOrders").style.display = "none"
+if (globalCredentials.username != "Paninaro") document.getElementById("showOrders").style.display = "none"

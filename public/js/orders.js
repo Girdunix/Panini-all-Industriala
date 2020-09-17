@@ -12,7 +12,7 @@ function expandOrder(btn, ignore = false) {
     let element = btn.parentElement.getElementsByClassName("orderWrapper")[0]
     btn = btn.getElementsByClassName("expand")[0]
     let expandHeight = "70vh"
-    if(screen.width > screen.height){
+    if (screen.width > screen.height) {
         expandHeight = "60vh"
     }
 
@@ -30,7 +30,7 @@ function expandOrder(btn, ignore = false) {
             },
             duration: 200
         }, 'linear');
-        if(screen.width < screen.height){
+        if (screen.width < screen.height) {
             setTimeout(() => {
                 goToElement(element)
             }, 200);
@@ -86,9 +86,9 @@ function deleteOrder(order) {
             let response = JSON.parse(res.target.response)
             if (response.sent) {
                 order.parentElement.parentElement.parentElement.remove()
-                showError(response.message,2000)
+                showError(response.message, 2000)
             } else {
-                showError(response.message,2000)
+                showError(response.message, 2000)
             }
         };
         request.onerror = function (e) {
@@ -193,12 +193,11 @@ function toggleDarkMode(btn) {
 
 function goToElement(element, scroll = 0.9) {
     //function to scroll the body to a selected element, scroll is the offset
-        element = element.parentElement.parentElement
-            $("body,html").animate(
-                {
-                scrollTop: $(element).offset().top
-            },300)
-      
+    element = element.parentElement.parentElement
+    $("body,html").animate({
+        scrollTop: $(element).offset().top
+    }, 300)
+
 }
 //-----------------------------------------------------------------------------//
 

@@ -29,7 +29,9 @@ html {
     -webkit-tap-highlight-color: transparent;
 }
 
-li, a, button {
+li,
+a,
+button {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 16px;
@@ -61,7 +63,8 @@ header {
     bottom: 0;
     z-index: 1;
 }
-.contentWrapper{
+
+.contentWrapper {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -74,8 +77,8 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin:1rem;
-    border-radius:0.2rem;
+    margin: 1rem;
+    border-radius: 0.2rem;
 }
 
 .cartElement span {
@@ -100,11 +103,13 @@ header {
     display: inline-block;
     padding: 0px 20px;
 }
-#classNamePage{
+
+#classNamePage {
     font-size: 3rem;
     font-weight: bold;
     text-align: center;
 }
+
 .nav_links li a {
     transition: all 0.3s ease 0s;
 }
@@ -112,7 +117,8 @@ header {
 .nav_links li a:hover {
     color: #0089a9;
 }
-.quantityRow{
+
+.quantityRow {
     padding: 0;
     display: inline-flex;
     justify-content: flex-end;
@@ -120,13 +126,15 @@ header {
     margin-left: auto;
 }
 
-.underlined{
+.underlined {
     border-bottom: 1px solid #dbdbdb;
 }
-.underlined *{
+
+.underlined * {
     border: none !important;
 }
-.quantityRow button{
+
+.quantityRow button {
     padding: 0 0.5rem;
     color: black;
     border: none;
@@ -134,6 +142,7 @@ header {
     border-radius: 0.2rem;
     font-weight: bold;
 }
+
 header button {
     margin-left: 20px;
     padding: 9px 25px;
@@ -163,7 +172,7 @@ header button:hover {
     align-items: center
 }
 
-.select-quantity > * {
+.select-quantity>* {
     margin: 0 5px;
 }
 
@@ -190,19 +199,24 @@ header button:hover {
     color: hsl(348, 100%, 61%);
     border: 1px solid hsl(348, 100%, 61%);
 }
-.plusBtn{
+
+.plusBtn {
     background-color: #48c7748f;
 }
-.minusBtn{
+
+.minusBtn {
     background-color: hsl(348deg 94% 80%);
 }
+
 .color-red:focus {
     outline: 0;
     box-shadow: 0 0 2pt 0.1pt hsl(348, 100%, 61%);
 }
-.foodType{
+
+.foodType {
     font-size: 1.2rem;
 }
+
 .color-red:hover {
     background-color: hsl(348, 100%, 61%);
     color: white;
@@ -244,14 +258,14 @@ header button:hover {
     color: white;
 }
 
-#className{
+#className {
     max-width: 20vw;
     margin-left: 1rem;
 
     text-align: center;
 }
 
-.selHide{
+.selHide {
     display: none;
     width: 100%;
 }
@@ -259,13 +273,15 @@ header button:hover {
 .level-item {
     flex-shrink: 1;
 }
-#cartText{
+
+#cartText {
     width: 100%;
     font-size: 1.5rem;
     color: white;
     text-align: center;
     margin-top: 1rem;
 }
+
 #floatingMessage {
     z-index: 5;
     display: none;
@@ -285,10 +301,12 @@ header button:hover {
     margin-left: auto;
     margin-right: auto;
 }
-.orderWrapper{
+
+.orderWrapper {
     overflow: auto;
     max-height: 65vh;
 }
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -308,38 +326,43 @@ header button:hover {
         opacity: 0;
     }
 }
-::-webkit-scrollbar{
-	width: 5px;
+
+::-webkit-scrollbar {
+    width: 5px;
 }
-  
-  /* Track */
+
+/* Track */
 ::-webkit-scrollbar-track {
-    background:#cdcdcd;
+    background: #cdcdcd;
     border-radius: 3px;
     overflow: hidden;
-  }
-  
-  /* Handle */
+}
+
+/* Handle */
 ::-webkit-scrollbar-thumb {
     background: rgb(116 116 116);
     border-radius: 3px;
     overflow: hidden;
-  }
-  
-  /* Handle on hover */
+}
+
+/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    opacity:0.6;
-  }
-  .lessPadding{
-      padding: 1rem;
-  }
+    opacity: 0.6;
+}
+
+.lessPadding {
+    padding: 1rem;
+}
+
 @media only screen and (orientation:portrait) {
-    header{
+    header {
         padding: 0.6rem;
     }
-    .lessPadding{
-        padding:0.2rem;
+
+    .lessPadding {
+        padding: 0.2rem;
     }
+
     .box-resize-margin {
         margin: 0 10px;
     }
@@ -347,7 +370,7 @@ header button:hover {
     #cart {
         width: 70vw;
     }
-    
+
     #floatingMessage {
         border-radius: 0.8rem;
         width: 60vw;
