@@ -11,9 +11,14 @@ if ('serviceWorker' in navigator) {
 function expandOrder(btn, ignore = false) {
     let element = btn.parentElement.getElementsByClassName("orderWrapper")[0]
     btn = btn.getElementsByClassName("expand")[0]
-    if (element.style.maxHeight != "70vh") {
+    let expandHeight = "70vh"
+    if(screen.width > screen.height){
+        expandHeight = "60vh"
+    }
+
+    if (element.style.maxHeight == "0vh") {
         $(element).animate({
-            "max-height": "70vh"
+            "max-height": expandHeight
         }, 600)
         $(btn).animate({
             borderSpacing: 90
@@ -25,13 +30,18 @@ function expandOrder(btn, ignore = false) {
             },
             duration: 200
         }, 'linear');
+        if(screen.width < screen.height){
+            setTimeout(() => {
+                goToElement(element)
+            }, 200);
+        }
         if (ignore) return
         setTimeout(() => {
             btn.parentElement.parentElement.querySelector("button").parentElement.style.display = "block"
         }, 300);
     } else {
         $(element).animate({
-            "max-height": "0"
+            "max-height": "0vh"
         }, 200)
         $(btn).animate({
             borderSpacing: 0
@@ -57,6 +67,7 @@ let confirmedOrdersWrapper = document.getElementById("confirmedOrders")
 function confirmOrder(order) {
     document.getElementById("noOrdersSaved").style.display = "none"
     let clonedNode = order.parentElement.parentElement.parentElement.cloneNode(true)
+    clonedNode.style.padding = 0
     clonedNode.querySelector(".is-success").remove()
     confirmedOrdersWrapper.appendChild(clonedNode)
     clonedNode.querySelector(".expand").click()
@@ -180,10 +191,20 @@ function toggleDarkMode(btn) {
     document.getElementById("confirmWrapper").querySelector(".className").style.color = textColor[1]
 }
 
+function goToElement(element, scroll = 0.9) {
+    //function to scroll the body to a selected element, scroll is the offset
+        element = element.parentElement.parentElement
+            $("body,html").animate(
+                {
+                scrollTop: $(element).offset().top
+            },300)
+      
+}
 //-----------------------------------------------------------------------------//
 
 function makeOrder(order) {
     let template = document.getElementById("template").cloneNode(true)
+    template.id = order.class
     template.style.display = "block"
     template.querySelector(".className").innerHTML = order.class
     let classWrapper = document.getElementById("classWrapper")

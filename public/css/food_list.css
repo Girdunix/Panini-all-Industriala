@@ -264,7 +264,7 @@ header button:hover {
     font-size: 1.5rem;
     color: white;
     text-align: center;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 }
 #floatingMessage {
     z-index: 5;
@@ -285,7 +285,10 @@ header button:hover {
     margin-left: auto;
     margin-right: auto;
 }
-
+.orderWrapper{
+    overflow: auto;
+    max-height: 65vh;
+}
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -305,7 +308,31 @@ header button:hover {
         opacity: 0;
     }
 }
-
+::-webkit-scrollbar{
+	width: 5px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    background:#cdcdcd;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(116 116 116);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    opacity:0.6;
+  }
+  .lessPadding{
+      padding: 1rem;
+  }
 @media only screen and (orientation:portrait) {
     header{
         padding: 0.6rem;

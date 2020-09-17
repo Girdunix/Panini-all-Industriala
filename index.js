@@ -91,6 +91,7 @@ MongoClient.connect(mongoKey, async function (err, db1) {
         }
         users.insertOne(classObj)
     })
+    console.log("Aggiunti utenti")
 })
 app.get("/", function (req, res) {
     res.redirect("/html/login.html")

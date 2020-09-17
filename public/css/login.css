@@ -38,6 +38,14 @@ body, html{
   display: flex;
   align-items: center;
 }
+.appTitle{
+  width: 100%;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: rgb(38, 50, 56);
+  margin-top: 5vh;
+}
 .un {
   width: 76%;
   color: rgb(38, 50, 56);

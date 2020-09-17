@@ -66,7 +66,28 @@
     background-color: #48c774;
     color: white;
 }
-
+::-webkit-scrollbar{
+	width: 5px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    background:#cdcdcd;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(116 116 116);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    opacity:0.6;
+  }
 @media only screen and (orientation:portrait) {
   #floatingMessage {
       border-radius: 0.8rem;
