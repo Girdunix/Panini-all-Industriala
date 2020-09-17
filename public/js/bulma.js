@@ -1,3 +1,4 @@
+//This function make the navbar's hamburger working
 document.addEventListener('DOMContentLoaded', () => {
 
   // Get all "navbar-burger" elements

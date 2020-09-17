@@ -1,8 +1,11 @@
+---------------------------------------------------
+/*Nav fix*/
 nav {
   margin-bottom: 2rem;
   width: 100vw;
 }
 
+/*Lock the footer on the bottom*/
 html, body {
     min-height: 100vh;
     margin: 0;
@@ -18,15 +21,18 @@ body > footer {
     margin-top: auto;
 }
 
+/*Footer fix*/
 .footer {
   background-color: #e8e8e8;
   margin-top: 2rem;
 }
 
+/*Set the min-width of class="box" used to create receipt*/
 .is-receipt {
   min-width: 375px;
 }
 
+/*Make the navbar bigger only when it haven't hamburger*/
 @media screen and (min-width: 1024px) {
   .navbar {
       min-height: 4.30rem;
