@@ -8,7 +8,6 @@ if ('serviceWorker' in navigator) {
             })
     })
 }
-
 function showError(message, timeout) {
     //funzione che mostra un messaggio di errore fluttuante 
     let floatingMessage = document.getElementById("floatingMessage")

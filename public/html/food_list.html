@@ -35,7 +35,7 @@
       <a class="navbar-item">
         <img src="../data/images/icon-192x192.png" width="28" height="28">
       </a>
-
+      <button class="nav-btn navbar-item cartPortrait" onclick="toggleCart()">Carrello</button>
       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -68,12 +68,9 @@
           </div>
         </div>
       </div>
-
       <div class="navbar-end">
         <a class="navbar-item" id="showOrders" href="/html/orders.html">Ordinazioni</a>
-        <div class="navbar-item">
-          <button class="button is-link" onclick="toggleCart()">Carrello</button>
-        </div>
+        <button class="nav-btn navbar-item cartLandscape" onclick="toggleCart()">Carrello</button>
       </div>
     </div>
   </nav>
@@ -164,10 +161,9 @@
       Messaggio di errore
     </div>
 
-  </div>
 
   <!--Footer-->
-  <div class="container is-fluid footer">
+  <div class="container is-fluid footer" style="margin-top:0;">
     <div class="content has-text-centered">
       <p>
         <strong>EatSchool</strong> by 5AINF & 5BINF in "I.I.S. Mattei Vasto" - 2020. The source code is licensed
@@ -176,6 +172,9 @@
     </div>
   </div>
   <!--Fine footer-->
+  </div>
+
+
 </body>
 <script src="../js/food_list.js"></script>
 <script src="../js/bulma.js"></script>

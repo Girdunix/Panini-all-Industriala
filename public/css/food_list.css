@@ -1,19 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 /*--- Page white space fix ---*/
-
-body {
-    overflow: hidden;
-    min-height: 100vh;
-    min-width: 100vw;
-    display: flex;
-    flex-direction: column;
-}
-
+body,
 html {
-    overflow: hidden;
+  font-family: 'Ubuntu', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
-
+body {
+  position: fixed;
+}
+.cartLandscape{
+    display: block;
+}
+.cartPortrait{
+    display: none;
+    margin-left: auto !important;
+}
 #touch {
     width: 100vw;
     flex-grow: 1;
@@ -55,10 +61,13 @@ nav {
 .contentWrapper {
     position: relative;
     display: flex;
+    height: 100%;
     flex-direction: column;
     flex: 1;
 }
-
+.container{
+    flex: unset;
+}
 .cartElement {
     background-color: #005367;
     display: flex;
@@ -307,6 +316,16 @@ nav {
 }
 
 @media only screen and (orientation:portrait) {
+    .burger{
+        margin-left: 0;
+    }
+    .cartLandscape{
+        display: none;
+    }
+    .cartPortrait{
+        display: block;
+        margin-right: 0;
+    }
     header {
         padding: 0.6rem;
     }
