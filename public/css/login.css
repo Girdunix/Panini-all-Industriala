@@ -1,7 +1,6 @@
 body,
 html {
   background-color: white;
-  font-family: 'Ubuntu', sans-serif;
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -31,7 +30,6 @@ body {
 .sign {
   margin-top: 0;
   color: black;
-  font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   font-size: 23px;
 }
@@ -70,7 +68,6 @@ body {
   border: 2px solid rgba(0, 0, 0, 0.02);
   text-align: center;
   margin-bottom: 27px;
-  font-family: 'Ubuntu', sans-serif;
 }
 
 .pass {
@@ -88,7 +85,6 @@ body {
   border: 2px solid rgba(0, 0, 0, 0.02);
   text-align: center;
   margin-bottom: 27px;
-  font-family: 'Ubuntu', sans-serif;
 }
 
 .un:focus,
@@ -107,7 +103,6 @@ body {
   padding-right: 40px;
   padding-bottom: 10px;
   padding-top: 10px;
-  font-family: 'Ubuntu', sans-serif;
   font-size: 0.8rem;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
   width: fit-content;
@@ -116,7 +111,6 @@ body {
 a {
   text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
   color: #E1BEE7;
-  font-size: 14px;
   text-decoration: none
 }
 
@@ -124,7 +118,6 @@ a {
   display: none;
   justify-content: center;
   align-items: center;
-  font-family: 'Ubuntu', sans-serif;
   font-size: 1.2rem;
   background-color: #FFFFFF;
   width: 30vw;
