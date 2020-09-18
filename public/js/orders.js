@@ -69,7 +69,7 @@ function expandOrder(btn, ignore = false) {
 let confirmedOrdersWrapper = document.getElementById("confirmedOrders")
 
 function confirmOrder(order) {
-    //muove l'ordine confermato nella sezione di ordini confermati 
+    //muove l'ordine confermato nella sezione di ordini confermati
     document.getElementById("noOrdersSaved").style.display = "none"
     let clonedNode = order.parentElement.parentElement.parentElement.cloneNode(true)
     clonedNode.style.padding = 0
@@ -141,7 +141,7 @@ async function initPage() {
 }
 
 function showError(message, timeout) {
-    //funzione che mostra un messaggio di errore fluttuante 
+    //funzione che mostra un messaggio di errore fluttuante
     let floatingMessage = document.getElementById("floatingMessage")
     floatingMessage.innerHTML = message
     if (floatingMessage.style.display == "flex") return
@@ -155,7 +155,7 @@ function showError(message, timeout) {
     }, timeout);
 }
 //-----------------------------------------------------------------------------//
-
+/*
 let globalLayersBackground = ["rgb(27 25 35)", "rgb(42 41 51)", "white"] //["#181a1b","#272b2d"]
 let globalLayersText = ["#e0e0e0", "#4a4a4a"]
 let darkModeToggled = false
@@ -209,6 +209,7 @@ function goToElement(element, scroll = 0.9) {
     }, 300)
 
 }
+*/
 //-----------------------------------------------------------------------------//
 
 function makeOrder(order) {

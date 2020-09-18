@@ -1,31 +1,21 @@
 /*Nav fix*/
 nav {
   margin-bottom: 2rem;
-  width: 100vw;
 }
 
-/*Lock the footer on the bottom*/
-html, body {
-    min-height: 100vh;
-    min-width: 100vw;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f2f2f2;
+/*Fullpage*/
+body {
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
-body > footer {
-    margin-top: auto;
-}
-
-/*Footer fix*/
-.footer {
+/*Footer*/
+.is-footer {
   background-color: #e8e8e8;
   margin-top: 2rem;
-  padding: 3rem 1.5rem 1.5rem;
+  padding: 2rem;
+  position: absolute;
+  bottom: 0;
 }
 
 /*Set the min-width of class="box" used to create receipt*/
@@ -40,6 +30,7 @@ body > footer {
   }
 }
 
+/*Make the page not selectable by users*/
 * {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
