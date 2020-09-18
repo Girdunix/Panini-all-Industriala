@@ -1,182 +1,181 @@
 <!DOCTYPE html>
 <html lang="it" dir="ltr">
 
-<head>
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#2196F3">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <meta name="author" content="">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="mobile-web-app-capable" content="yes">
-  <link rel="apple-touch-icon" href="">
-  <meta property="og:image" content="">
-  <meta property="og:site_name" content="">
-  <meta property="og:title" content="">
-  <meta property="og:url" content="">
-  <meta property="og:description" content="">
-  <link rel="icon" type="image/png" href="" />
-  <link rel="shortcut icon" href="/data/images/icon-192x192.png" type="image/x-icon" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-  <link rel="stylesheet" href="../css/bulma.min.css">
-  <link rel="stylesheet" href="../css/bulma.extension.css">
-  <link rel="stylesheet" href="../css/food_list.css">
+  <head>
+    <meta name="theme-color" content="#2196F3">
+    <meta name="description" content="App ufficiale del Mattei(Vasto)">
+    <meta name="keywords" content="PWA,lista,cibo,pizza,panino,dolci,ordinazione,itis,vasto, industriale">
+    <meta name="author" content="Degli alunni">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="EatSchool">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="">
+    <meta property="og:image" content="">
+    <meta property="og:site_name" content="EatSchool">
+    <meta property="og:title" content="EatSchool">
+    <meta property="og:url" content="">
+    <meta property="og:description" content="App ufficiale del Mattei(Vasto)">
+    <link rel="icon" type="image/png" href="" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ordinazione</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" href="/data/images/icon-192x192.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/bulma.min.css">
+    <link rel="stylesheet" href="../css/bulma.extension.css">
+    <link rel="stylesheet" href="../css/food_list.css">
+  </head>
 
-  <title>Ordinazione</title>
-</head>
-
-<body>
-  <!--Navbar-->
-  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item">
-        <img src="../data/images/icon-192x192.png" width="28" height="28">
-      </a>
-      <button class="nav-btn navbar-item cartPortrait" onclick="toggleCart()">Carrello</button>
-      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-
-    <div id="navMenu" class="navbar-menu">
-      <div class="navbar-start">
+  <body>
+    <!--Navbar-->
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
         <a class="navbar-item">
-          Home
+          <img src="../data/images/icon-192x192.png" width="28" height="28">
         </a>
+        <button class="nav-btn navbar-item cartPortrait" onclick="toggleCart()">Carrello</button>
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
 
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            Altro
+      <div id="navMenu" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item">
+            Home
           </a>
 
-          <div class="navbar-dropdown">
-            <a class="navbar-item">
-              Chi siamo
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Altro
             </a>
-            <a class="navbar-item">
-              Contatti
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item">
-              Segnala un problema
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="navbar-end">
-        <a class="navbar-item" id="showOrders" href="/html/orders.html">Ordinazioni</a>
-        <button class="nav-btn cartLandscape" onclick="toggleCart()">Carrello</button>
-      </div>
-    </div>
-  </nav>
-  <!--Fine Navbar-->
 
-  
-  <div class="contentWrapper">
-    <!-- Inzio sezione carrello -->
-    <div id="cart" class="invisible">
-      <div id="cartText">Il carrello è vuoto!</div>
-      <div class="column invisible">
-        <div class="box lessPadding">
-          <div class="orderWrapper">
-            <table class="table has-text-left is-narrow is-fullwidth">
-              <tbody id="cartTable">
-              </tbody>
-
-              <tfoot>
-                <tr>
-                  <th></th>
-                  <th></th>
-                  <th colspan="3" class="has-text-right price" id="cartPrice">Totale: 5€</th>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          <div class="has-text-centered">
-            <button class="button is-success is-rounded order-btn" onclick="placeOrder()">Ordina</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Fine sezione carrello -->
-
-    <div class="columns is-centered" style="margin: 1rem 0">
-      <div id="classNamePage">
-      </div>
-    </div>
-    <!-- Box centrale -->
-    <div class="columns is-centered">
-      <div class="column is-half">
-        <div class="box box-resize-margin">
-
-          <!-- Pulsanti selezione cibo -->
-          <div class="buttons is-centered" style="margin: 0.4rem 0 0">
-            <button class="button is-danger is-outlined" type="button" name="button"
-              onclick="toggleSelect(this)">Pizze</button>
-            <button class="button is-danger is-outlined" type="button" name="button"
-              onclick="toggleSelect(this)">Panini</button>
-            <button class="button is-danger is-outlined" type="button" name="button"
-              onclick="toggleSelect(this)">Dolci</button>
-          </div>
-
-          <div class="container is-fluid invisible" style="margin-top: 1rem" id="typeWrapper">
-            <!-- Riga di selezione cibo -->
-            <div class="select-bar">
-
-              <div class="select">
-                <select class="selHide" name="Pizze" id="selectPizze" onchange="enableAddToCart()"></select>
-                <select class="selHide" name="Panini" id="selectPanini" onchange="enableAddToCart()"></select>
-                <select class="selHide" name="Dolci" id="selectDolci" onchange="enableAddToCart()"></select>
-              </div>
-
-              <div class="select-quantity">
-                <button class="select-button color-red" type="button" name="button" onclick="changeNum(-1)">-</button>
-                <span id="quantity">1</span>
-                <button class="select-button color-green" type="button" name="button" onclick="changeNum(1)">+</button>
-              </div>
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                Chi siamo
+              </a>
+              <a class="navbar-item">
+                Contatti
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item">
+                Segnala un problema
+              </a>
             </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <a class="navbar-item" id="showOrders" href="/html/orders.html">Ordinazioni</a>
+          <button class="nav-btn cartLandscape" onclick="toggleCart()">Carrello</button>
+        </div>
+      </div>
+    </nav>
+    <!--Fine Navbar-->
 
-            <!-- Pulsanti carrello e ordina -->
-            <div class="buttons is-centered" style="margin-top: 1rem;">
-              <button class="button is-primary" type="button" name="button" id="addToCart" onclick="addToCart()"
-                disabled>Aggiungi al carrello</button>
+
+    <div class="contentWrapper">
+      <!-- Inzio sezione carrello -->
+      <div id="cart" class="invisible">
+        <div id="cartText">Il carrello è vuoto!</div>
+        <div class="column invisible">
+          <div class="box lessPadding">
+            <div class="orderWrapper">
+              <table class="table has-text-left is-narrow is-fullwidth">
+                <tbody id="cartTable">
+                </tbody>
+
+                <tfoot>
+                  <tr>
+                    <th></th>
+                    <th></th>
+                    <th colspan="3" class="has-text-right price" id="cartPrice">Totale: 5€</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <div class="has-text-centered">
+              <button class="button is-success is-rounded order-btn" onclick="placeOrder()">Ordina</button>
             </div>
           </div>
         </div>
       </div>
+      <!-- Fine sezione carrello -->
+
+      <div class="columns is-centered" style="margin: 1rem 0">
+        <div id="classNamePage">
+        </div>
+      </div>
+      <!-- Box centrale -->
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <div class="box box-resize-margin">
+
+            <!-- Pulsanti selezione cibo -->
+            <div class="buttons is-centered" style="margin: 0.4rem 0 0">
+              <button class="button is-danger is-outlined" type="button" name="button"
+                onclick="toggleSelect(this)">Pizze</button>
+              <button class="button is-danger is-outlined" type="button" name="button"
+                onclick="toggleSelect(this)">Panini</button>
+              <button class="button is-danger is-outlined" type="button" name="button"
+                onclick="toggleSelect(this)">Dolci</button>
+            </div>
+
+            <div class="container is-fluid invisible" style="margin-top: 1rem" id="typeWrapper">
+              <!-- Riga di selezione cibo -->
+              <div class="select-bar">
+
+                <div class="select">
+                  <select class="selHide" name="Pizze" id="selectPizze" onchange="enableAddToCart()"></select>
+                  <select class="selHide" name="Panini" id="selectPanini" onchange="enableAddToCart()"></select>
+                  <select class="selHide" name="Dolci" id="selectDolci" onchange="enableAddToCart()"></select>
+                </div>
+
+                <div class="select-quantity">
+                  <button class="select-button color-red" type="button" name="button" onclick="changeNum(-1)">-</button>
+                  <span id="quantity">1</span>
+                  <button class="select-button color-green" type="button" name="button" onclick="changeNum(1)">+</button>
+                </div>
+              </div>
+
+              <!-- Pulsanti carrello e ordina -->
+              <div class="buttons is-centered" style="margin-top: 1rem;">
+                <button class="button is-primary" type="button" name="button" id="addToCart" onclick="addToCart()"
+                  disabled>Aggiungi al carrello</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Riempie lo spazio rimanente per chiudere il menu -->
+      <div id="touch" onclick="hideCart()">
+
+      </div>
+
+      <!-- Messaggio di errore -->
+      <div id="floatingMessage">
+        Messaggio di errore
+      </div>
+
+
+    <!--Footer-->
+    <div class="container is-fluid footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>EatSchool</strong> by 5AINF & 5BINF in "I.I.S. Mattei Vasto" - 2020. The source code is licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+        </p>
+      </div>
+    </div>
+    <!--Fine footer-->
     </div>
 
-    <!-- Riempie lo spazio rimanente per chiudere il menu -->
-    <div id="touch" onclick="hideCart()">
 
-    </div>
-
-    <!-- Messaggio di errore -->
-    <div id="floatingMessage">
-      Messaggio di errore
-    </div>
-
-
-  <!--Footer-->
-  <div class="container is-fluid footer">
-    <div class="content has-text-centered">
-      <p>
-        <strong>EatSchool</strong> by 5AINF & 5BINF in "I.I.S. Mattei Vasto" - 2020. The source code is licensed
-        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
-      </p>
-    </div>
-  </div>
-  <!--Fine footer-->
-  </div>
-
-
-</body>
-<script src="../js/food_list.js"></script>
-<script src="../js/bulma.js"></script>
+  </body>
+  <script src="../js/food_list.js"></script>
+  <script src="../js/bulma.js"></script>
 
 </html>
