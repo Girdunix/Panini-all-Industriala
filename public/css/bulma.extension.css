@@ -8,7 +8,6 @@ body {
   min-height: 100vh;
   min-width: 100vw;
 }
-
 /*Footer*/
 .is-footer {
   background-color: #e8e8e8;
@@ -17,19 +16,65 @@ body {
   position: fixed;
   bottom: 0;
 }
-
+#floatingMessage {
+  z-index: 5;
+  display: none;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.5rem;
+  width: 30vw;
+  height: 100px;
+  border-radius: 1.5rem;
+  box-shadow: 0px 11px 35px 2px rgba(155, 155, 155, 0.34);
+  position: fixed;
+  bottom: 8vw;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #363636;
+  color: #fff;
+}
 /*Set the min-width of class="box" used to create receipt*/
 .is-receipt {
   min-width: 375px;
 }
-
+#navMenu {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 /*Make the navbar bigger only when it haven't hamburger*/
 @media screen and (min-width: 1024px) {
   .navbar {
       min-height: 4.30rem;
   }
 }
+@media only screen and (orientation:portrait) {
+  #floatingMessage {
+    border-radius: 0.8rem;
+    width: 70vw;
+  }
+}
 
+.darkMode{
+  color: white !important;
+  background: rgb(27 25 35) !important;
+}
+.darkModeLayer1{
+  background: rgb(42 41 51) !important;
+  color: white !important;
+}
+.darkModeLayer2{
+  background: #464646 !important;
+  color: white !important;
+}
+.whiteMode {
+  color: #222222 !important;
+  background-color: white !important;
+}
 /*Make the page not selectable by users*/
 * {
   user-select: none;

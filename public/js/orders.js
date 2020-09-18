@@ -124,6 +124,11 @@ async function initPage() {
             //render di ogni ordine ricevuto dal server
             response.message.forEach(order => {
                 makeOrder(order)
+                makeOrder(order)
+                makeOrder(order)
+                makeOrder(order)
+                makeOrder(order)
+                makeOrder(order)
             })
         } else {
             showError(response.message, 2000)
@@ -155,50 +160,33 @@ function showError(message, timeout) {
     }, timeout);
 }
 //-----------------------------------------------------------------------------//
-/*
-let globalLayersBackground = ["rgb(27 25 35)", "rgb(42 41 51)", "white"] //["#181a1b","#272b2d"]
-let globalLayersText = ["#e0e0e0", "#4a4a4a"]
-let darkModeToggled = false
-document.querySelector(".navbar").style.backgroundColor = "rgb(39, 43, 45)"
 
+let darkModeToggled = false
 function toggleDarkMode(btn) {
-    layersColor = globalLayersBackground
-    textColor = globalLayersText
     btn.innerHTML = "☀️"
     if (darkModeToggled) {
-        layersColor = ["white", "white", "rgb(42 41 51)"]
-        textColor = ["#4a4a4a", "white"]
         btn.innerHTML = "🌙"
     }
+    $(".is-footer").toggleClass("darkModeLayer1")
+
+    $("tr").toggleClass("darkModeLayer1")
+    $("body").toggleClass("darkMode")
+    $("html").toggleClass("darkMode")
+    $("tr").toggleClass("darkModeLayer1")
+    $("th").toggleClass("darkModeLayer1")
+    $("td").toggleClass("darkModeLayer1")
+    $(".is-receipt").toggleClass("darkModeLayer1")
+    $("table").toggleClass("darkModeLayer1")
+    $(".className").toggleClass("darkModeLayer1") 
+    $(".expand").toggleClass("darkModeLayer1")
+    $("#confirmWrapper").toggleClass("whiteMode")
+    document.getElementById("confirmWrapper").querySelector(".className").classList.toggle("whiteMode")
+    document.getElementById("confirmWrapper").querySelector(".expand").classList.toggle("whiteMode")
+    $("#footer *").toggleClass("darkModeLayer1")
+    $("#navMenu").toggleClass("darkModeLayer2")
+    $("#navMenu *").toggleClass("darkModeLayer2")
+
     darkModeToggled = !darkModeToggled
-    document.body.style.backgroundColor = layersColor[0]
-    document.querySelectorAll("table").forEach((e) => {
-        e.style.backgroundColor = layersColor[1]
-        e.style.color = textColor[0]
-    })
-    document.querySelectorAll(".className").forEach(e => {
-        e.style.color = textColor[0]
-    })
-    document.querySelectorAll(".expand").forEach(e => {
-        e.style.color = textColor[0]
-    })
-    document.querySelectorAll(".box").forEach((e) => {
-        if (e.id == "confirmWrapper") {
-            e.style.backgroundColor = layersColor[2]
-            e.style.color = textColor[0]
-            return
-        }
-        e.style.backgroundColor = layersColor[1]
-        e.style.color = textColor[0]
-    })
-    document.querySelectorAll("th").forEach((e) => {
-        e.style.color = textColor[0]
-    })
-    document.getElementById("noOrdersSaved").style.color = textColor[1]
-    document.querySelector("footer").style = " background-color:" + layersColor[1] + "; color:" + textColor[0]
-    document.querySelector("strong").style = "color:" + textColor[0]
-    document.getElementById("confirmWrapper").querySelector(".expand").style.color = textColor[1]
-    document.getElementById("confirmWrapper").querySelector(".className").style.color = textColor[1]
 }
 
 function goToElement(element, scroll = 0.9) {
@@ -209,7 +197,7 @@ function goToElement(element, scroll = 0.9) {
     }, 300)
 
 }
-*/
+
 //-----------------------------------------------------------------------------//
 
 function makeOrder(order) {

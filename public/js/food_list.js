@@ -154,7 +154,33 @@ function enableAddToCart() {
 }
 
 //------------------------------------------------------------------------------------------//
+let darkModeToggled = false
+function toggleDarkMode(btn) {
+    btn.innerHTML = "☀️"
+    if (darkModeToggled) {
+        btn.innerHTML = "🌙"
+    }
+    $(".is-footer").toggleClass("darkModeLayer1")
 
+    $("tr").toggleClass("darkModeLayer1")
+    $("body").toggleClass("darkMode")
+    $("html").toggleClass("darkMode")
+    $("tr").toggleClass("darkModeLayer1")
+    $("th").toggleClass("darkModeLayer1")
+    $("td").toggleClass("darkModeLayer1")
+    $(".is-receipt").toggleClass("darkModeLayer1")
+    $("table").toggleClass("darkModeLayer1")
+    $(".className").toggleClass("darkModeLayer1") 
+    $(".expand").toggleClass("darkModeLayer1")
+    $("#confirmWrapper").toggleClass("whiteMode")
+    document.getElementById("confirmWrapper").querySelector(".className").classList.toggle("whiteMode")
+    document.getElementById("confirmWrapper").querySelector(".expand").classList.toggle("whiteMode")
+    $("#footer *").toggleClass("darkModeLayer1")
+    $("#navMenu").toggleClass("darkModeLayer2")
+    $("#navMenu *").toggleClass("darkModeLayer2")
+
+    darkModeToggled = !darkModeToggled
+}
 function placeOrder() {
 
   let dataStr = "data:text/json;charset=utf-8,"
