@@ -3,7 +3,6 @@
 /*--- Page white space fix ---*/
 body,
 html {
-  font-family: 'Ubuntu', sans-serif;
   margin: 0;
   padding: 0;
   height: 100%;
@@ -280,7 +279,7 @@ nav {
     padding: 1rem;
 }
 
-@media only screen and (orientation:portrait) {
+@media only screen and (max-width: 1023px) {
     .burger{
         margin-left: 0;
     }

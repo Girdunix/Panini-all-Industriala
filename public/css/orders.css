@@ -20,7 +20,7 @@
   max-height: 0vh;
   overflow: auto;
 }
-
+/*-----------------------------------------------*/
 html{
   height: 100%;
 }
@@ -45,9 +45,7 @@ body{
   padding: 2rem;
   background-color: #e8e8e8;
 }
-.confirmedOrders{
-  margin-top: 5rem;
-}
+/*-----------------------------------------------*/
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -72,8 +70,6 @@ body{
   font-size: 1.5rem;
   color: white;
 }
-
-
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -100,7 +96,4 @@ body{
 .selectedRow {
   background-color: #48c774 !important;
   color: white !important;
-}
-@media only screen and (orientation:portrait) {
-
 }

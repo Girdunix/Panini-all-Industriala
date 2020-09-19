@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ordinazione</title>
     <link rel="manifest" href="/manifest.json">
-    <link rel="shortcut icon" href="/data/images/icon-192x192.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="../data/images/icon-192x192.png" type="image/x-icon" />
     <link rel="stylesheet" href="../css/bulma.min.css">
     <link rel="stylesheet" href="../css/bulma.extension.css">
     <link rel="stylesheet" href="../css/food_list.css">
@@ -34,7 +34,7 @@
         <a class="navbar-item">
           <img src="../data/images/icon-192x192.png">
         </a>
-        <button class="nav-btn navbar-item cartPortrait" onclick="toggleCart()">Carrello</button>
+        <button class="nav-btn cartPortrait" onclick="toggleCart()">Carrello</button>
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -68,11 +68,11 @@
           </div>
         </div>
         <div class="navbar-end">
-          <a class="button is-outlined" onclick="toggleDarkMode(this)" id="darkModeBtn">
-            🌙
-          </a>
-          <a class="navbar-item" id="showOrders" href="/html/orders.html">Ordinazioni</a>
-          <button class="nav-btn cartLandscape" onclick="toggleCart()">Carrello</button>
+          <div class="navbar-item">
+            <button class="button is-outlined" onclick="toggleDarkMode(this)" id="darkModeBtn">🌙</button>
+            <a class="navbar-item" id="showOrders" href="/html/orders.html">Ordinazioni</a>
+            <button class="nav-btn cartLandscape" onclick="toggleCart()">Carrello</button>
+          </div>
         </div>
       </div>
     </nav>
