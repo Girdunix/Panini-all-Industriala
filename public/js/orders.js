@@ -18,10 +18,11 @@ function expandOrder(btn, ignore = false) {
         expandHeight = "60vh"
     }
         //se non è stato aperto, esegui animazione e ruota il pulsante
+        let height = element.getBoundingClientRect().y
     if (element.style.maxHeight == "0vh") {
         $(element).animate({
-            "max-height": expandHeight
-        }, 600)
+            "max-height": height
+        }, 300)
         $(btn).animate({
             borderSpacing: 90
         }, {
@@ -42,7 +43,7 @@ function expandOrder(btn, ignore = false) {
         //una volta che l'animazione è finita, mostra i pulsanti per conferma/annulla
         setTimeout(() => {
             btn.parentElement.parentElement.querySelector("button").parentElement.style.display = "block"
-        }, 300);
+        }, 200);
     } else {
         $(element).animate({
             "max-height": "0vh"
@@ -128,6 +129,9 @@ async function initPage() {
         } else {
             showError(response.message, 2000)
         }
+        if(localStorage.getItem("darkMode") == "true"){
+            toggleDarkMode(document.getElementById("darkModeBtn"))
+          }
     };
     request.onerror = function (e) {
         console.log(e)
@@ -169,7 +173,6 @@ function toggleDarkMode(btn) {
     $("html").toggleClass("darkMode")
     $("tr").toggleClass("darkModeLayer1")
     $("th").toggleClass("darkModeLayer1")
-    $("td").toggleClass("darkModeLayer1")
     $(".is-receipt").toggleClass("darkModeLayer1")
     $("table").toggleClass("darkModeLayer1")
     $(".className").toggleClass("darkModeLayer1") 
@@ -178,10 +181,18 @@ function toggleDarkMode(btn) {
     document.getElementById("confirmWrapper").querySelector(".className").classList.toggle("whiteMode")
     document.getElementById("confirmWrapper").querySelector(".expand").classList.toggle("whiteMode")
     $("#footer *").toggleClass("darkModeLayer1")
-    $("#navMenu").toggleClass("darkModeLayer2")
-    $("#navMenu *").toggleClass("darkModeLayer2")
+    $("#navMenu").toggleClass("darkModeLayer1")
+    $("#navMenu *").toggleClass("darkModeLayer1")
+    $("#navMenu a").removeClass("darkModeLayer1")
+    if(darkModeToggled){
+        $("#navMenu a").css({"color":""}) 
+    }else{
+        $("#navMenu a").css({"color":"white"})
+    }
 
+    $(".navbar").toggleClass("darkModeLayer1")
     darkModeToggled = !darkModeToggled
+    localStorage.setItem("darkMode", darkModeToggled)
 }
 
 function goToElement(element, scroll = 0.9) {
@@ -207,7 +218,7 @@ function makeOrder(order) {
     keys.forEach(key => {
         let row = document.createElement("tr")
         row.innerHTML = "<th>" + key.capitalize() + "</th><th></th><th></th>"
-        tbody.appendChild(row)
+        if (order.order[key].length > 0) tbody.appendChild(row)
         order.order[key].forEach(food => {
             let row =
                 '<tr onclick="selectRow(this)">' +

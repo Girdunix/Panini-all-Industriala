@@ -48,9 +48,6 @@ body{
 .confirmedOrders{
   margin-top: 5rem;
 }
-.foodTypeDark *{
-  color: white !important;
-}
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -76,10 +73,7 @@ body{
   color: white;
 }
 
-.selectedRow {
-  background-color: #48c774;
-  color: white;
-}
+
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -103,7 +97,10 @@ body{
 ::-webkit-scrollbar-thumb:hover {
   opacity: 0.6;
 }
-
+.selectedRow {
+  background-color: #48c774 !important;
+  color: white !important;
+}
 @media only screen and (orientation:portrait) {
 
 }

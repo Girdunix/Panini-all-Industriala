@@ -135,6 +135,8 @@ nav {
 
 .select-quantity {
     margin: 10px 0;
+    display: inline-flex;
+    align-items: center;
 }
 
 .select-bar .select {
@@ -143,22 +145,24 @@ nav {
     z-index: 0;
 }
 
-.select-button {
+.select-quantity button {
     border-radius: 4rem;
-    padding: 0.5rem 1.1rem;
+    width: 45px;
     cursor: pointer;
     font-weight: bold;
     transition: all 0.3s ease 0s;
 }
 
 .color-red {
-    background-color: white;
+    background-color: transparent;
+    border-radius: 1rem;
     color: hsl(348, 100%, 61%);
     border: 1px solid hsl(348, 100%, 61%);
+    font-weight: bold;
 }
 
 .plusBtn {
-    background-color: #48c7748f;
+    background-color: #66cf8b;
 }
 
 .minusBtn {
@@ -180,9 +184,10 @@ nav {
 }
 
 .color-green {
-    background-color: white;
+    background-color: transparent;
     color: hsl(141, 71%, 48%);
     border: 1px solid hsl(141, 71%, 48%);
+    font-weight: bold;
 }
 
 .color-green:focus {
@@ -235,7 +240,9 @@ nav {
 .nav-btn:hover {
     background-color: rgba(0, 136, 169, 0.8);
 }
-
+#darkModeBtn{
+    margin-left: 0.8rem;
+}
 #className {
     max-width: 20vw;
     margin-left: 1rem;

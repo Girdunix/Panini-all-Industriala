@@ -68,7 +68,7 @@
           </div>
         </div>
         <div class="navbar-end">
-          <a class="button is-outlined" onclick="toggleDarkMode(this)">
+          <a class="button is-outlined" onclick="toggleDarkMode(this)" id="darkModeBtn">
             🌙
           </a>
           <a class="navbar-item" id="showOrders" href="/html/orders.html">Ordinazioni</a>
@@ -137,9 +137,9 @@
                 </div>
 
                 <div class="select-quantity">
-                  <button class="select-button color-red" type="button" name="button" onclick="changeNum(-1)">-</button>
+                  <button class="button color-red" type="button" name="button" onclick="changeNum(-1)">-</button>
                   <span id="quantity">1</span>
-                  <button class="select-button color-green" type="button" name="button" onclick="changeNum(1)">+</button>
+                  <button class="button color-green" type="button" name="button" onclick="changeNum(1)">+</button>
                 </div>
               </div>
 

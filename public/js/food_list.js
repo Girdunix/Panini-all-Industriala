@@ -128,8 +128,7 @@ function renderCart() {
   Object.keys(order).forEach(type => {
     let row = document.createElement("tr")
     row.className = "foodType"
-    if(darkModeToggled) row.className = "foodType foodTypeDark"
-    row.innerHTML = "<th>" + type.capitalize() + "</th><th></th><th></th>"
+      row.innerHTML = "<th>" + type.capitalize() + "</th><th></th><th></th>"
     if (order[type].length > 0) cart.append(row)
     order[type].forEach(food => {
       document.getElementById("cartText").innerHTML = "Il tuo ordine:"
@@ -144,6 +143,12 @@ function renderCart() {
         `<button class="plusBtn" onclick="changeQuantity(1,'` + food.name + `','` + type + `')">+</button>` +
         '</tr>'
       cart.append(innerRow)
+      if(darkModeToggled){
+        cart.querySelectorAll("*").forEach(e =>{
+          if(e.tagName == "BUTTON") return
+          e.classList.add("darkModeLayer1")
+        })
+      }
     })
   })
 }
@@ -168,9 +173,8 @@ function toggleDarkMode(btn) {
     if (darkModeToggled) {
         btn.innerHTML = "🌙"
     }
+    $(btn).toggleClass("whiteMode")
     $(".is-footer").toggleClass("darkModeLayer1")
-
-    $("tr").toggleClass("darkModeLayer1")
     $("body").toggleClass("darkMode")
     $("html").toggleClass("darkMode")
     $("tr").toggleClass("darkModeLayer1")
@@ -188,8 +192,16 @@ function toggleDarkMode(btn) {
     $(".navbar").toggleClass("darkModeLayer1")
     $(".nav-btn").toggleClass("darkModeLayer1")
     $(".foodType").toggleClass("foodTypeDark")
+    $("td button").removeClass("darkModeLayer1")
+    $(".cartPortrait").removeClass("darkModeLayer1")
+    $("select").toggleClass("darkModeLayer2")
     darkModeToggled = !darkModeToggled
+    localStorage.setItem("darkMode", darkModeToggled)
 }
+if(localStorage.getItem("darkMode") == "true"){
+  toggleDarkMode(document.getElementById("darkModeBtn"))
+}
+
 function placeOrder() {
 
   let dataStr = "data:text/json;charset=utf-8,"
