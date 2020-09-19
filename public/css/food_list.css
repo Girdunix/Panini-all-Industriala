@@ -146,19 +146,7 @@ nav {
 }
 
 .select-quantity button {
-    border-radius: 4rem;
     width: 45px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease 0s;
-}
-
-.color-red {
-    background-color: transparent;
-    border-radius: 1rem;
-    color: hsl(348, 100%, 61%);
-    border: 1px solid hsl(348, 100%, 61%);
-    font-weight: bold;
 }
 
 .plusBtn {
@@ -169,35 +157,8 @@ nav {
     background-color: hsl(348deg 94% 80%);
 }
 
-.color-red:focus {
-    outline: 0;
-    box-shadow: 0 0 2pt 0.1pt hsl(348, 100%, 61%);
-}
-
 .foodType {
     font-size: 1.2rem;
-}
-
-.color-red:hover {
-    background-color: hsl(348, 100%, 61%);
-    color: white;
-}
-
-.color-green {
-    background-color: transparent;
-    color: hsl(141, 71%, 48%);
-    border: 1px solid hsl(141, 71%, 48%);
-    font-weight: bold;
-}
-
-.color-green:focus {
-    outline: 0;
-    box-shadow: 0 0 2pt 0.1pt hsl(141, 71%, 48%);
-}
-
-.color-green:hover {
-    background-color: hsl(141, 71%, 48%);
-    color: white;
 }
 
 .order-btn {
