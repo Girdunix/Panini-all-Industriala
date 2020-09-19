@@ -124,11 +124,6 @@ async function initPage() {
             //render di ogni ordine ricevuto dal server
             response.message.forEach(order => {
                 makeOrder(order)
-                makeOrder(order)
-                makeOrder(order)
-                makeOrder(order)
-                makeOrder(order)
-                makeOrder(order)
             })
         } else {
             showError(response.message, 2000)

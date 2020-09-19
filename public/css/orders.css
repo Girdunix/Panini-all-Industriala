@@ -48,7 +48,9 @@ body{
 .confirmedOrders{
   margin-top: 5rem;
 }
-
+.foodTypeDark *{
+  color: white !important;
+}
 @keyframes fadeIn {
   0% {
     opacity: 0;

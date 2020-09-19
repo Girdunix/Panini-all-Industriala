@@ -5,7 +5,7 @@ nav {
 
 /*Fullpage*/
 body {
-  min-height: 100vh;
+  min-height: 100%;
   min-width: 100vw;
 }
 /*Footer*/
@@ -41,9 +41,8 @@ body {
 .is-receipt {
   min-width: 375px;
 }
-#navMenu {
-  position: absolute;
-  width: 100%;
+.navbar{
+  align-items: center;
 }
 /*Make the navbar bigger only when it haven't hamburger*/
 @media screen and (min-width: 1024px) {
@@ -56,8 +55,11 @@ body {
     border-radius: 0.8rem;
     width: 70vw;
   }
+  #navMenu{
+    position: absolute;
+    width: 100%;
+  }
 }
-
 .darkMode{
   color: white !important;
   background: rgb(27 25 35) !important;

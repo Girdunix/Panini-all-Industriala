@@ -25,7 +25,7 @@ function toggleSelect(toShow) {
     select.style.display = "none"
   })
   toShow.parentElement.querySelectorAll("*").forEach(button => {
-    button.style.backgroundColor = "white"
+    button.style.backgroundColor = "transparent"
     button.style.color = "#f14668"
   })
   document.getElementById("quantity").innerHTML = "1"
@@ -68,6 +68,13 @@ function addToCart() {
   document.getElementById("select" + selectedType).selectedIndex = 0
 }
 
+document.querySelector("#cart").addEventListener("click",function(e){
+  e.stopImmediatePropagation()
+  e.preventDefault()
+})
+document.querySelector(".contentWrapper").addEventListener("click",function(){
+  hideCart()
+})
 function hideCart() {
   document.getElementById("cart").classList.add("invisible")
 }
@@ -121,6 +128,7 @@ function renderCart() {
   Object.keys(order).forEach(type => {
     let row = document.createElement("tr")
     row.className = "foodType"
+    if(darkModeToggled) row.className = "foodType foodTypeDark"
     row.innerHTML = "<th>" + type.capitalize() + "</th><th></th><th></th>"
     if (order[type].length > 0) cart.append(row)
     order[type].forEach(food => {
@@ -173,12 +181,13 @@ function toggleDarkMode(btn) {
     $(".className").toggleClass("darkModeLayer1") 
     $(".expand").toggleClass("darkModeLayer1")
     $("#confirmWrapper").toggleClass("whiteMode")
-    document.getElementById("confirmWrapper").querySelector(".className").classList.toggle("whiteMode")
-    document.getElementById("confirmWrapper").querySelector(".expand").classList.toggle("whiteMode")
-    $("#footer *").toggleClass("darkModeLayer1")
-    $("#navMenu").toggleClass("darkModeLayer2")
-    $("#navMenu *").toggleClass("darkModeLayer2")
-
+    $(".box").toggleClass("darkModeLayer1")
+    $("#navMenu").toggleClass("darkModeLayer1")
+    $("#navMenu *").toggleClass("darkModeLayer1")
+    $("strong").toggleClass("darkModeLayer1")
+    $(".navbar").toggleClass("darkModeLayer1")
+    $(".nav-btn").toggleClass("darkModeLayer1")
+    $(".foodType").toggleClass("foodTypeDark")
     darkModeToggled = !darkModeToggled
 }
 function placeOrder() {
