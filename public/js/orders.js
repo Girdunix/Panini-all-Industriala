@@ -25,7 +25,7 @@ if ('serviceWorker' in navigator) {
     //service worker per rendere il sito installabile come app
     window.addEventListener('load', () => {
         return //da rimuovere in production
-        navigator.serviceWorker.register('/service-worker.js')
+        navigator.serviceWorker.register('../service-worker.js')
             .then((reg) => {
                 console.log('Service worker registered.', reg)
             })
@@ -111,7 +111,7 @@ function confirmOrder(order) {
 function deleteOrder(order) {
     if (confirm("Sicuro di voler annullare l'ordine?")) {
         let request = new XMLHttpRequest();
-        request.open("POST", "/removeOrder");
+        request.open("POST", "../php/removeOrder.php");
         //invia una richiesta post per l'eliminazione di un ordine
         request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
         request.onload = (res) => {
@@ -140,7 +140,7 @@ function deleteOrder(order) {
 async function initPage() {
     //render della pagina, aggiungendo gli ordini ricevuti dal server
     let request = new XMLHttpRequest();
-    request.open("POST", "/getOrders");
+    request.open("POST", "../php/getOrders.php");
     request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
     request.onload = (res) => {
         let response = JSON.parse(res.target.response)

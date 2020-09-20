@@ -25,7 +25,7 @@ if ('serviceWorker' in navigator) {
     //service worker per rendere il sito installabile come app
     window.addEventListener('load', () => {
         return //da rimuovere in production
-        navigator.serviceWorker.register('/service-worker.js')
+        navigator.serviceWorker.register('../service-worker.js')
             .then((reg) => {
                 console.log('Service worker registered.', reg);
             })
@@ -58,17 +58,18 @@ function login() {
         showError("Scrivi le credenziali!", 2000)
     }
     let request = new XMLHttpRequest();
-    request.open("POST", "/login");
+    request.open("POST", "../php/login.php");
     request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
     request.onload = (res) => {
+        console.log(res.target.response)
         let response = JSON.parse(res.target.response)
         if (response.sent) {
             showError(response.message, 2000)
             setTimeout(() => {
                 if (credentials.username == "Paninaro") {
-                    document.location.href = '/html/orders.html'
+                    document.location.href = '../html/orders.html'
                 } else {
-                    document.location.href = '/html/food_list.html'
+                    document.location.href = '../html/food_list.html'
                 }
             }, 500);
             localStorage.setItem("credentials", JSON.stringify(credentials))

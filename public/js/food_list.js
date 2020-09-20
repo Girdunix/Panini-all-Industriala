@@ -25,7 +25,7 @@ if ('serviceWorker' in navigator) {
   //service worker per rendere il sito installabile come app
   window.addEventListener('load', () => {
     return //da rimuovere in production
-    navigator.serviceWorker.register('/service-worker.js')
+    navigator.serviceWorker.register('../service-worker.js')
       .then((reg) => {
         console.log('Service worker registered.', reg)
       })
@@ -102,11 +102,10 @@ function hideCart() {
   document.getElementById("cart").classList.add("invisible")
 }
 //------------------------------------------------------------------------------------------//
-
 let globalMenu = {}
 async function initializeFood() {
   //Fetcha il json menu.json che contiene tutti i dettagli del menu
-  let menu = await fetch("/data/menu.json").then(data => data.json())
+  let menu = await fetch("../data/menu.json").then(data => data.json())
   globalMenu = menu
   let keys = Object.keys(menu)
   //itera nell'oggetto e crea le opzioni per i tipi di cibo e le aggiunge al select
@@ -235,9 +234,10 @@ function placeOrder() {
   //dlAnchorElem.click(); //per scaricare
   dlAnchorElem.remove()
   let request = new XMLHttpRequest();
-  request.open("POST", "/placeOrder");
+  request.open("POST", "../php/placeOrder.php");
   request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
   request.onload = (res) => {
+    console.log(res.target.response)
     let response = JSON.parse(res.target.response)
     if (response.sent) {
       showError(response.message, 2000)
