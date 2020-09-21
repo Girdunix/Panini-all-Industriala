@@ -1,17 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 /*--- Page white space fix ---*/
-body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100vw;
-  overflow: hidden;
-}
-body {
-  position: fixed;
-}
+
 .cartLandscape{
     display: block;
 }
@@ -24,20 +14,6 @@ body {
 }
 
 /*--- NAVBAR CSS START ---*/
-
-/*Nav fix*/
-nav {
-    margin: 0px;
-    width: 100vw;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    outline: 0;
-    -webkit-tap-highlight-color: transparent;
-}
 
 .logo {
     cursor: pointer;
@@ -291,9 +267,7 @@ nav {
         display: block;
         margin-right: 0;
     }
-    header {
-        padding: 0.6rem;
-    }
+
 
     .lessPadding {
         padding: 0.2rem;

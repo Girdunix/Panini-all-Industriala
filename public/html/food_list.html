@@ -1,7 +1,7 @@
 <!--
   MIT License
 
-Copyright (c) 2020, the respective contributors, as shown by the AUTHORS file. 
+Copyright (c) 2020, the respective contributors, as shown by the AUTHORS file.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -92,9 +92,11 @@ SOFTWARE.
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
-            <button class="button is-outlined" onclick="toggleDarkMode(this)" id="darkModeBtn">🌙</button>
-            <a class="navbar-item" id="showOrders" href="../html/orders.html">Ordinazioni</a>
-            <button class="nav-btn cartLandscape" onclick="toggleCart()">Carrello</button>
+            <div class="buttons">
+              <button class="button is-outlined" style="width: 50px" onclick="toggleDarkMode(this)" id="darkModeBtn">🌙</button>
+              <a class="navbar-item" id="showOrders" href="../html/orders.html">Ordinazioni</a>
+              <button class="button is-info cartLandscape" style="width: 100px" onclick="toggleCart()">Carrello</button>
+            </div>
           </div>
         </div>
       </div>
@@ -160,15 +162,15 @@ SOFTWARE.
                 </div>
 
                 <div class="select-quantity">
-                  <button class="button is-danger is-outlined is-rounded" type="button" name="button" onclick="changeNum(-1)">-</button>
+                  <button class="button is-danger" type="button" name="button" onclick="changeNum(-1)">-</button>
                   <span id="quantity">1</span>
-                  <button class="button is-success is-outlined is-rounded" type="button" name="button" onclick="changeNum(1)">+</button>
+                  <button class="button is-success" type="button" name="button" onclick="changeNum(1)">+</button>
                 </div>
               </div>
 
-              <!-- Pulsanti carrello e ordina -->
+              <!--Pulsanti carrello e ordina-->
               <div class="buttons is-centered" style="margin-top: 1rem;">
-                <button class="button is-primary" type="button" name="button" id="addToCart" onclick="addToCart()"
+                <button class="button is-primary is-info" type="button" name="button" id="addToCart" onclick="addToCart()"
                   disabled>Aggiungi al carrello</button>
               </div>
             </div>
@@ -190,10 +192,10 @@ SOFTWARE.
 
       </a>
     <!--Footer-->
-    <div class="container is-fluid is-footer" id="footer">
+    <div class="container is-fluid" id="footer">
       <div class="content has-text-centered">
         <p>
-          <strong>EatSchool</strong> by 5AINF & 5BINF in "I.I.S. Mattei Vasto" - 2020. The source code is licensed
+          <strong>EatSchool</strong> by 5AINF & 5BINF in "I.I.S. Mattei Vasto" - 2020. The source code is licensed under
           <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
         </p>
       </div>

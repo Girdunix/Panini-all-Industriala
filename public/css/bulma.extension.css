@@ -1,28 +1,19 @@
 /*HTML Fix*/
 html {
   touch-action: manipulation;
+  height: 100%
 }
 /*Fullpage*/
 body {
   min-height: 100%;
-  min-width: 100%;
+  width: 100%;
   display: flex;
+  flex: 1;
   flex-direction: column;
 }
 /*Footer*/
-.is-footer {
-  background-color: #e8e8e8;
-  margin-top: 2rem;
-  padding: 2rem;
-  bottom: 0;
-}
-#showOrders{
-  color: white;
-}
-#showOrders:hover{
-  background-color: transparent;
-}
 #footer{
+  margin-top: 2rem;
   position: unset;
   display: flex;
   flex-direction: column;
@@ -36,6 +27,14 @@ body {
   padding: 2rem;
   background-color: #e8e8e8;
 }
+/*Fine Footer*/
+#showOrders{
+  color: white;
+}
+#showOrders:hover{
+  background-color: transparent;
+}
+
 .github{
   background-image: url("../images/github.png");
   height: 25px;
@@ -95,6 +94,7 @@ body {
     width: 70vw;
   }
 }
+/*--------DARK MODE--------*/
 .darkMode{
   color: white !important;
   background: rgb(27 25 35) !important;
@@ -114,6 +114,7 @@ body {
 .invert{
   filter: invert(1);
 }
+/*--------DARK MODE END--------*/
 /*Make the page not selectable by users*/
 * {
   user-select: none;

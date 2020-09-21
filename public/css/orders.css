@@ -20,32 +20,7 @@
   max-height: 0vh;
   overflow: auto;
 }
-/*-----------------------------------------------*/
-html{
-  height: 100%;
-}
-body{
-  min-height: 100%;
-  height: 100%;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-}
-#footer{
-  position: unset;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  flex-grow: 1;
-  flex: 1;
-  padding: 0;
-  background-color: transparent;
-}
-#footer div{
-  padding: 2rem;
-  background-color: #e8e8e8;
-}
-/*-----------------------------------------------*/
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
