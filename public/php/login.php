@@ -18,7 +18,7 @@ $data = json_decode(file_get_contents('php://input')); //dati che vengono dal cl
 $hostname = "localhost"; //creazione connessione al database
 $utente = "root";
 $password = "";
-$nomedatabase = "db";
+$nomedatabase = "my_eatschool";
 $mysql = mysqli_connect($hostname, $utente, $password, $nomedatabase);
 if (!$mysql) {
     $object = new response(false, "Errore connessione!");
