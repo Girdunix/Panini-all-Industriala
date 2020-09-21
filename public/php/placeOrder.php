@@ -52,9 +52,10 @@ if($alreadySaved->num_rows != 0) {
 
 //----------------------------EFFETTUA L'ORDINE-----------------------------------------------------//
 //se tutto i controlli di prima sono corretti, effettua l'ordine aggiungendo alla table ordini i dati ricevuti
+$day = date("d");
 if (mysqli_query($mysql,
-"INSERT INTO ordini (username, psw, ordine)
-VALUES ('$credentials->username', '$credentials->password','$order')")) {
+"INSERT INTO ordini (username, psw, ordine, giorno)
+VALUES ('$credentials->username', '$credentials->password','$order', '$day')")) {
     $object = new response(true, "Ordine effettuato!");
     echo $object = json_encode($object);
 } else {

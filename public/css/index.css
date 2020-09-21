@@ -1,0 +1,26 @@
+body,html{
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+}
+.enterInApp{
+    width: 80vw;
+    height: 50vh;
+    position: absolute;
+    top: 15vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #FFFFFF;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #363636;
+    padding: 2rem 0;
+    border-radius: 1.5rem;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.34);
+    font-size: 4rem;
+}
