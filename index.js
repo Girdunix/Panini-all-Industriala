@@ -102,24 +102,30 @@ MongoClient.connect(mongoKey, async function (err, db1) {
 
     //-------------------------------------------------------------//
     
-    return
     let csvAlunni = leggiFile("./public/data/Alunni_2020.CSV")
     let alunni = elaboraDatiAlunni(csvAlunni,";")
     let classi = alunni.map(e => e[3])
     classi = uniq(classi)
+    let finalData = ""
     classi.forEach(e =>{
-        let classObj = {
-            name: e,
-            password: "test_"+e
-        }
-        users.insertOne(classObj)
+        finalData+=e + " ; "+makeid(8)+"\n"
     })
+    return
+    fs.writeFileSync(__dirname+"/users.txt",finalData)
     console.log("Aggiunti utenti")
 })
 app.get("/", function (req, res) {
     res.redirect("/html/login.html")
 })
-
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+ }
 
 app.get('*', function (req, res) {
     //Se si sta richiedendo una risorsa che non esiste, DEVE ESSERE SEMPRE COME ULTIMO

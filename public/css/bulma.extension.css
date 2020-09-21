@@ -95,6 +95,11 @@ body {
     width: 70vw;
   }
 }
+.logoImg{
+  background-color: #5b5b5b;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+}
 .darkMode{
   color: white !important;
   background: rgb(27 25 35) !important;
