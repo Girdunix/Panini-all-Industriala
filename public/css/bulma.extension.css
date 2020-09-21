@@ -94,7 +94,15 @@ body {
     width: 70vw;
   }
 }
+<<<<<<< HEAD
 /*--------DARK MODE--------*/
+=======
+.logoImg{
+  background-color: #5b5b5b;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+}
+>>>>>>> 67e7fbf619797f0994779c7ff2b08fec4a8412c7
 .darkMode{
   color: white !important;
   background: rgb(27 25 35) !important;

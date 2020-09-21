@@ -115,6 +115,7 @@
 @media only screen and (orientation:portrait) {
   .main {
     border-radius: 0.8rem;
-    width: 85vw;
+    width: 85%;
+    min-width: 85%;
   }
 }
