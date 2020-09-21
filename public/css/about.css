@@ -70,49 +70,6 @@
     width: 100%;
 }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
-::-webkit-scrollbar {
-    width: 5px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: #cdcdcd;
-    border-radius: 3px;
-    overflow: hidden;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: rgb(116 116 116);
-    border-radius: 3px;
-    overflow: hidden;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    opacity: 0.6;
-}
-
 .lessPadding {
     padding: 1rem;
 }

@@ -135,3 +135,48 @@ body {
   right: 30px; /* Place the button 30px from the right */
   z-index: 99; /* Make sure it does not overlap */
 }
+
+/* Scrollbar personalizzata */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #cdcdcd;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(116 116 116);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.6;
+}
+/* Fine scrollbar personalizzata */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
