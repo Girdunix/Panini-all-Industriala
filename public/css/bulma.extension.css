@@ -36,6 +36,15 @@ body {
   padding: 2rem;
   background-color: #e8e8e8;
 }
+.github{
+  background-image: url("../images/github.png");
+  height: 25px;
+  width: 25px;
+  position: fixed;
+  left:  0.5rem;
+  bottom: 0.5rem;
+  background-size: contain;
+}
 #floatingMessage {
   z-index: 5;
   display: none;
@@ -101,6 +110,9 @@ body {
 .whiteMode {
   color: #222222 !important;
   background-color: white !important;
+}
+.invert{
+  filter: invert(1);
 }
 /*Make the page not selectable by users*/
 * {

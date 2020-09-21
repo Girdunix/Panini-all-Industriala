@@ -1,0 +1,180 @@
+<!--
+  MIT License
+
+Copyright (c) 2020, the respective contributors, as shown by the AUTHORS file. 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+
+<!DOCTYPE html>
+<html lang="it" dir="ltr">
+
+<head>
+    <meta name="theme-color" content="#2196F3">
+    <meta name="description" content="App ufficiale del Mattei(Vasto)">
+    <meta name="keywords" content="PWA,lista,cibo,pizza,panino,dolci,ordinazione,itis,vasto, industriale">
+    <meta name="author" content="Degli alunni">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="EatSchool">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="">
+    <meta property="og:image" content="">
+    <meta property="og:site_name" content="EatSchool">
+    <meta property="og:title" content="EatSchool">
+    <meta property="og:url" content="">
+    <meta property="og:description" content="App ufficiale del Mattei(Vasto)">
+    <link rel="icon" type="image/png" href="" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ordinazione</title>
+    <link rel="manifest" href="../manifest.json">
+    <link rel="shortcut icon" href="../images/icon-192x192.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/bulma.min.css">
+    <link rel="stylesheet" href="../css/bulma.extension.css">
+    <link rel="stylesheet" href="../css/about.css">
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="../html/login.html">
+                <img src="../images/icon-192x192.png">
+            </a>
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navMenu" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="../html/food_list.html">
+                    Home
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        Altro
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="../html/about.html">
+                            Chi siamo
+                        </a>
+                        <a class="navbar-item" >
+                            Contatti
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item">
+                            Segnala un problema
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--Fine Navbar-->
+    <div class="column">
+        <div class="box">
+            <div class="has-text-centered is-size-2">
+                <b>Chi siamo</b>
+            </div>
+            <div class="box is-size-12">
+                Siamo degli studenti dell' IIS Mattei di vasto dell'indirizzo informatica.<br>
+
+                Abbiamo creato questa app in seguito alla pandemia SARS-Cov-2 e le seguenti restrizioni. <br>
+
+                L'app permette l'ordinazione di cibo dal "Paninaro" della scuola semplicemente dalla propria classe, senza 
+                il bisogno di dover delegare qualcuno ad aspettare che l'ordine sia finito. <br>
+                
+                Questo riduce il traffico di persone e rende l'ordinazione del cibo più semplice sia per gli studenti che per il paninaro.<br>
+
+                Lo scopo in futuro sarà quello di migliorare ancora di più la app, tutto questo è stato sviluppato in brevissimo tempo e abbiamo 
+                già idee su come migliorarlo.
+            </div>
+            <div class="is-size-2 has-text-centered" style="margin-top: 3rem;">
+                <b>Il team</b>
+            </div>
+            <div>
+                <div class="box">
+                    <div class="is-size-3">
+                        5A INF
+                    </div>
+                    <div class="is-size-10" style="line-height: normal">
+                    <div class="members">
+                        <b>Sasso</b>Html, Css
+                    </div>
+                    <div class="members">
+                        <b>Girdunix</b>Html, Css
+                    </div>
+                    <div class="members">
+                        <b>RAMAR-RAR</b>Immagini, Database
+                    </div>
+                    <div class="members">
+                        <b>FedeSanta777</b>Server, Database
+                    </div>
+
+                    </div>
+                </div>
+                <div class="box" style="margin-bottom: 2rem;">
+                    <div class="is-size-3">
+                        5B INF
+                    </div>
+                    <div class="is-size-10" style="line-height: normal">  
+                        <div class="members">
+                            <b>Specy</b>Javascript, Html <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <a href="https://github.com/Specy-wot/Panini-all-Industriala" class="github">
+
+    </a>
+    <!--Footer-->
+    <div class="container is-fluid is-footer" id="footer">
+
+        <div class="content has-text-centered">
+            <p>
+                <strong>EatSchool</strong> by 5AINF & 5BINF in "I.I.S. Mattei Vasto" - 2020. The source code is licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+            </p>
+        </div>
+    </div>
+    <!--Fine footer-->
+</body>
+<script src="../scripts/jquery.js"></script>
+<script src="../js/bulma.js"></script>
+
+</html>

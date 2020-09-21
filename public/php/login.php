@@ -27,20 +27,18 @@ if (!$mysql) {
 }
 
 //separazione delle credenziali dall'ordine
-$credentials = $data->credentials;
-//$order = json_encode($data->order);
 
 
 //----------------------------CONTROLLA SE LA PASSWORD E' CORRETTA---------------------------------//
-$correctCredentials = mysqli_query($mysql,"SELECT psw FROM utenti WHERE username = '$credentials->username' AND psw = '$credentials->password'");
+$correctCredentials = mysqli_query($mysql,"SELECT psw FROM utenti WHERE username = '$data->username' AND psw = '$data->password'");
 //se non esiste nessuna corrispondenza dove l'username e password sono uguali, ritorna l'errore al client 
 if($correctCredentials->num_rows == 0) {
-    $object = new response(false, "Credenziali Sbagliate");
+    $object = new response(false, "Credenziali Sbagliate!");
     echo $object = json_encode($object);
     exit();
 }
 else{    
-    $object = new response(true, "Connessione Effettuata");
+    $object = new response(true, "Login effettuato!");
     echo $object = json_encode($object);
 }
 

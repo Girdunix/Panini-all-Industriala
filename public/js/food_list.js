@@ -196,7 +196,8 @@ function toggleDarkMode(btn) {
         btn.innerHTML = "🌙"
     }
     $(btn).toggleClass("whiteMode")
-    $(".is-footer").toggleClass("darkModeLayer1")
+    $(".is-footer *").toggleClass("darkModeLayer1")
+    $(".github").toggleClass("invert")
     $("body").toggleClass("darkMode")
     $("html").toggleClass("darkMode")
     $("tr").toggleClass("darkModeLayer1")
@@ -210,7 +211,6 @@ function toggleDarkMode(btn) {
     $(".box").toggleClass("darkModeLayer1")
     $("#navMenu").toggleClass("darkModeLayer1")
     $("#navMenu *").toggleClass("darkModeLayer1")
-    $("strong").toggleClass("darkModeLayer1")
     $(".navbar").toggleClass("darkModeLayer1")
     $(".nav-btn").toggleClass("darkModeLayer1")
     $(".foodType").toggleClass("foodTypeDark")
