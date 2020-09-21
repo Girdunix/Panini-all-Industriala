@@ -94,15 +94,12 @@ body {
     width: 70vw;
   }
 }
-<<<<<<< HEAD
 /*--------DARK MODE--------*/
-=======
 .logoImg{
   background-color: #5b5b5b;
   border-radius: 0.2rem;
   padding: 0.2rem;
 }
->>>>>>> 67e7fbf619797f0994779c7ff2b08fec4a8412c7
 .darkMode{
   color: white !important;
   background: rgb(27 25 35) !important;
@@ -123,8 +120,18 @@ body {
   filter: invert(1);
 }
 /*--------DARK MODE END--------*/
+
 /*Make the page not selectable by users*/
 * {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+}
+
+/*Make a "Scroll To Top" button*/
+#scrollToTopButton {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
 }
