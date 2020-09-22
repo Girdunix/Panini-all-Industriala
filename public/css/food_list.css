@@ -132,10 +132,12 @@ body{
 
 .plusBtn {
     background-color: #66cf8b;
+    cursor: pointer;
 }
 
 .minusBtn {
     background-color: hsl(348deg 94% 80%);
+    cursor: pointer;
 }
 
 .foodType {
@@ -200,8 +202,6 @@ body{
 .level-item {
     flex-shrink: 1;
 }
-#showOrders{
-}
 #cartText {
     width: 100%;
     font-size: 1.5rem;
@@ -209,7 +209,12 @@ body{
     text-align: center;
     margin-top: 1rem;
 }
-
+#showOrders{
+    color: #0a0a0a;
+}
+#showOrders:hover{
+    background-color: white;
+}
 .orderWrapper {
     overflow: auto;
     max-height: 65vh;
@@ -218,7 +223,11 @@ body{
 .lessPadding {
     padding: 1rem;
 }
-
+.selectedRow {
+    background-color: #48c774 !important;
+    color: white !important;
+  }
+  
 @media only screen and (max-width: 1023px) {
     .burger{
         margin-left: 0;

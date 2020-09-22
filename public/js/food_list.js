@@ -107,9 +107,20 @@ function hideCart() {
 }
 //------------------------------------------------------------------------------------------//
 let globalMenu = {}
+let globalDate = new Date()
 async function initializeFood() {
   //Fetcha il json menu.json che contiene tutti i dettagli del menu
   let menu = await fetch("../data/menu.json").then(data => data.json())
+  let todayDate = globalDate.getDate()
+  let storedOrder = JSON.parse(localStorage.getItem("order"))
+  if(storedOrder.time == todayDate){
+    storedOrder = storedOrder.order
+    globalOrder.order.dolci = storedOrder.order.dolci
+    globalOrder.order.pizze = storedOrder.order.pizze
+    globalOrder.order.panini = storedOrder.order.panini
+    globalOrder.price = storedOrder.price
+    renderCart()
+  }
   globalMenu = menu
   let keys = Object.keys(menu)
   //itera nell'oggetto e crea le opzioni per i tipi di cibo e le aggiunge al select
@@ -141,9 +152,9 @@ function changeQuantity(amount, food, type) {
   }
   renderCart()
 }
-
 function renderCart() {
   let order = globalOrder.order
+  localStorage.setItem("order",JSON.stringify({time: globalDate.getDate(), order:globalOrder}))
   //prende ogni proprietà nell'oggetto ordine e li aggiunge alla div del tipo corretto nel carrello
   let cart = document.getElementById("cartTable")
   let cartWrapper = cart.parentElement.parentElement.parentElement.parentElement
@@ -159,6 +170,7 @@ function renderCart() {
     order[type].forEach(food => {
       document.getElementById("cartText").innerHTML = "Il tuo ordine:"
       let innerRow = document.createElement("tr")
+
       cartWrapper.classList.remove("invisible")
       innerRow.className = "underlined"
       innerRow.innerHTML =
@@ -172,6 +184,7 @@ function renderCart() {
       if(darkModeToggled){
         cart.querySelectorAll("*").forEach(e =>{
           if(e.tagName == "BUTTON") return
+          
           e.classList.add("darkModeLayer1")
         })
       }
@@ -221,6 +234,7 @@ function toggleDarkMode(btn) {
     $("td button").removeClass("darkModeLayer1")
     $(".cartPortrait").removeClass("darkModeLayer1")
     $(".cartLandscape").removeClass("darkModeLayer1")
+    $("#showOrders").removeClass("darkModeLayer1")
     $("select").toggleClass("darkModeLayer2")
     darkModeToggled = !darkModeToggled
     localStorage.setItem("darkMode", darkModeToggled)
@@ -251,6 +265,7 @@ function placeOrder() {
     order: globalOrder,
     credentials: globalCredentials
   }
+
   request.send(JSON.stringify(orderToSend))
 }
 class Order {
