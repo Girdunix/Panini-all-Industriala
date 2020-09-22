@@ -182,7 +182,6 @@ function showError(message, timeout) {
     }, timeout);
 }
 //-----------------------------------------------------------------------------//
-
 let darkModeToggled = false
 function toggleDarkMode(btn) {
     btn.innerHTML = "☀️"
