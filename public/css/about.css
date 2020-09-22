@@ -14,7 +14,6 @@
     flex-direction: row;
     justify-content: space-between;
 }
-/*--- NAVBAR CSS START ---*/
 
 .logo {
     cursor: pointer;
@@ -26,20 +25,6 @@
 .invisible {
     display: none;
 }
-
-
-
-
-
-
-
-
-
-/*--- NAVBAR CSS END ---*/
-
-
-
-
 
 .nav-btn {
     margin: auto 20px;

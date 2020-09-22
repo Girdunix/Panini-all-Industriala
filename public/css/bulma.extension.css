@@ -1,36 +1,21 @@
 /*HTML Fix*/
 html {
   touch-action: manipulation;
-  height: 100%
-}
-/*Fullpage*/
-body {
-  min-height: 100%;
-  width: 100%;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
 }
 /*Footer*/
 #footer{
-  margin-top: 2rem;
-  position: unset;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  flex-grow: 1;
-  flex: 1;
+  margin-top: 1rem;
   padding: 0;
-  background-color: transparent;
 }
 #footer div{
   padding: 2rem;
   background-color: #e8e8e8;
 }
-/*Fine Footer*/
+
 #showOrders{
   color: white;
 }
+
 #showOrders:hover{
   background-color: transparent;
 }
@@ -44,6 +29,7 @@ body {
   bottom: 0.5rem;
   background-size: contain;
 }
+
 #floatingMessage {
   z-index: 5;
   display: none;
@@ -63,20 +49,20 @@ body {
   background-color: #363636;
   color: #fff;
 }
+
 .darkModeBtn{
   background-color: white;
 }
 /*An under class of class="box" to create receipt*/
 .is-receipt {
-  min-width: 375px;
-  margin-top: 2rem;
+  min-width: 320px;
+  margin-top: 1rem;
 }
 /*Make the navbar bigger only when it haven't hamburger*/
 @media screen and (min-width: 1024px) {
   .navbar {
       min-height: 4.30rem;
   }
-
 }
 /*Make the navMenu of hamburger absolute*/
 @media screen and (max-width: 1023px) {
@@ -120,15 +106,12 @@ body {
 .invert{
   filter: invert(1);
 }
-/*--------DARK MODE END--------*/
-
 /*Make the page not selectable by users*/
 * {
   user-select: none;
   outline: 0;
   -webkit-tap-highlight-color: transparent;
 }
-
 /*Make a "Scroll To Top" button*/
 #scrollToTopButton {
   display: none; /* Hidden by default */
@@ -137,31 +120,23 @@ body {
   right: 30px; /* Place the button 30px from the right */
   z-index: 99; /* Make sure it does not overlap */
 }
-
 /* Scrollbar personalizzata */
 ::-webkit-scrollbar {
   width: 5px;
 }
-
-/* Track */
 ::-webkit-scrollbar-track {
   background: #cdcdcd;
   border-radius: 3px;
   overflow: hidden;
 }
-
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgb(116 116 116);
   border-radius: 3px;
   overflow: hidden;
 }
-
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   opacity: 0.6;
 }
-/* Fine scrollbar personalizzata */
 
 @keyframes fadeIn {
   0% {
