@@ -112,15 +112,23 @@ async function initializeFood() {
   //Fetcha il json menu.json che contiene tutti i dettagli del menu
   let menu = await fetch("../data/menu.json").then(data => data.json())
   let todayDate = globalDate.getDate()
-  let storedOrder = JSON.parse(localStorage.getItem("order"))
-  if(storedOrder.time == todayDate){
-    storedOrder = storedOrder.order
-    globalOrder.order.dolci = storedOrder.order.dolci
-    globalOrder.order.pizze = storedOrder.order.pizze
-    globalOrder.order.panini = storedOrder.order.panini
-    globalOrder.price = storedOrder.price
-    renderCart()
+  try{
+    let storedOrder = JSON.parse(localStorage.getItem("order"))
+    if(storedOrder != null){
+      if(storedOrder.time == todayDate){
+        storedOrder = storedOrder.order
+        globalOrder.order.dolci = storedOrder.order.dolci
+        globalOrder.order.pizze = storedOrder.order.pizze
+        globalOrder.order.panini = storedOrder.order.panini
+        globalOrder.price = storedOrder.price
+        renderCart()
+      }
+    }
+  }catch(e){
+    console.log(e)
   }
+
+
   globalMenu = menu
   let keys = Object.keys(menu)
   //itera nell'oggetto e crea le opzioni per i tipi di cibo e le aggiunge al select
@@ -205,6 +213,10 @@ function enableAddToCart() {
   document.getElementById("addToCart").disabled = false
 }
 
+document.getElementById("message").addEventListener("input",function(e){
+  let length = this.value.length
+  document.getElementById("charLeft").innerHTML = 150 - length
+})
 //------------------------------------------------------------------------------------------//
 let darkModeToggled = false
 function toggleDarkMode(btn) {
@@ -261,6 +273,10 @@ function placeOrder() {
     console.log(e)
   };
   globalOrder.class = globalCredentials.username
+  let message = document.getElementById("message").value
+  if(message.length > 5 && message.length < 150){
+    globalOrder.message = message
+  }
   let orderToSend = {
     order: globalOrder,
     credentials: globalCredentials
