@@ -230,18 +230,10 @@ if(localStorage.getItem("darkMode") == "true"){
 }
 
 function placeOrder() {
-  let dataStr = "data:text/json;charset=utf-8,"
-  dataStr += encodeURIComponent(JSON.stringify(globalOrder));
-  let dlAnchorElem = document.createElement("a")
-  dlAnchorElem.setAttribute("href", dataStr);
-  dlAnchorElem.setAttribute("download", "order.json");
-  //dlAnchorElem.click(); //per scaricare
-  dlAnchorElem.remove()
   let request = new XMLHttpRequest();
   request.open("POST", "../php/placeOrder.php");
   request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
   request.onload = (res) => {
-    console.log(res.target.response)
     let response = JSON.parse(res.target.response)
     if (response.sent) {
       showError(response.message, 2000)
