@@ -35,7 +35,6 @@ if ('serviceWorker' in navigator) {
 function expandOrder(btn, ignore = false) {
     let element = btn.parentElement.getElementsByClassName("orderWrapper")[0]
     btn = btn.getElementsByClassName("expand")[0]
-    let expandHeight = "70vh"
         //se è su pc, usare una max width minore così da non riempire lo schermo
     if (screen.width > screen.height) {
         expandHeight = "60vh"
@@ -144,6 +143,7 @@ async function initPage() {
     request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
     request.onload = (res) => {
         let response = JSON.parse(res.target.response)
+        console.log(response)
         if (response.sent) {
             //render di ogni ordine ricevuto dal server
             response.message.forEach(order => {

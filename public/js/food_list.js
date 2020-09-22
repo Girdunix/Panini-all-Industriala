@@ -89,6 +89,10 @@ function addToCart() {
   renderCart()
   showError("Aggiunto al carrello!", 2000)
   document.getElementById("select" + selectedType).selectedIndex = 0
+  $(".cartPortrait").css({filter : "invert(100%)"})
+  setTimeout(() => {
+    $(".cartPortrait").css({filter : "invert(0%)"})
+  }, 200);
 }
 
 document.querySelector("#cart").addEventListener("click",function(e){
@@ -216,6 +220,7 @@ function toggleDarkMode(btn) {
     $(".foodType").toggleClass("foodTypeDark")
     $("td button").removeClass("darkModeLayer1")
     $(".cartPortrait").removeClass("darkModeLayer1")
+    $(".cartLandscape").removeClass("darkModeLayer1")
     $("select").toggleClass("darkModeLayer2")
     darkModeToggled = !darkModeToggled
     localStorage.setItem("darkMode", darkModeToggled)
@@ -225,7 +230,6 @@ if(localStorage.getItem("darkMode") == "true"){
 }
 
 function placeOrder() {
-
   let dataStr = "data:text/json;charset=utf-8,"
   dataStr += encodeURIComponent(JSON.stringify(globalOrder));
   let dlAnchorElem = document.createElement("a")
