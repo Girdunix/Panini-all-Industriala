@@ -182,15 +182,12 @@ function showError(message, timeout) {
     }, timeout);
 }
 //-----------------------------------------------------------------------------//
-
 let darkModeToggled = false
 function toggleDarkMode(btn) {
     btn.innerHTML = "☀️"
     if (darkModeToggled) {
         btn.innerHTML = "🌙"
     }
-    $(".is-footer").toggleClass("darkModeLayer1")
-
     $("tr").toggleClass("darkModeLayer1")
     $("body").toggleClass("darkMode")
     $("html").toggleClass("darkMode")

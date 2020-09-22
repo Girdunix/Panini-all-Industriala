@@ -196,7 +196,7 @@ function toggleDarkMode(btn) {
         btn.innerHTML = "🌙"
     }
     $(btn).toggleClass("whiteMode")
-    $(".is-footer *").toggleClass("darkModeLayer1")
+    $("#footer *").toggleClass("darkModeLayer1")
     $(".github").toggleClass("invert")
     $("body").toggleClass("darkMode")
     $("html").toggleClass("darkMode")

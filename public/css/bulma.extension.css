@@ -124,6 +124,7 @@ body {
 /*Make the page not selectable by users*/
 * {
   user-select: none;
+  outline: 0;
   -webkit-tap-highlight-color: transparent;
 }
 

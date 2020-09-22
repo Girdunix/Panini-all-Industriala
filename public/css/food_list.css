@@ -2,6 +2,12 @@
 
 /*--- Page white space fix ---*/
 
+body{
+    max-width: 100vw;
+    max-height: 100vh;
+    position: fixed;
+    overflow: hidden;
+}
 .cartLandscape{
     display: block;
 }
