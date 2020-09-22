@@ -1,11 +1,22 @@
 /*HTML Fix*/
 html {
   touch-action: manipulation;
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 /*Footer*/
 #footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   margin-top: 1rem;
   padding: 0;
+  background-color: transparent;
 }
 #footer div{
   padding: 2rem;
