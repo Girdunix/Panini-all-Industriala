@@ -54,8 +54,9 @@ if (localStorage.getItem("credentials")) {
 function login() {
     let username = document.getElementById("username").value
     let password = document.getElementById("password").value
-    if (!(username && password)) {} else {
+    if(username == "" || password ==""){
         showError("Scrivi le credenziali!", 2000)
+        return
     }
     let request = new XMLHttpRequest();
     request.open("POST", "../php/login.php");

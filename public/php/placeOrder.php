@@ -17,7 +17,7 @@ class response
 
 $data = json_decode(file_get_contents('php://input')); //dati che vengono dal client
 $hostname = "localhost"; //creazione connessione al database
-$utente = "root";
+$utente = "";
 $password = "";
 $nomedatabase = "my_eatschool";
 $mysql = mysqli_connect($hostname, $utente, $password, $nomedatabase);
