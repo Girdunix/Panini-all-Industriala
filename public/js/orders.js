@@ -189,8 +189,6 @@ function toggleDarkMode(btn) {
     if (darkModeToggled) {
         btn.innerHTML = "🌙"
     }
-    $(".is-footer").toggleClass("darkModeLayer1")
-
     $("tr").toggleClass("darkModeLayer1")
     $("body").toggleClass("darkMode")
     $("html").toggleClass("darkMode")
