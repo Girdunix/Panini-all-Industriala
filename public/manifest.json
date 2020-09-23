@@ -24,10 +24,10 @@
             "type": "image/png"
         }
     ],
-    "start_url": "/",
+    "start_url": "/public/html/food_list.html",
     "scope": "/",
     "display": "fullscreen",
     "orientation": "portrait",
-    "background_color": "#dad8b3",
-    "theme_color": "#2196F3"
+    "background_color": "#c5e3e6",
+    "theme_color": "#f14668"
   }
