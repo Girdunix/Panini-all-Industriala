@@ -1,4 +1,5 @@
 <?php
+<?php
 class response
 {
     //Questo è una classe su come il messaggio dovrebbe essere inviato
@@ -13,6 +14,19 @@ class response
         $this->message = $message;
     }
 }
-$reponse = new response(false, "In costruzione con PHP!");
-echo json_encode($reponse)
+$hostname = "localhost"; //creazione connessione al database
+$utente = "";
+$password = "";
+$nomedatabase = "my_eatschool";
+$mysql = mysqli_connect($hostname, $utente, $password, $nomedatabase);
+if (!$mysql) {
+    $object = new response(false, "Errore connessione!");
+    echo $object = json_encode($object);
+    exit();
+}
+
+$showOrders = mysqli_query($mysql,"SELECT * FROM ordini");
+
+
+?>
 ?>
