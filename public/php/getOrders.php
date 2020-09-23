@@ -1,5 +1,4 @@
 <?php
-<?php
 class response
 {
     //Questo è una classe su come il messaggio dovrebbe essere inviato
@@ -14,6 +13,7 @@ class response
         $this->message = $message;
     }
 }
+$data = json_decode(file_get_contents('php://input'));
 $hostname = "localhost"; //creazione connessione al database
 $utente = "";
 $password = "";
@@ -24,9 +24,24 @@ if (!$mysql) {
     echo $object = json_encode($object);
     exit();
 }
+$masterPsw = mysqli_query($mysql,"SELECT psw FROM utenti WHERE username = 'Paninaro'");
+$masterPsw = $masterPsw -> fetch_row()[0];
+if($masterPsw != $data->password){
+    //accesso solo al paninaro
+    echo json_encode(new response(false, "Non sei loggato!"));
+    exit();
+}
+$day = date("d");
+mysqli_query($mysql,"DELETE FROM ordini where giorno <>'$day'"); //cancella tutti gli ordini che non sono di questo giorno
+$showOrders = mysqli_query($mysql,"SELECT ordine FROM ordini"); //seleziona tutte le righe della tabella ordini
+$arr = [];
+while ($row = $showOrders -> fetch_row()) {
+    try{
+        array_push($arr,json_decode($row[0])); //itera la query e lo aggiunge ad un array da inviare al client
+    }catch(Exception $e){
 
-$showOrders = mysqli_query($mysql,"SELECT * FROM ordini");
+    }
 
-
-?>
+  }
+echo json_encode(new response(true,$arr));
 ?>

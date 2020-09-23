@@ -97,7 +97,7 @@ SOFTWARE.
         <div class="navbar-item">
           <div class="buttons">
             <button class="button is-outlined" style="width: 50px" onclick="toggleDarkMode(this)" id="darkModeBtn">🌙</button>
-            <button class="button is-danger" style="width: 75px" href="/html/login.html">Esci</button>
+            <a href="../html/login.html"><button class="button is-danger" style="width: 75px">Esci</button></a>
           </div>
         </div>
       </div>
@@ -140,8 +140,10 @@ SOFTWARE.
             </table>
           </div>
           <div class="has-text-centered" style="display: none;">
+            <div class="message">
+            </div>
             <button class="button is-danger is-rounded" style="width: 115px"
-              onclick="deleteOrder(this)">Annulla</button>
+              onclick="deleteOrder(this)">Elimina</button>
             <button class="button is-success is-rounded" style="width: 115px"
               onclick="confirmOrder(this)">Conferma</button>
           </div>

@@ -24,7 +24,6 @@ SOFTWARE.
 if ('serviceWorker' in navigator) {
     //service worker per rendere il sito installabile come app
     window.addEventListener('load', () => {
-        return //da rimuovere in production
         navigator.serviceWorker.register('../service-worker.js')
             .then((reg) => {
                 console.log('Service worker registered.', reg)
@@ -36,14 +35,14 @@ function expandOrder(btn, ignore = false) {
     let element = btn.parentElement.getElementsByClassName("orderWrapper")[0]
     btn = btn.getElementsByClassName("expand")[0]
         //se è su pc, usare una max width minore così da non riempire lo schermo
+        expandHeight = "70vh"
     if (screen.width > screen.height) {
         expandHeight = "60vh"
     }
         //se non è stato aperto, esegui animazione e ruota il pulsante
-        let height = element.getBoundingClientRect().y
     if (element.style.maxHeight == "0vh") {
         $(element).animate({
-            "max-height": height
+            "max-height": expandHeight
         }, 300)
         $(btn).animate({
             borderSpacing: 90
@@ -143,7 +142,6 @@ async function initPage() {
     request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
     request.onload = (res) => {
         let response = JSON.parse(res.target.response)
-        console.log(response)
         if (response.sent) {
             //render di ogni ordine ricevuto dal server
             response.message.forEach(order => {
@@ -201,6 +199,7 @@ function toggleDarkMode(btn) {
     document.getElementById("confirmWrapper").querySelector(".className").classList.toggle("whiteMode")
     document.getElementById("confirmWrapper").querySelector(".expand").classList.toggle("whiteMode")
     $("#footer *").toggleClass("darkModeLayer1")
+    $(".message").toggleClass("darkMode")
     $("#navMenu").toggleClass("darkModeLayer1")
     $("#navMenu *").toggleClass("darkModeLayer1")
     $("#navMenu a").removeClass("darkModeLayer1")
@@ -235,6 +234,9 @@ function makeOrder(order) {
     let keys = Object.keys(order.order)
     let tbody = template.querySelector("tbody")
     template.querySelector(".price").innerHTML = "Totale: " + order.price.toFixed(2) + "€"
+    if(order.message != undefined){
+        if(order.message.length < 151) template.querySelector(".message").innerHTML = order.message
+    } 
     keys.forEach(key => {
         let row = document.createElement("tr")
         row.innerHTML = "<th>" + key.capitalize() + "</th><th></th><th></th>"

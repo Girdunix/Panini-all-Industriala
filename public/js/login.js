@@ -24,7 +24,6 @@ SOFTWARE.
 if ('serviceWorker' in navigator) {
     //service worker per rendere il sito installabile come app
     window.addEventListener('load', () => {
-        return //da rimuovere in production
         navigator.serviceWorker.register('../service-worker.js')
             .then((reg) => {
                 console.log('Service worker registered.', reg);
@@ -62,7 +61,6 @@ function login() {
     request.open("POST", "../php/login.php");
     request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
     request.onload = (res) => {
-        console.log(res.target.response)
         let response = JSON.parse(res.target.response)
         if (response.sent) {
             showError(response.message, 2000)
