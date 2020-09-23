@@ -30,9 +30,7 @@ if ('serviceWorker' in navigator) {
       })
   })
 }
-
 //------------------------------------------------------------------------------------------//
-
 let selectedType = "Pizze"
 
 function toggleSelect(toShow) {
@@ -89,8 +87,10 @@ function addToCart() {
   showError("Aggiunto al carrello!", 2000)
   document.getElementById("select" + selectedType).selectedIndex = 0
   $(".cartPortrait").css({filter : "invert(100%)"})
+  $(".cartLandscape").css({filter : "invert(100%)"})
   setTimeout(() => {
     $(".cartPortrait").css({filter : "invert(0%)"})
+    $(".cartLandscape").css({filter : "invert(0%)"})
   }, 200);
 }
 
@@ -280,7 +280,10 @@ function placeOrder() {
     order: globalOrder,
     credentials: globalCredentials
   }
-
+  if(!globalCredentials){
+    showError("Non sei loggato!",2000)
+    return
+  }
   request.send(JSON.stringify(orderToSend))
 }
 class Order {
