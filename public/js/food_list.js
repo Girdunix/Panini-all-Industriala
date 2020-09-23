@@ -89,6 +89,10 @@ function addToCart() {
   renderCart()
   showError("Aggiunto al carrello!", 2000)
   document.getElementById("select" + selectedType).selectedIndex = 0
+  $(".cartPortrait").css({filter : "invert(100%)"})
+  setTimeout(() => {
+    $(".cartPortrait").css({filter : "invert(0%)"})
+  }, 200);
 }
 
 document.querySelector("#cart").addEventListener("click",function(e){
@@ -103,9 +107,28 @@ function hideCart() {
 }
 //------------------------------------------------------------------------------------------//
 let globalMenu = {}
+let globalDate = new Date()
 async function initializeFood() {
   //Fetcha il json menu.json che contiene tutti i dettagli del menu
   let menu = await fetch("../data/menu.json").then(data => data.json())
+  let todayDate = globalDate.getDate()
+  try{
+    let storedOrder = JSON.parse(localStorage.getItem("order"))
+    if(storedOrder != null){
+      if(storedOrder.time == todayDate){
+        storedOrder = storedOrder.order
+        globalOrder.order.dolci = storedOrder.order.dolci
+        globalOrder.order.pizze = storedOrder.order.pizze
+        globalOrder.order.panini = storedOrder.order.panini
+        globalOrder.price = storedOrder.price
+        renderCart()
+      }
+    }
+  }catch(e){
+    console.log(e)
+  }
+
+
   globalMenu = menu
   let keys = Object.keys(menu)
   //itera nell'oggetto e crea le opzioni per i tipi di cibo e le aggiunge al select
@@ -137,9 +160,9 @@ function changeQuantity(amount, food, type) {
   }
   renderCart()
 }
-
 function renderCart() {
   let order = globalOrder.order
+  localStorage.setItem("order",JSON.stringify({time: globalDate.getDate(), order:globalOrder}))
   //prende ogni proprietà nell'oggetto ordine e li aggiunge alla div del tipo corretto nel carrello
   let cart = document.getElementById("cartTable")
   let cartWrapper = cart.parentElement.parentElement.parentElement.parentElement
@@ -155,6 +178,7 @@ function renderCart() {
     order[type].forEach(food => {
       document.getElementById("cartText").innerHTML = "Il tuo ordine:"
       let innerRow = document.createElement("tr")
+
       cartWrapper.classList.remove("invisible")
       innerRow.className = "underlined"
       innerRow.innerHTML =
@@ -168,6 +192,7 @@ function renderCart() {
       if(darkModeToggled){
         cart.querySelectorAll("*").forEach(e =>{
           if(e.tagName == "BUTTON") return
+          
           e.classList.add("darkModeLayer1")
         })
       }
@@ -188,6 +213,10 @@ function enableAddToCart() {
   document.getElementById("addToCart").disabled = false
 }
 
+document.getElementById("message").addEventListener("input",function(e){
+  let length = this.value.length
+  document.getElementById("charLeft").innerHTML = 150 - length
+})
 //------------------------------------------------------------------------------------------//
 let darkModeToggled = false
 function toggleDarkMode(btn) {
@@ -196,7 +225,7 @@ function toggleDarkMode(btn) {
         btn.innerHTML = "🌙"
     }
     $(btn).toggleClass("whiteMode")
-    $(".is-footer *").toggleClass("darkModeLayer1")
+    $("#footer *").toggleClass("darkModeLayer1")
     $(".github").toggleClass("invert")
     $("body").toggleClass("darkMode")
     $("html").toggleClass("darkMode")
@@ -216,6 +245,8 @@ function toggleDarkMode(btn) {
     $(".foodType").toggleClass("foodTypeDark")
     $("td button").removeClass("darkModeLayer1")
     $(".cartPortrait").removeClass("darkModeLayer1")
+    $(".cartLandscape").removeClass("darkModeLayer1")
+    $("#showOrders").removeClass("darkModeLayer1")
     $("select").toggleClass("darkModeLayer2")
     darkModeToggled = !darkModeToggled
     localStorage.setItem("darkMode", darkModeToggled)
@@ -225,19 +256,10 @@ if(localStorage.getItem("darkMode") == "true"){
 }
 
 function placeOrder() {
-
-  let dataStr = "data:text/json;charset=utf-8,"
-  dataStr += encodeURIComponent(JSON.stringify(globalOrder));
-  let dlAnchorElem = document.createElement("a")
-  dlAnchorElem.setAttribute("href", dataStr);
-  dlAnchorElem.setAttribute("download", "order.json");
-  //dlAnchorElem.click(); //per scaricare
-  dlAnchorElem.remove()
   let request = new XMLHttpRequest();
   request.open("POST", "../php/placeOrder.php");
   request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
   request.onload = (res) => {
-    console.log(res.target.response)
     let response = JSON.parse(res.target.response)
     if (response.sent) {
       showError(response.message, 2000)
@@ -251,10 +273,15 @@ function placeOrder() {
     console.log(e)
   };
   globalOrder.class = globalCredentials.username
+  let message = document.getElementById("message").value
+  if(message.length > 5 && message.length < 150){
+    globalOrder.message = message
+  }
   let orderToSend = {
     order: globalOrder,
     credentials: globalCredentials
   }
+
   request.send(JSON.stringify(orderToSend))
 }
 class Order {

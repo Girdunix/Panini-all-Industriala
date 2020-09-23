@@ -94,7 +94,7 @@ SOFTWARE.
           <div class="navbar-item">
             <div class="buttons">
               <button class="button is-outlined" style="width: 50px" onclick="toggleDarkMode(this)" id="darkModeBtn">🌙</button>
-              <a class="navbar-item" id="showOrders" href="../html/orders.html">Ordinazioni</a>
+              <a class="navbar-item button" id="showOrders" href="../html/orders.html">Ordinazioni</a>
               <button class="button is-info cartLandscape" style="width: 100px" onclick="toggleCart()">Carrello</button>
             </div>
           </div>
@@ -102,11 +102,6 @@ SOFTWARE.
       </div>
     </nav>
     <!--Fine Navbar-->
-
-    <!--Scroll To Top-->
-    <button class="button is-link" onclick="topFunction()" id="scrollToTopButton" title="Go to top">⬆️</button>
-    <!--Fine Scroll To Top-->
-
     <div class="contentWrapper">
       <!-- Inzio sezione carrello -->
       <div id="cart" class="invisible">
@@ -127,7 +122,11 @@ SOFTWARE.
                 </tfoot>
               </table>
             </div>
-            <div class="has-text-centered">
+            <div class="has-text-centered" style="margin-top: 1vh;">
+              <div class="messageWrapper">
+                <textarea id="message" placeholder="Note al paninaro" maxlength="150"></textarea>
+                <span id="charLeft">150</span>
+              </div>
               <button class="button is-success is-rounded order-btn" onclick="placeOrder()">Ordina</button>
             </div>
           </div>

@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
-
-/*--- Page white space fix ---*/
+/*----------ACROCCO CHE NON DOVREBBE ESISTERE---------*/
+body {
+  overflow: hidden;
+}
+/*-----------------------------------------------------*/
 
 .cartLandscape{
     display: block;
@@ -126,10 +129,12 @@
 
 .plusBtn {
     background-color: #66cf8b;
+    cursor: pointer;
 }
 
 .minusBtn {
     background-color: hsl(348deg 94% 80%);
+    cursor: pointer;
 }
 
 .foodType {
@@ -194,8 +199,6 @@
 .level-item {
     flex-shrink: 1;
 }
-#showOrders{
-}
 #cartText {
     width: 100%;
     font-size: 1.5rem;
@@ -203,15 +206,45 @@
     text-align: center;
     margin-top: 1rem;
 }
-
+#showOrders{
+    color: #0a0a0a;
+}
+#showOrders:hover{
+    background-color: white;
+}
+.messageWrapper{
+    margin-top: 1vh;
+    width: 80%;
+    height: 4rem;
+    position: relative;
+    margin: auto;
+}
+#message{
+    width: 100%;
+    height: 100%;
+    resize: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+#charLeft{
+    position: absolute;
+    color: black;
+    bottom: 0;
+    right: 0.4rem;
+    opacity: 0.6;
+}
 .orderWrapper {
     overflow: auto;
-    max-height: 65vh;
+    max-height: 55vh;
 }
 
 .lessPadding {
     padding: 1rem;
 }
+.selectedRow {
+    background-color: #48c774 !important;
+    color: white !important;
+  }
 
 @media only screen and (max-width: 1023px) {
     .burger{
@@ -239,4 +272,9 @@
     }
 
 
+}
+@media only screen and (orientation:portrait){
+    .orderWrapper {
+        max-height: 65vh;
+    }
 }

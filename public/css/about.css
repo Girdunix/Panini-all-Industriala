@@ -1,20 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
-
-/*--- Page white space fix ---*/
-
 .cartLandscape{
     display: block;
 }
+
 .cartPortrait{
     display: none;
     margin-left: auto !important;
 }
+
 .members{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-/*--- NAVBAR CSS START ---*/
 
 .logo {
     cursor: pointer;
@@ -26,20 +23,6 @@
 .invisible {
     display: none;
 }
-
-
-
-
-
-
-
-
-
-/*--- NAVBAR CSS END ---*/
-
-
-
-
 
 .nav-btn {
     margin: auto 20px;
@@ -61,6 +44,7 @@
 .nav-btn:hover {
     background-color: rgba(0, 136, 169, 0.8);
 }
+
 #darkModeBtn{
     margin-left: 0.8rem;
 }
@@ -73,11 +57,12 @@
 .lessPadding {
     padding: 1rem;
 }
+
 .burger{
     margin-left: auto;
 }
-@media only screen and (max-width: 1023px) {
 
+@media only screen and (max-width: 1023px) {
     .lessPadding {
         padding: 0.2rem;
     }
