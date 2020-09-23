@@ -1,7 +1,7 @@
-const CACHE = "V2.2";
+const CACHE = "V1.1";
 
 const FILES_TO_CACHE = [
-    ''
+    './images/icon-512x512.png'
 ];
     
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.0.0/workbox-sw.js');

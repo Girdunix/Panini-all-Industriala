@@ -30,6 +30,29 @@ if ('serviceWorker' in navigator) {
             })
     })
 }
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installPWA.style.display = "block"
+  console.log("catched install")
+});
+installPWA.addEventListener('click', (e) => {
+    installPWA.style.display = "none"
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+    });
+  });
+window.addEventListener('appinstalled', (evt) => {
+    // Log install to analytics
+    console.log('INSTALL: Success');
+});
 function showError(message, timeout) {
     //funzione che mostra un messaggio di errore fluttuante 
     let floatingMessage = document.getElementById("floatingMessage")

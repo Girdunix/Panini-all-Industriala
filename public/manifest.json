@@ -24,8 +24,8 @@
             "type": "image/png"
         }
     ],
-    "start_url": "/public/html/food_list.html",
-    "scope": "/",
+    "start_url": "/public/html/login.html",
+    "scope": "/public/",
     "display": "fullscreen",
     "orientation": "portrait",
     "background_color": "#c5e3e6",

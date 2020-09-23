@@ -41,7 +41,21 @@ body {
   bottom: 0.5rem;
   background-size: contain;
 }
-
+#installPWA{
+  position: fixed;
+  bottom: 1rem;
+  display: none;
+  right:1rem;
+  height: 10vh;
+  background: linear-gradient(to right, #2f8b13, #3fcd52);
+  width: 20%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  z-index: 10000;
+}
 #floatingMessage {
   z-index: 5;
   display: none;
@@ -87,6 +101,9 @@ body {
   }
 }
 @media only screen and (orientation:portrait) {
+  #installPWA{
+    width: 40%;
+  }
   #floatingMessage {
     border-radius: 0.8rem;
     bottom: 8vw;
