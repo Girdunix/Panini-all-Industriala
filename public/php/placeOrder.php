@@ -29,8 +29,10 @@ if (!$mysql) {
 
 //separazione delle credenziali dall'ordine
 $credentials = $data->credentials;
-$order = json_encode($data->order);
-
+$order = $mysql->real_escape_string(json_encode($data->order));
+$credentials->username = $mysql->real_escape_string($credentials->username);
+$credentials->username = $mysql->real_escape_string($credentials->username);
+$credentials->password = $mysql->real_escape_string($credentials->password);
 
 //----------------------------CONTROLLA SE LA PASSWORD E' CORRETTA---------------------------------//
 $correctCredentials = mysqli_query($mysql,"SELECT psw FROM utenti WHERE username = '$credentials->username' AND psw = '$credentials->password'");

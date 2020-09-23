@@ -31,6 +31,7 @@ if($masterPsw != $data->password){
     echo json_encode(new response(false, "Non sei loggato!"));
     exit();
 }
+$data->name = $mysql->real_escape_string($data->name);
 if(mysqli_query($mysql,"DELETE FROM ordini WHERE username = '$data->name'")){
     $reponse = new response(true, "Ordine rimosso!");
 }else{

@@ -30,6 +30,8 @@ if (!$mysql) {
 
 
 //----------------------------CONTROLLA SE LA PASSWORD E' CORRETTA---------------------------------//
+$data->username = $mysql->real_escape_string($data->username);
+$data->password = $mysql->real_escape_string($data->password);
 $correctCredentials = mysqli_query($mysql,"SELECT psw FROM utenti WHERE username = '$data->username' AND psw = '$data->password'");
 //se non esiste nessuna corrispondenza dove l'username e password sono uguali, ritorna l'errore al client 
 if($correctCredentials->num_rows == 0) {

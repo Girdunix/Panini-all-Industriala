@@ -86,21 +86,30 @@ function addToCart() {
   renderCart()
   showError("Aggiunto al carrello!", 2000)
   document.getElementById("select" + selectedType).selectedIndex = 0
-  $(".cartPortrait").css({filter : "invert(100%)"})
-  $(".cartLandscape").css({filter : "invert(100%)"})
+  $(".cartPortrait").css({
+    filter: "invert(100%)"
+  })
+  $(".cartLandscape").css({
+    filter: "invert(100%)"
+  })
   setTimeout(() => {
-    $(".cartPortrait").css({filter : "invert(0%)"})
-    $(".cartLandscape").css({filter : "invert(0%)"})
+    $(".cartPortrait").css({
+      filter: "invert(0%)"
+    })
+    $(".cartLandscape").css({
+      filter: "invert(0%)"
+    })
   }, 200);
 }
 
-document.querySelector("#cart").addEventListener("click",function(e){
+document.querySelector("#cart").addEventListener("click", function (e) {
   e.stopImmediatePropagation()
   e.preventDefault()
 })
-document.querySelector(".contentWrapper").addEventListener("click",function(){
+document.querySelector(".contentWrapper").addEventListener("click", function () {
   hideCart()
 })
+
 function hideCart() {
   document.getElementById("cart").classList.add("invisible")
 }
@@ -111,10 +120,10 @@ async function initializeFood() {
   //Fetcha il json menu.json che contiene tutti i dettagli del menu
   let menu = await fetch("../data/menu.json").then(data => data.json())
   let todayDate = globalDate.getDate()
-  try{
+  try {
     let storedOrder = JSON.parse(localStorage.getItem("order"))
-    if(storedOrder != null){
-      if(storedOrder.time == todayDate){
+    if (storedOrder != null) {
+      if (storedOrder.time == todayDate) {
         storedOrder = storedOrder.order
         globalOrder.order.dolci = storedOrder.order.dolci
         globalOrder.order.pizze = storedOrder.order.pizze
@@ -123,7 +132,7 @@ async function initializeFood() {
         renderCart()
       }
     }
-  }catch(e){
+  } catch (e) {
     console.log(e)
   }
 
@@ -159,9 +168,13 @@ function changeQuantity(amount, food, type) {
   }
   renderCart()
 }
+
 function renderCart() {
   let order = globalOrder.order
-  localStorage.setItem("order",JSON.stringify({time: globalDate.getDate(), order:globalOrder}))
+  localStorage.setItem("order", JSON.stringify({
+    time: globalDate.getDate(),
+    order: globalOrder
+  }))
   //prende ogni proprietà nell'oggetto ordine e li aggiunge alla div del tipo corretto nel carrello
   let cart = document.getElementById("cartTable")
   let cartWrapper = cart.parentElement.parentElement.parentElement.parentElement
@@ -172,7 +185,7 @@ function renderCart() {
   Object.keys(order).forEach(type => {
     let row = document.createElement("tr")
     row.className = "foodType"
-      row.innerHTML = "<th>" + type.capitalize() + "</th><th></th><th></th>"
+    row.innerHTML = "<th>" + type.capitalize() + "</th><th></th><th></th>"
     if (order[type].length > 0) cart.append(row)
     order[type].forEach(food => {
       document.getElementById("cartText").innerHTML = "Il tuo ordine:"
@@ -188,10 +201,10 @@ function renderCart() {
         `<button class="plusBtn" onclick="changeQuantity(1,'` + food.name + `','` + type + `')">+</button>` +
         '</tr>'
       cart.append(innerRow)
-      if(darkModeToggled){
-        cart.querySelectorAll("*").forEach(e =>{
-          if(e.tagName == "BUTTON") return
-          
+      if (darkModeToggled) {
+        cart.querySelectorAll("*").forEach(e => {
+          if (e.tagName == "BUTTON") return
+
           e.classList.add("darkModeLayer1")
         })
       }
@@ -212,45 +225,46 @@ function enableAddToCart() {
   document.getElementById("addToCart").disabled = false
 }
 
-document.getElementById("message").addEventListener("input",function(e){
+document.getElementById("message").addEventListener("input", function (e) {
   let length = this.value.length
   document.getElementById("charLeft").innerHTML = 150 - length
 })
 //------------------------------------------------------------------------------------------//
 let darkModeToggled = false
+
 function toggleDarkMode(btn) {
-    btn.innerHTML = "☀️"
-    if (darkModeToggled) {
-        btn.innerHTML = "🌙"
-    }
-    $(btn).toggleClass("whiteMode")
-    $("#footer *").toggleClass("darkModeLayer1")
-    $(".github").toggleClass("invert")
-    $("body").toggleClass("darkMode")
-    $("html").toggleClass("darkMode")
-    $("tr").toggleClass("darkModeLayer1")
-    $("th").toggleClass("darkModeLayer1")
-    $("td").toggleClass("darkModeLayer1")
-    $(".is-receipt").toggleClass("darkModeLayer1")
-    $("table").toggleClass("darkModeLayer1")
-    $(".className").toggleClass("darkModeLayer1") 
-    $(".expand").toggleClass("darkModeLayer1")
-    $("#confirmWrapper").toggleClass("whiteMode")
-    $(".box").toggleClass("darkModeLayer1")
-    $("#navMenu").toggleClass("darkModeLayer1")
-    $("#navMenu *").toggleClass("darkModeLayer1")
-    $(".navbar").toggleClass("darkModeLayer1")
-    $(".nav-btn").toggleClass("darkModeLayer1")
-    $(".foodType").toggleClass("foodTypeDark")
-    $("td button").removeClass("darkModeLayer1")
-    $(".cartPortrait").removeClass("darkModeLayer1")
-    $(".cartLandscape").removeClass("darkModeLayer1")
-    $("#showOrders").removeClass("darkModeLayer1")
-    $("select").toggleClass("darkModeLayer2")
-    darkModeToggled = !darkModeToggled
-    localStorage.setItem("darkMode", darkModeToggled)
+  btn.innerHTML = "☀️"
+  if (darkModeToggled) {
+    btn.innerHTML = "🌙"
+  }
+  $(btn).toggleClass("whiteMode")
+  $("#footer *").toggleClass("darkModeLayer1")
+  $(".github").toggleClass("invert")
+  $("body").toggleClass("darkMode")
+  $("html").toggleClass("darkMode")
+  $("tr").toggleClass("darkModeLayer1")
+  $("th").toggleClass("darkModeLayer1")
+  $("td").toggleClass("darkModeLayer1")
+  $(".is-receipt").toggleClass("darkModeLayer1")
+  $("table").toggleClass("darkModeLayer1")
+  $(".className").toggleClass("darkModeLayer1")
+  $(".expand").toggleClass("darkModeLayer1")
+  $("#confirmWrapper").toggleClass("whiteMode")
+  $(".box").toggleClass("darkModeLayer1")
+  $("#navMenu").toggleClass("darkModeLayer1")
+  $("#navMenu *").toggleClass("darkModeLayer1")
+  $(".navbar").toggleClass("darkModeLayer1")
+  $(".nav-btn").toggleClass("darkModeLayer1")
+  $(".foodType").toggleClass("foodTypeDark")
+  $("td button").removeClass("darkModeLayer1")
+  $(".cartPortrait").removeClass("darkModeLayer1")
+  $(".cartLandscape").removeClass("darkModeLayer1")
+  $("#showOrders").removeClass("darkModeLayer1")
+  $("select").toggleClass("darkModeLayer2")
+  darkModeToggled = !darkModeToggled
+  localStorage.setItem("darkMode", darkModeToggled)
 }
-if(localStorage.getItem("darkMode") == "true"){
+if (localStorage.getItem("darkMode") == "true") {
   toggleDarkMode(document.getElementById("darkModeBtn"))
 }
 
@@ -273,15 +287,15 @@ function placeOrder() {
   };
   globalOrder.class = globalCredentials.username
   let message = document.getElementById("message").value
-  if(message.length > 5 && message.length < 150){
+  if (message.length > 5 && message.length < 150) {
     globalOrder.message = message
   }
   let orderToSend = {
     order: globalOrder,
     credentials: globalCredentials
   }
-  if(!globalCredentials){
-    showError("Non sei loggato!",2000)
+  if (!globalCredentials) {
+    showError("Non sei loggato!", 2000)
     return
   }
   request.send(JSON.stringify(orderToSend))
