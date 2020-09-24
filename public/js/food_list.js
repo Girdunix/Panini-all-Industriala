@@ -386,6 +386,8 @@ function updateStatus(){
               globalOrder.order.panini = storedOrder.order.panini
               globalOrder.price = storedOrder.price
               renderCart()
+              document.querySelector(".orderWrapper").style.pointerEvents = "none"
+              console.log(document.querySelector(".orderWrapper"))
               document.getElementById("sendOrder").remove()
               canOrder = false
         } catch (e) {
