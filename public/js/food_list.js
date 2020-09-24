@@ -24,16 +24,13 @@ SOFTWARE.
 if ('serviceWorker' in navigator) {
   //service worker per rendere il sito installabile come app
   window.addEventListener('load', () => {
-    return //da rimuovere in production
     navigator.serviceWorker.register('../service-worker.js')
       .then((reg) => {
         console.log('Service worker registered.', reg)
       })
   })
 }
-
 //------------------------------------------------------------------------------------------//
-
 let selectedType = "Pizze"
 
 function toggleSelect(toShow) {
@@ -70,6 +67,10 @@ function changeNum(num) {
 }
 
 function addToCart() {
+  if(!canOrder){
+    showError("Hai già effettuato un ordine!",2000)
+    return
+  }
   document.getElementById("addToCart").disabled = true
   let type = selectedType.replace("select", "")
   let select = document.getElementById("select" + selectedType)
@@ -89,19 +90,30 @@ function addToCart() {
   renderCart()
   showError("Aggiunto al carrello!", 2000)
   document.getElementById("select" + selectedType).selectedIndex = 0
-  $(".cartPortrait").css({filter : "invert(100%)"})
+  $(".cartPortrait").css({
+    filter: "invert(100%)"
+  })
+  $(".cartLandscape").css({
+    filter: "invert(100%)"
+  })
   setTimeout(() => {
-    $(".cartPortrait").css({filter : "invert(0%)"})
+    $(".cartPortrait").css({
+      filter: "invert(0%)"
+    })
+    $(".cartLandscape").css({
+      filter: "invert(0%)"
+    })
   }, 200);
 }
 
-document.querySelector("#cart").addEventListener("click",function(e){
+document.querySelector("#cart").addEventListener("click", function (e) {
   e.stopImmediatePropagation()
   e.preventDefault()
 })
-document.querySelector(".contentWrapper").addEventListener("click",function(){
+document.querySelector(".contentWrapper").addEventListener("click", function () {
   hideCart()
 })
+
 function hideCart() {
   document.getElementById("cart").classList.add("invisible")
 }
@@ -111,24 +123,6 @@ let globalDate = new Date()
 async function initializeFood() {
   //Fetcha il json menu.json che contiene tutti i dettagli del menu
   let menu = await fetch("../data/menu.json").then(data => data.json())
-  let todayDate = globalDate.getDate()
-  try{
-    let storedOrder = JSON.parse(localStorage.getItem("order"))
-    if(storedOrder != null){
-      if(storedOrder.time == todayDate){
-        storedOrder = storedOrder.order
-        globalOrder.order.dolci = storedOrder.order.dolci
-        globalOrder.order.pizze = storedOrder.order.pizze
-        globalOrder.order.panini = storedOrder.order.panini
-        globalOrder.price = storedOrder.price
-        renderCart()
-      }
-    }
-  }catch(e){
-    console.log(e)
-  }
-
-
   globalMenu = menu
   let keys = Object.keys(menu)
   //itera nell'oggetto e crea le opzioni per i tipi di cibo e le aggiunge al select
@@ -160,23 +154,21 @@ function changeQuantity(amount, food, type) {
   }
   renderCart()
 }
+
 function renderCart() {
   let order = globalOrder.order
-  localStorage.setItem("order",JSON.stringify({time: globalDate.getDate(), order:globalOrder}))
   //prende ogni proprietà nell'oggetto ordine e li aggiunge alla div del tipo corretto nel carrello
   let cart = document.getElementById("cartTable")
   let cartWrapper = cart.parentElement.parentElement.parentElement.parentElement
   cartWrapper.classList.add("invisible")
   document.getElementById("cartPrice").innerHTML = "Totale: " + globalOrder.price.toFixed(2) + "€"
-  document.getElementById("cartText").innerHTML = "Il carrello è vuoto!"
   cart.innerHTML = ""
   Object.keys(order).forEach(type => {
     let row = document.createElement("tr")
     row.className = "foodType"
-      row.innerHTML = "<th>" + type.capitalize() + "</th><th></th><th></th>"
+    row.innerHTML = "<th>" + type.capitalize() + "</th><th></th><th></th>"
     if (order[type].length > 0) cart.append(row)
     order[type].forEach(food => {
-      document.getElementById("cartText").innerHTML = "Il tuo ordine:"
       let innerRow = document.createElement("tr")
 
       cartWrapper.classList.remove("invisible")
@@ -189,10 +181,10 @@ function renderCart() {
         `<button class="plusBtn" onclick="changeQuantity(1,'` + food.name + `','` + type + `')">+</button>` +
         '</tr>'
       cart.append(innerRow)
-      if(darkModeToggled){
-        cart.querySelectorAll("*").forEach(e =>{
-          if(e.tagName == "BUTTON") return
-          
+      if (darkModeToggled) {
+        cart.querySelectorAll("*").forEach(e => {
+          if (e.tagName == "BUTTON") return
+
           e.classList.add("darkModeLayer1")
         })
       }
@@ -213,45 +205,46 @@ function enableAddToCart() {
   document.getElementById("addToCart").disabled = false
 }
 
-document.getElementById("message").addEventListener("input",function(e){
+document.getElementById("message").addEventListener("input", function (e) {
   let length = this.value.length
   document.getElementById("charLeft").innerHTML = 150 - length
 })
 //------------------------------------------------------------------------------------------//
 let darkModeToggled = false
+
 function toggleDarkMode(btn) {
-    btn.innerHTML = "☀️"
-    if (darkModeToggled) {
-        btn.innerHTML = "🌙"
-    }
-    $(btn).toggleClass("whiteMode")
-    $("#footer *").toggleClass("darkModeLayer1")
-    $(".github").toggleClass("invert")
-    $("body").toggleClass("darkMode")
-    $("html").toggleClass("darkMode")
-    $("tr").toggleClass("darkModeLayer1")
-    $("th").toggleClass("darkModeLayer1")
-    $("td").toggleClass("darkModeLayer1")
-    $(".is-receipt").toggleClass("darkModeLayer1")
-    $("table").toggleClass("darkModeLayer1")
-    $(".className").toggleClass("darkModeLayer1") 
-    $(".expand").toggleClass("darkModeLayer1")
-    $("#confirmWrapper").toggleClass("whiteMode")
-    $(".box").toggleClass("darkModeLayer1")
-    $("#navMenu").toggleClass("darkModeLayer1")
-    $("#navMenu *").toggleClass("darkModeLayer1")
-    $(".navbar").toggleClass("darkModeLayer1")
-    $(".nav-btn").toggleClass("darkModeLayer1")
-    $(".foodType").toggleClass("foodTypeDark")
-    $("td button").removeClass("darkModeLayer1")
-    $(".cartPortrait").removeClass("darkModeLayer1")
-    $(".cartLandscape").removeClass("darkModeLayer1")
-    $("#showOrders").removeClass("darkModeLayer1")
-    $("select").toggleClass("darkModeLayer2")
-    darkModeToggled = !darkModeToggled
-    localStorage.setItem("darkMode", darkModeToggled)
+  btn.innerHTML = "☀️"
+  if (darkModeToggled) {
+    btn.innerHTML = "🌙"
+  }
+  $(btn).toggleClass("whiteMode")
+  $("#footer *").toggleClass("darkModeLayer1")
+  $(".github").toggleClass("invert")
+  $("body").toggleClass("darkMode")
+  $("html").toggleClass("darkMode")
+  $("tr").toggleClass("darkModeLayer1")
+  $("th").toggleClass("darkModeLayer1")
+  $("td").toggleClass("darkModeLayer1")
+  $(".is-receipt").toggleClass("darkModeLayer1")
+  $("table").toggleClass("darkModeLayer1")
+  $(".className").toggleClass("darkModeLayer1")
+  $(".expand").toggleClass("darkModeLayer1")
+  $("#confirmWrapper").toggleClass("whiteMode")
+  $(".box").toggleClass("darkModeLayer1")
+  $("#navMenu").toggleClass("darkModeLayer1")
+  $("#navMenu *").toggleClass("darkModeLayer1")
+  $(".navbar").toggleClass("darkModeLayer1")
+  $(".nav-btn").toggleClass("darkModeLayer1")
+  $(".foodType").toggleClass("foodTypeDark")
+  $("td button").removeClass("darkModeLayer1")
+  $(".cartPortrait").removeClass("darkModeLayer1")
+  $(".cartLandscape").removeClass("darkModeLayer1")
+  $("#showOrders").removeClass("darkModeLayer1")
+  $("select").toggleClass("darkModeLayer2")
+  darkModeToggled = !darkModeToggled
+  localStorage.setItem("darkMode", darkModeToggled)
 }
-if(localStorage.getItem("darkMode") == "true"){
+if (localStorage.getItem("darkMode") == "true") {
   toggleDarkMode(document.getElementById("darkModeBtn"))
 }
 
@@ -263,8 +256,7 @@ function placeOrder() {
     let response = JSON.parse(res.target.response)
     if (response.sent) {
       showError(response.message, 2000)
-      globalOrder = new Order()
-      renderCart()
+      updateStatus()
     } else {
       showError(response.message, 2000)
     }
@@ -274,14 +266,17 @@ function placeOrder() {
   };
   globalOrder.class = globalCredentials.username
   let message = document.getElementById("message").value
-  if(message.length > 5 && message.length < 150){
+  if (message.length > 5 && message.length < 150) {
     globalOrder.message = message
   }
   let orderToSend = {
     order: globalOrder,
     credentials: globalCredentials
   }
-
+  if (!globalCredentials) {
+    showError("Non sei loggato!", 2000)
+    return
+  }
   request.send(JSON.stringify(orderToSend))
 }
 class Order {
@@ -375,6 +370,39 @@ function showError(message, timeout) {
   }, timeout);
 }
 
+let canOrder = true
+function updateStatus(){
+  let request = new XMLHttpRequest();
+  request.open("POST", "../php/getStatus.php");
+  request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
+  request.onload = (res) => {
+      let response = JSON.parse(res.target.response)
+      if(response.sent){
+        document.getElementById("cartText").innerText = "Stato ordine: \n"+response.message.status.capitalize()
+        try {
+          let storedOrder = response.message.order
+              globalOrder.order.dolci = storedOrder.order.dolci
+              globalOrder.order.pizze = storedOrder.order.pizze
+              globalOrder.order.panini = storedOrder.order.panini
+              globalOrder.price = storedOrder.price
+              renderCart()
+              document.querySelector(".orderWrapper").style.pointerEvents = "none"
+              console.log(document.querySelector(".orderWrapper"))
+              document.getElementById("sendOrder").remove()
+              canOrder = false
+        } catch (e) {
+          console.log(e)
+        }
+      }
+  };
+  request.onerror = function (e) {
+      console.log(e)
+  };
+  let data = {
+      name:globalCredentials.username
+  }
+  request.send(JSON.stringify(data))
+}
 //------------------------------------------------------------------------------------------//
 let globalOrder = new Order()
 //funzione per capitalizzare una stringa, da ciao a Ciao
@@ -398,3 +426,4 @@ if (globalCredentials == null) {
 }
 
 if (globalCredentials.username != "Paninaro") document.getElementById("showOrders").style.display = "none"
+updateStatus()

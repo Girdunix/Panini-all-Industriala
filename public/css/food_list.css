@@ -7,6 +7,7 @@ body {
 
 .cartLandscape{
     display: block;
+    transition: all 0.3s ease 0s;
 }
 .cartPortrait{
     display: none;
@@ -124,7 +125,10 @@ body {
 }
 
 .select-quantity button {
+    font-size: 1.5rem;
+    padding: 0;
     width: 45px;
+    height: 45px;
 }
 
 .plusBtn {
@@ -204,7 +208,7 @@ body {
     font-size: 1.5rem;
     color: white;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 #showOrders{
     color: #0a0a0a;
@@ -215,7 +219,7 @@ body {
 .messageWrapper{
     margin-top: 1vh;
     width: 80%;
-    height: 4rem;
+    height: 3rem;
     position: relative;
     margin: auto;
 }
@@ -235,11 +239,11 @@ body {
 }
 .orderWrapper {
     overflow: auto;
-    max-height: 55vh;
+    max-height: 52vh;
 }
 
 .lessPadding {
-    padding: 1rem;
+    padding: 0.5rem;
 }
 .selectedRow {
     background-color: #48c774 !important;

@@ -29,8 +29,10 @@ if (!$mysql) {
 
 //separazione delle credenziali dall'ordine
 $credentials = $data->credentials;
-$order = json_encode($data->order);
-
+$order = $mysql->real_escape_string(json_encode($data->order));
+$credentials->username = $mysql->real_escape_string($credentials->username);
+$credentials->username = $mysql->real_escape_string($credentials->username);
+$credentials->password = $mysql->real_escape_string($credentials->password);
 
 //----------------------------CONTROLLA SE LA PASSWORD E' CORRETTA---------------------------------//
 $correctCredentials = mysqli_query($mysql,"SELECT psw FROM utenti WHERE username = '$credentials->username' AND psw = '$credentials->password'");
@@ -54,8 +56,8 @@ if($alreadySaved->num_rows != 0) {
 //se tutto i controlli di prima sono corretti, effettua l'ordine aggiungendo alla table ordini i dati ricevuti
 $day = date("d");
 if (mysqli_query($mysql,
-"INSERT INTO ordini (username, psw, ordine, giorno)
-VALUES ('$credentials->username', '$credentials->password','$order', '$day')")) {
+"INSERT INTO ordini (username, psw, ordine, giorno, stato)
+VALUES ('$credentials->username', '$credentials->password','$order', '$day', 'consegnato')")) {
     $object = new response(true, "Ordine effettuato!");
     echo $object = json_encode($object);
 } else {

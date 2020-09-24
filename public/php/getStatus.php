@@ -24,19 +24,15 @@ if (!$mysql) {
     echo $object = json_encode($object);
     exit();
 }
-$masterPsw = mysqli_query($mysql,"SELECT psw FROM utenti WHERE username = 'Paninaro'");
-$masterPsw = $masterPsw -> fetch_row()[0];
-if($masterPsw != $data->password){
-    //accesso solo al paninaro
-    echo json_encode(new response(false, "Non sei loggato!"));
+$data->name = $mysql->real_escape_string($data->name);
+$query = mysqli_query($mysql,"SELECT ordine,stato FROM ordini WHERE username = '$data->name'");
+if($query->num_rows > 0){
+    $query = $query -> fetch_row();
+    $order = new stdClass();
+    $order->order = json_decode($query[0]);
+    $order->status =  $query[1];
+    echo $object = json_encode(new response(true, $order));
+}else{
+    echo $object = json_encode(new response(false, "Il carrello è vuoto!"));
     exit();
 }
-$data->name = $mysql->real_escape_string($data->name);
-if(mysqli_query($mysql,"DELETE FROM ordini WHERE username = '$data->name'")){
-    $reponse = new response(true, "Ordine rimosso!");
-}else{
-    $reponse = new response(false, "Errore nella rimozione!");
-}
-
-echo json_encode($reponse)
-?>

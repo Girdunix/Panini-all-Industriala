@@ -1,3 +1,12 @@
+if ('serviceWorker' in navigator) {
+  //service worker per rendere il sito installabile come app
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('../service-worker.js')
+      .then((reg) => {
+        console.log('Service worker registered.', reg)
+      })
+  })
+}
 let darkModeToggled = false
 function toggleDarkMode(btn) {
     btn.innerHTML = "☀️"

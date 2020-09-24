@@ -1,0 +1,5 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target" : { "namespace": "android_app", "package_name": "org.altervista.eatschool.twa",
+                   "sha256_cert_fingerprints": ["82:9E:8A:49:DF:95:FB:30:7F:6E:EB:72:52:6B:59:E6:EB:87:AF:BE:E8:80:D8:FD:8B:28:79:B6:50:82:23:99"] }
+    }]

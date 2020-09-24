@@ -26,7 +26,7 @@ SOFTWARE.
 <html lang="it" dir="ltr">
 
 <head>
-  <meta name="theme-color" content="#2196F3">
+  <meta name="theme-color" content="#f14668">
   <meta name="description" content="App ufficiale del Mattei(Vasto)">
   <meta name="keywords" content="PWA,lista,cibo,pizza,panino,dolci,ordinazione,itis,vasto, industriale">
   <meta name="author" content="Degli alunni">
@@ -34,15 +34,15 @@ SOFTWARE.
   <meta name="apple-mobile-web-app-title" content="EatSchool">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="apple-touch-icon" href="">
-  <meta property="og:image" content="">
+  <link rel="apple-touch-icon" href="../images/icon-192x192.png">
+  <meta property="og:image" content="../images/icon-192x192.png">
   <meta property="og:site_name" content="EatSchool">
   <meta property="og:title" content="EatSchool">
-  <meta property="og:url" content="">
+  <meta property="og:url" content="https://eatschool.altervista.org/public/html/login.html">
   <meta property="og:description" content="App ufficiale del Mattei(Vasto)">
-  <link rel="icon" type="image/png" href="" />
+  <link rel="icon" type="image/png" href="../images/icon-192x192.png" />
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
   <title>Ordini</title>
   <link rel="manifest" href="../manifest.json">
   <link rel="shortcut icon" href="../images/icon-192x192.png" type="image/x-icon" />
@@ -97,7 +97,7 @@ SOFTWARE.
         <div class="navbar-item">
           <div class="buttons">
             <button class="button is-outlined" style="width: 50px" onclick="toggleDarkMode(this)" id="darkModeBtn">🌙</button>
-            <button class="button is-danger" style="width: 75px" href="/html/login.html">Esci</button>
+            <a href="../html/login.html"><button class="button is-danger" style="width: 75px">Esci</button></a>
           </div>
         </div>
       </div>
@@ -140,9 +140,11 @@ SOFTWARE.
             </table>
           </div>
           <div class="has-text-centered" style="display: none;">
+            <div class="message">
+            </div>
             <button class="button is-danger is-rounded" style="width: 115px"
-              onclick="deleteOrder(this)">Annulla</button>
-            <button class="button is-success is-rounded" style="width: 115px"
+              onclick="deleteOrder(this)">Rifiuta</button>
+            <button class="button is-success is-rounded" style="width: 115px;"
               onclick="confirmOrder(this)">Conferma</button>
           </div>
         </div>
@@ -153,18 +155,12 @@ SOFTWARE.
   <!--Fine ordini da confermare-->
 
   <!--Ordini confermati-->
-  <div class="container is-fluid confirmedOrders">
+  <div class="container is-fluid status">
     <div class="columns is-multiline is-centered is-mobile">
       <div class="column">
-        <div class="box is-receipt" id="confirmWrapper" style="background-color: rgb(39, 43, 45); padding: 0.8rem;">
-          <div class="title is-3 has-text-centered classTitle " onclick="expandOrder(this,true)">
-            <span class="className" style="color: white;">Confermati</span>
-            <div class="expand" style="color: white;"> ></div>
-          </div>
+        <div class="box is-receipt statusWrapper" style="background-color: rgb(39, 43, 45); padding: 0.8rem; text-align: center;">
+          <span class="statusName has-text-weight-bold" style="color: white; font-size: 1.8rem;">Confermati</span>
           <div class="orderWrapper" id="confirmedOrders">
-            <div id="noOrdersSaved">
-              Nessun ordine confermato!
-            </div>
           </div>
         </div>
       </div>
@@ -172,6 +168,33 @@ SOFTWARE.
   </div>
   <!--Fine ordini confermati-->
 
+  <!--Ordini confermati-->
+  <div class="container is-fluid status">
+    <div class="columns is-multiline is-centered is-mobile">
+      <div class="column">
+        <div class="box is-receipt statusWrapper" style="background-color: rgb(39, 43, 45); padding: 0.8rem; text-align: center;">
+          <span class="statusName has-text-weight-bold" style="color: white; font-size: 1.8rem;">Rifiutati</span>
+          <div class="orderWrapper" id="rejectedOrders">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Fine ordini confermati-->
+
+    <!--Ordini confermati-->
+    <div class="container is-fluid status">
+      <div class="columns is-multiline is-centered is-mobile">
+        <div class="column">
+          <div class="box is-receipt statusWrapper"  style="background-color: rgb(39, 43, 45); padding: 0.8rem; text-align: center;">
+            <span class="statusName has-text-weight-bold" style="color: white; font-size: 1.8rem;">Consegnati</span>
+            <div class="orderWrapper" id="confirmedOrders">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Fine ordini confermati-->
   <!--Footer-->
   <div class="container is-fluid" id="footer">
     <div class="content has-text-centered">

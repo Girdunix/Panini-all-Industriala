@@ -9,7 +9,9 @@
   flex: 1;
   text-align: center;
 }
-
+.status{
+  padding: 0.5rem !important;
+}
 .expand {
   position: absolute;
   right: 0;
@@ -17,11 +19,10 @@
 }
 
 .orderWrapper {
-  max-height: 0vh;
   overflow: auto;
 }
 
-#noOrdersSaved {
+.noOrdersSaved {
   font-size: 1.5rem;
   color: white;
 }

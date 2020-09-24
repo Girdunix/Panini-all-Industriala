@@ -24,13 +24,35 @@ SOFTWARE.
 if ('serviceWorker' in navigator) {
     //service worker per rendere il sito installabile come app
     window.addEventListener('load', () => {
-        return //da rimuovere in production
         navigator.serviceWorker.register('../service-worker.js')
             .then((reg) => {
                 console.log('Service worker registered.', reg);
             })
     })
 }
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installPWA.style.display = "block"
+  console.log("catched install")
+});
+installPWA.addEventListener('click', (e) => {
+    installPWA.style.display = "none"
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+    });
+  });
+window.addEventListener('appinstalled', (evt) => {
+    // Log install to analytics
+    console.log('INSTALL: Success');
+});
 function showError(message, timeout) {
     //funzione che mostra un messaggio di errore fluttuante 
     let floatingMessage = document.getElementById("floatingMessage")
@@ -62,7 +84,6 @@ function login() {
     request.open("POST", "../php/login.php");
     request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
     request.onload = (res) => {
-        console.log(res.target.response)
         let response = JSON.parse(res.target.response)
         if (response.sent) {
             showError(response.message, 2000)

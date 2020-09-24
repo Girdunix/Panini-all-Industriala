@@ -26,17 +26,17 @@ if (!$mysql) {
 }
 $masterPsw = mysqli_query($mysql,"SELECT psw FROM utenti WHERE username = 'Paninaro'");
 $masterPsw = $masterPsw -> fetch_row()[0];
-if($masterPsw != $data->password){
+if($masterPsw != $data->credentials->password){
     //accesso solo al paninaro
     echo json_encode(new response(false, "Non sei loggato!"));
     exit();
 }
 $data->name = $mysql->real_escape_string($data->name);
-if(mysqli_query($mysql,"DELETE FROM ordini WHERE username = '$data->name'")){
-    $reponse = new response(true, "Ordine rimosso!");
+$data->status = $mysql->real_escape_string($data->status);
+if(mysqli_query($mysql,"UPDATE ordini SET stato='$data->status' WHERE username='$data->name'")){
+    echo json_encode(new response(true, "Cambiato status!"));
 }else{
-    $reponse = new response(false, "Errore nella rimozione!");
+    echo json_encode(new response(false, "Errore!"));
 }
 
-echo json_encode($reponse)
 ?>
