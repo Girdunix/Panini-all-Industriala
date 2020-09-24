@@ -26,25 +26,17 @@ if (!$mysql) {
 }
 $masterPsw = mysqli_query($mysql,"SELECT psw FROM utenti WHERE username = 'Paninaro'");
 $masterPsw = $masterPsw -> fetch_row()[0];
-if($masterPsw != $data->password){
+if($masterPsw != $data->credentials->password){
     //accesso solo al paninaro
     echo json_encode(new response(false, "Non sei loggato!"));
     exit();
 }
-$day = date("d");
-mysqli_query($mysql,"DELETE FROM ordini where giorno <>'$day'"); //cancella tutti gli ordini che non sono di questo giorno
-$showOrders = mysqli_query($mysql,"SELECT ordine,stato FROM ordini"); //seleziona tutte le righe della tabella ordini
-$arr = [];
-while ($row = $showOrders -> fetch_row()) {
-    try{
-        $order = new stdClass();
-        $order->order = json_decode($row[0]);
-        $order->status = $row[1];
-        array_push($arr,$order); //itera la query e lo aggiunge ad un array da inviare al client
-    }catch(Exception $e){
+$data->name = $mysql->real_escape_string($data->name);
+$data->status = $mysql->real_escape_string($data->status);
+if(mysqli_query($mysql,"UPDATE ordini SET stato='$data->status' WHERE username='$data->name'")){
+    echo json_encode(new response(true, "Cambiato status!"));
+}else{
+    echo json_encode(new response(false, "Errore!"));
+}
 
-    }
-
-  }
-echo json_encode(new response(true,$arr));
 ?>

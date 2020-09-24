@@ -67,6 +67,10 @@ function changeNum(num) {
 }
 
 function addToCart() {
+  if(!canOrder){
+    showError("Hai già effettuato un ordine!",2000)
+    return
+  }
   document.getElementById("addToCart").disabled = true
   let type = selectedType.replace("select", "")
   let select = document.getElementById("select" + selectedType)
@@ -119,24 +123,6 @@ let globalDate = new Date()
 async function initializeFood() {
   //Fetcha il json menu.json che contiene tutti i dettagli del menu
   let menu = await fetch("../data/menu.json").then(data => data.json())
-  let todayDate = globalDate.getDate()
-  try {
-    let storedOrder = JSON.parse(localStorage.getItem("order"))
-    if (storedOrder != null) {
-      if (storedOrder.time == todayDate) {
-        storedOrder = storedOrder.order
-        globalOrder.order.dolci = storedOrder.order.dolci
-        globalOrder.order.pizze = storedOrder.order.pizze
-        globalOrder.order.panini = storedOrder.order.panini
-        globalOrder.price = storedOrder.price
-        renderCart()
-      }
-    }
-  } catch (e) {
-    console.log(e)
-  }
-
-
   globalMenu = menu
   let keys = Object.keys(menu)
   //itera nell'oggetto e crea le opzioni per i tipi di cibo e le aggiunge al select
@@ -171,16 +157,11 @@ function changeQuantity(amount, food, type) {
 
 function renderCart() {
   let order = globalOrder.order
-  localStorage.setItem("order", JSON.stringify({
-    time: globalDate.getDate(),
-    order: globalOrder
-  }))
   //prende ogni proprietà nell'oggetto ordine e li aggiunge alla div del tipo corretto nel carrello
   let cart = document.getElementById("cartTable")
   let cartWrapper = cart.parentElement.parentElement.parentElement.parentElement
   cartWrapper.classList.add("invisible")
   document.getElementById("cartPrice").innerHTML = "Totale: " + globalOrder.price.toFixed(2) + "€"
-  document.getElementById("cartText").innerHTML = "Il carrello è vuoto!"
   cart.innerHTML = ""
   Object.keys(order).forEach(type => {
     let row = document.createElement("tr")
@@ -188,7 +169,6 @@ function renderCart() {
     row.innerHTML = "<th>" + type.capitalize() + "</th><th></th><th></th>"
     if (order[type].length > 0) cart.append(row)
     order[type].forEach(food => {
-      document.getElementById("cartText").innerHTML = "Il tuo ordine:"
       let innerRow = document.createElement("tr")
 
       cartWrapper.classList.remove("invisible")
@@ -276,8 +256,7 @@ function placeOrder() {
     let response = JSON.parse(res.target.response)
     if (response.sent) {
       showError(response.message, 2000)
-      globalOrder = new Order()
-      renderCart()
+      updateStatus()
     } else {
       showError(response.message, 2000)
     }
@@ -391,6 +370,37 @@ function showError(message, timeout) {
   }, timeout);
 }
 
+let canOrder = true
+function updateStatus(){
+  let request = new XMLHttpRequest();
+  request.open("POST", "../php/getStatus.php");
+  request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
+  request.onload = (res) => {
+      let response = JSON.parse(res.target.response)
+      if(response.sent){
+        document.getElementById("cartText").innerText = "Stato ordine: \n"+response.message.status.capitalize()
+        try {
+          let storedOrder = response.message.order
+              globalOrder.order.dolci = storedOrder.order.dolci
+              globalOrder.order.pizze = storedOrder.order.pizze
+              globalOrder.order.panini = storedOrder.order.panini
+              globalOrder.price = storedOrder.price
+              renderCart()
+              document.getElementById("sendOrder").remove()
+              canOrder = false
+        } catch (e) {
+          console.log(e)
+        }
+      }
+  };
+  request.onerror = function (e) {
+      console.log(e)
+  };
+  let data = {
+      name:globalCredentials.username
+  }
+  request.send(JSON.stringify(data))
+}
 //------------------------------------------------------------------------------------------//
 let globalOrder = new Order()
 //funzione per capitalizzare una stringa, da ciao a Ciao
@@ -414,3 +424,4 @@ if (globalCredentials == null) {
 }
 
 if (globalCredentials.username != "Paninaro") document.getElementById("showOrders").style.display = "none"
+updateStatus()

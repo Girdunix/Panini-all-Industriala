@@ -88,19 +88,17 @@ function expandOrder(btn, ignore = false) {
 
 //-----------------------------------------------------------------------------//
 
-let confirmedOrdersWrapper = document.getElementById("confirmedOrders")
-
 function confirmOrder(order) {
     //muove l'ordine confermato nella sezione di ordini confermati
-    document.getElementById("noOrdersSaved").style.display = "none"
     let clonedNode = order.parentElement.parentElement.parentElement.cloneNode(true)
     clonedNode.style.padding = 0
     clonedNode.style.marginTop = "1rem"
     //elimina il vecchio elemento
-    clonedNode.querySelector(".is-success").remove()
-    confirmedOrdersWrapper.appendChild(clonedNode)
+    document.getElementById("confirmedOrders").appendChild(clonedNode)
     clonedNode.querySelector(".expand").click()
     clonedNode.querySelector(".orderWrapper").style.maxHeight = "0vh"
+    let className = clonedNode.querySelector(".className").innerHTML
+    changeStatus(className,"confermato")
     order.parentElement.parentElement.parentElement.remove()
 }
 
@@ -108,28 +106,18 @@ function confirmOrder(order) {
 
 function deleteOrder(order) {
     if (confirm("Sicuro di voler annullare l'ordine?")) {
-        let request = new XMLHttpRequest();
-        request.open("POST", "../php/removeOrder.php");
-        //invia una richiesta post per l'eliminazione di un ordine
-        request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
-        request.onload = (res) => {
-            let response = JSON.parse(res.target.response)
-            if (response.sent) {
-                order.parentElement.parentElement.parentElement.remove()
-                showError(response.message, 2000)
-            } else {
-                showError(response.message, 2000)
-            }
-        };
-        request.onerror = function (e) {
-            console.log(e)
-        };
         let name = order.parentElement.parentElement.parentElement.querySelector(".className").innerHTML
-        request.send(JSON.stringify({
-            password: globalCredentials.password,
-            username: globalCredentials.username,
-            name: name
-        }))
+        //muove l'ordine confermato nella sezione di ordini confermati
+        let clonedNode = order.parentElement.parentElement.parentElement.cloneNode(true)
+        clonedNode.style.padding = 0
+        clonedNode.style.marginTop = "1rem"
+        //elimina il vecchio elemento
+        document.getElementById("rejectedOrders").appendChild(clonedNode)
+        clonedNode.querySelector(".expand").click()
+        clonedNode.querySelector(".orderWrapper").style.maxHeight = "0vh"
+        let className = clonedNode.querySelector(".className").innerHTML
+        changeStatus(className,"rifiutato")
+        order.parentElement.parentElement.parentElement.remove()
     }
 }
 
@@ -145,7 +133,7 @@ async function initPage() {
         if (response.sent) {
             //render di ogni ordine ricevuto dal server
             response.message.forEach(order => {
-                makeOrder(order)
+                makeOrder(order.order,order.status)
             })
         } else {
             showError(response.message, 2000)
@@ -195,9 +183,8 @@ function toggleDarkMode(btn) {
     $("table").toggleClass("darkModeLayer1")
     $(".className").toggleClass("darkModeLayer1") 
     $(".expand").toggleClass("darkModeLayer1")
-    $("#confirmWrapper").toggleClass("whiteMode")
-    document.getElementById("confirmWrapper").querySelector(".className").classList.toggle("whiteMode")
-    document.getElementById("confirmWrapper").querySelector(".expand").classList.toggle("whiteMode")
+    $(".statusWrapper").toggleClass("whiteMode")
+    $(".statusName").toggleClass("whiteMode")
     $("#footer *").toggleClass("darkModeLayer1")
     $(".message").toggleClass("darkMode")
     $("#navMenu").toggleClass("darkModeLayer1")
@@ -225,12 +212,11 @@ function goToElement(element, scroll = 0.9) {
 
 //-----------------------------------------------------------------------------//
 
-function makeOrder(order) {
+function makeOrder(order,status) {
     let template = document.getElementById("template").cloneNode(true)
     template.id = order.class
     template.style.display = "block"
     template.querySelector(".className").innerHTML = order.class
-    let classWrapper = document.getElementById("classWrapper")
     let keys = Object.keys(order.order)
     let tbody = template.querySelector("tbody")
     template.querySelector(".price").innerHTML = "Totale: " + order.price.toFixed(2) + "€"
@@ -250,7 +236,23 @@ function makeOrder(order) {
             tbody.innerHTML += row
         })
     })
-    classWrapper.appendChild(template)
+    switch(status){
+        case "confermato":{
+            template.style.padding = 0
+            template.style.marginTop = "1rem"
+            document.getElementById("confirmedOrders").appendChild(template)
+            break;
+        }
+        case "rifiutato":{
+            template.style.padding = 0
+            template.style.marginTop = "1rem"
+            document.getElementById("rejectedOrders").appendChild(template)
+            break;
+        }
+        default: {
+            document.getElementById("classWrapper").appendChild(template)
+        }
+    }
 }
 
 //-----------------------------------------------------------------------------//
@@ -277,3 +279,21 @@ HTMLElement.prototype.fadeOut = function () {
     this.style.animation = "fadeOut 0.2s"
 }
 initPage()
+function changeStatus(name,status){
+    let request = new XMLHttpRequest();
+    request.open("POST", "../php/changeOrderStatus.php");
+    request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
+    request.onload = (res) => {
+        let response = JSON.parse(res.target.response)
+        console.log(response.message)
+    };
+    request.onerror = function (e) {
+        console.log(e)
+    };
+    let data = {
+        credentials: globalCredentials,
+        name:name,
+        status:status
+    }
+    request.send(JSON.stringify(data))
+}
