@@ -31,18 +31,6 @@ body {
   background-color: transparent;
 }
 
-<<<<<<< HEAD
-=======
-.github{
-  background-image: url("../images/github.png");
-  height: 25px;
-  width: 25px;
-  position: fixed;
-  z-index: 10;
-  left:  0.5rem;
-  bottom: 0.5rem;
-  background-size: contain;
-}
 #installPWA{
   position: fixed;
   bottom: 1rem;
@@ -58,9 +46,9 @@ body {
   border-radius: 0.5rem;
   z-index: 10000;
 }
->>>>>>> fe91ef39c115134743f5cbbc7b5c8366900b932d
+
 #floatingMessage {
-  z-index: 5;
+  z-index: 100;
   display: none;
   justify-content: center;
   text-align: center;
@@ -103,9 +91,7 @@ body {
     color: #4a4a4a;
   }
 }
-#floatingMessage{
-  z-index: 1000;
-}
+
 @media only screen and (orientation:portrait) {
   #installPWA{
     width: 40%;
