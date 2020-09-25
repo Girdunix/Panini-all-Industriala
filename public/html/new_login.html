@@ -19,7 +19,7 @@
     <link rel="icon" type="image/png" href="" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>INSERIRE TITOLO</title>
+    <title>Accedi</title>
     <link rel="manifest" href="/manifest.json">
     <link rel="shortcut icon" href="../images/icon-192x192.png" type="image/x-icon"/>
     <link rel="stylesheet" href="../css/bulma.min.css">
@@ -66,80 +66,41 @@
             </div>
           </div>
         </div>
-
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <button class="button is-danger" href="/html/food_list.html">Esci</button>
-            </div>
-          </div>
-        </div>
       </div>
     </nav>
     <!--Fine Navbar-->
 
-    <!--Scroll To Top-->
-    <button class="button is-link" onclick="topFunction()" id="scrollToTopButton" title="Go to top">⬆️</button>
-    <!--Fine Scroll To Top-->
-
-    <!--TEMPLATE SCONTRINO-->
-    <div class="column is-narrow">
-      <div class="box is-receipt">
-        <div class="title is-3 has-text-centered">
-          1 BT
-        </div>
-        <div>
-          <table class="table has-text-left is-narrow is-fullwidth">
-            <tbody>
-              <tr>
-                <th colspan="2" class="title is-5">Pizze</th>
-                <th></th>
-              </tr>
-              <tr>
-                <td colspan="2">&emsp;-&ensp;Margherita</td>
-                <td class="has-text-right">x5</td>
-              </tr>
-              <tr>
-                <td colspan="2">&emsp;-&ensp;Patate</td>
-                <td class="has-text-right">x2</td>
-              </tr>
-              <tr>
-                <th colspan="2" class="title is-5">Panini</th>
-                <td></td>
-              </tr>
-              <tr>
-                <td colspan="2">&emsp;-&ensp;Prosciutto</td>
-                <td class="has-text-right">x3</td>
-              </tr>
-              <tr>
-                <td colspan="2">&emsp;-&ensp;Ventricina</td>
-                <td class="has-text-right">x1</td>
-              </tr>
-              <tr>
-                <th colspan="2" class="title is-5">Dolci</th>
-                <td></td>
-              </tr>
-              <tr>
-                <td colspan="2">&emsp;-&ensp;Bomba</td>
-                <td class="has-text-right">x1</td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <th colspan="3" class="has-text-right">Totale: 12€</th>
-              </tr>
-            </tfoot>
-          </table>
-          <div class="has-text-centered">
-            <button class="button is-danger is-rounded" style="width: 115px"
-              onclick="deleteOrder(this)">Rifiuta</button>
-            <button class="button is-success is-rounded" style="width: 115px"
-              onclick="confirmOrder(this)">Conferma</button>
+    <!--Login form-->
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title">
+          Benvenuti su EatSchool!
+        </h1>
+      </div>
+      <br>
+      <div class="columns">
+        <div class="column is-4 is-offset-4">
+          <div class="field">
+            <p class="control has-icons-left has-icons-right">
+              <input class="input" type="text" placeholder="Nome utente">
+            </p>
+          </div>
+          <div class="field">
+            <p class="control has-icons-left">
+              <input class="input" type="password" placeholder="Password">
+            </p>
+          </div>
+          <div class="field has-text-centered">
+            <p class="control">
+             <button class="button is-success">
+               Entra
+             </button>
+            </p>
           </div>
         </div>
       </div>
     </div>
-    <!--FINE TEMPLATE SCONTRINO-->
+    <!--Fine login form-->
 
     <!--Footer-->
     <div class="container is-fluid" id="footer">
