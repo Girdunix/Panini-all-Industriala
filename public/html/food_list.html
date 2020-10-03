@@ -145,23 +145,15 @@ SOFTWARE.
           <div class="box box-resize-margin">
 
             <!-- Pulsanti selezione cibo -->
-            <div class="buttons is-centered" style="margin: 0.4rem 0 0">
-              <button class="button is-danger is-outlined" type="button" name="button"
-                onclick="toggleSelect(this)">Pizze</button>
-              <button class="button is-danger is-outlined" type="button" name="button"
-                onclick="toggleSelect(this)">Panini</button>
-              <button class="button is-danger is-outlined" type="button" name="button"
-                onclick="toggleSelect(this)">Dolci</button>
+            <div class="buttons is-centered" style="margin: 0.4rem 0 0" id="foodTypeWrapper">
+
             </div>
 
             <div class="container is-fluid invisible" style="margin-top: 1rem" id="typeWrapper">
               <!-- Riga di selezione cibo -->
               <div class="select-bar">
 
-                <div class="select">
-                  <select class="selHide" name="Pizze" id="selectPizze" onchange="enableAddToCart()"></select>
-                  <select class="selHide" name="Panini" id="selectPanini" onchange="enableAddToCart()"></select>
-                  <select class="selHide" name="Dolci" id="selectDolci" onchange="enableAddToCart()"></select>
+                <div class="select" id="foodSelectWrapper">
                 </div>
 
                 <div class="select-quantity">
@@ -199,7 +191,7 @@ SOFTWARE.
             <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
             <a class="button is-small" style="margin-left: 10px" href="https://github.com/Specy-wot/Panini-all-Industriala.git">
               <span class="icon is-small">
-                <img src="../images/github.png"></img>
+                <img src="../images/github.png" id="github"></img>
               </span>
               <span>GitHub</span>
             </a>

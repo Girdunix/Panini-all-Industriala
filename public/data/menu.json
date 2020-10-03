@@ -29,16 +29,11 @@
         "description": "Prosciutto cotto, würstel e mozzarella",
         "price": 1,
         "id": "Pizza_5"
-    }, {
-        "name": "Prosciutto cotto e funghi",
-        "description": "Prosciutto cotto, funghi e mozzarella",
-        "price": 1,
-        "id": "Pizza_6"
-    }, {
+    },{
         "name": "Würstel",
         "description": "Pomodoro, würstel e mozzarella",
         "price": 1,
-        "id": "Pizza_7"
+        "id": "Pizza_6"
     }],
     "Panini": [{
         "name": "Ventricina",
@@ -90,6 +85,11 @@
         "description": "Cotto, pomodoro, insalata e maionese",
         "price": 1.2,
         "id": "Panino_9"
+    }, {
+        "name": "Tonno farcito",
+        "description": "Tonno, insalata e pomodoro",
+        "price": 1.2,
+        "id": "Panino_10"
     }],
     "Dolci": [{
         "name": "Bomba nutella",

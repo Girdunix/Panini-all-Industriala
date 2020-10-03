@@ -128,18 +128,31 @@ async function initializeFood() {
   //itera nell'oggetto e crea le opzioni per i tipi di cibo e le aggiunge al select
   //keys sono i nomi delle proprietà dell'oggetto, cioè pizze panini dolci
   for (let i = 0; i < keys.length; i++) {
-    let foodType = document.getElementById("select" + keys[i])
+    let foodTypeBtn = document.createElement("button")
+    foodTypeBtn.className = "button is-danger is-outlined"
+    foodTypeBtn.addEventListener("click",function(){
+      toggleSelect(this)
+    })
+    foodTypeBtn.innerHTML = keys[i].capitalize()
+    document.getElementById("foodTypeWrapper").appendChild(foodTypeBtn)
+    let foodTypeSelect = document.createElement("select")
+    foodTypeSelect.className = "selHide"
+    foodTypeSelect.id = "select"+keys[i].capitalize()
+    foodTypeSelect.addEventListener("change",function(){
+      enableAddToCart()
+    })
+    document.getElementById("foodSelectWrapper").appendChild(foodTypeSelect)
     let option = document.createElement("option")
     option.value = "Seleziona"
     option.innerHTML = "Seleziona"
     option.selected = true
     option.disabled = true
-    foodType.appendChild(option)
+    foodTypeSelect.appendChild(option)
     for (let j = 0; j < menu[keys[i]].length; j++) {
       let option = document.createElement("option")
       option.value = menu[keys[i]][j].name
       option.innerHTML = menu[keys[i]][j].name
-      foodType.appendChild(option)
+      foodTypeSelect.appendChild(option)
     }
   }
 }
@@ -219,7 +232,8 @@ function toggleDarkMode(btn) {
   }
   $(btn).toggleClass("whiteMode")
   $("#footer *").toggleClass("darkModeLayer1")
-  $(".github").toggleClass("invert")
+  $("#github").toggleClass("invert")
+  $("#github").removeClass("darkModeLayer1")
   $("body").toggleClass("darkMode")
   $("html").toggleClass("darkMode")
   $("tr").toggleClass("darkModeLayer1")

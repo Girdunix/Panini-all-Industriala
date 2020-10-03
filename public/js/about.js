@@ -15,7 +15,8 @@ function toggleDarkMode(btn) {
     }
     $(btn).toggleClass("whiteMode")
     $("#footer *").toggleClass("darkModeLayer1")
-    $(".github").toggleClass("invert")
+    $("#github").toggleClass("invert")
+    $("#github").removeClass("darkModeLayer1")
     $("body").toggleClass("darkMode")
     $("html").toggleClass("darkMode")
     $(".box").toggleClass("darkModeLayer1")

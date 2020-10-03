@@ -1,4 +1,4 @@
-const CACHE = "V1.2";
+const CACHE = "V1.4";
 
 const FILES_TO_CACHE = [
     './images/icon-512x512.png'
