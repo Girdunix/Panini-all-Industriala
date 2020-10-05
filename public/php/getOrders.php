@@ -33,12 +33,15 @@ if($masterPsw != $data->password){
 }
 $day = date("d");
 mysqli_query($mysql,"DELETE FROM ordini where giorno <>'$day'"); //cancella tutti gli ordini che non sono di questo giorno
-$showOrders = mysqli_query($mysql,"SELECT ordine,stato FROM ordini"); //seleziona tutte le righe della tabella ordini
+$showOrders = mysqli_query($mysql,"SELECT ordine,stato,username FROM ordini"); //seleziona tutte le righe della tabella ordini
 $arr = [];
 while ($row = $showOrders -> fetch_row()) {
     try{
+        $usernameClass = $mysql->real_escape_string($row[2]);
+        $classNumber = mysqli_query($mysql,"SELECT numClasse FROM utenti WHERE username = '$usernameClass'") -> fetch_row()[0];
         $order = new stdClass();
         $order->order = json_decode($row[0]);
+        $order->classNumber = $classNumber;
         $order->status = $row[1];
         array_push($arr,$order); //itera la query e lo aggiunge ad un array da inviare al client
     }catch(Exception $e){

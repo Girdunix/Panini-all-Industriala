@@ -122,7 +122,7 @@ function deleteOrder(order) {
 }
 
 //-----------------------------------------------------------------------------//
-
+let setupDarkMode = false
 async function initPage() {
     //render della pagina, aggiungendo gli ordini ricevuti dal server
     let request = new XMLHttpRequest();
@@ -132,14 +132,19 @@ async function initPage() {
         let response = JSON.parse(res.target.response)
         if (response.sent) {
             //render di ogni ordine ricevuto dal server
+            document.getElementById("confirmedOrders").innerHTML = ""
+            document.getElementById("rejectedOrders").innerHTML = ""
+            document.getElementById("classWrapper").innerHTML = ""
             response.message.forEach(order => {
-                makeOrder(order.order,order.status)
+                makeOrder(order.order,order.status,order.classNumber)
             })
         } else {
             showError(response.message, 2000)
         }
         if(localStorage.getItem("darkMode") == "true"){
+            if(setupDarkMode) return $("th").addClass("darkModeLayer1")
             toggleDarkMode(document.getElementById("darkModeBtn"))
+            setupDarkMode = true
           }
     };
     request.onerror = function (e) {
@@ -176,6 +181,8 @@ function toggleDarkMode(btn) {
     }
     $("tr").toggleClass("darkModeLayer1")
     $("body").toggleClass("darkMode")
+    $("#github").toggleClass("invert")
+    $(".classNumber").toggleClass("darkModeLayer1")
     $("html").toggleClass("darkMode")
     $("tr").toggleClass("darkModeLayer1")
     $("th").toggleClass("darkModeLayer1")
@@ -197,6 +204,7 @@ function toggleDarkMode(btn) {
     }
 
     $(".navbar").toggleClass("darkModeLayer1")
+    $("#github").removeClass("darkModeLayer1")
     darkModeToggled = !darkModeToggled
     localStorage.setItem("darkMode", darkModeToggled)
 }
@@ -212,11 +220,12 @@ function goToElement(element, scroll = 0.9) {
 
 //-----------------------------------------------------------------------------//
 
-function makeOrder(order,status) {
+function makeOrder(order,status,classNumber) {
     let template = document.getElementById("template").cloneNode(true)
     template.id = order.class
     template.style.display = "block"
     template.querySelector(".className").innerHTML = order.class
+    template.querySelector(".classNumber").innerHTML = classNumber
     let keys = Object.keys(order.order)
     let tbody = template.querySelector("tbody")
     template.querySelector(".price").innerHTML = "Totale: " + order.price.toFixed(2) + "€"
@@ -285,7 +294,11 @@ function changeStatus(name,status){
     request.setRequestHeader("Content-Type", "application/json; charset=utf-8")
     request.onload = (res) => {
         let response = JSON.parse(res.target.response)
-        console.log(response.message)
+        if(response.sent){
+            initPage()
+        }else{
+            showError(response.message,2000)
+        }
     };
     request.onerror = function (e) {
         console.log(e)
