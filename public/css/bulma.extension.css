@@ -79,10 +79,10 @@ body {
   margin-top: 0.75rem;
 }
 /*Apply curved style everywhere*/
-.button, .box, .input, .navbar-menu, .navbar-item:hover, select {
+.button, .button.is-small, .box, .input, select {
   border-radius: 0.8rem;
 }
-.navbar, .navbar-dropdown {
+.navbar, .navbar-dropdown, .navbar-menu, .navbar-item:hover, .navbar-link:hover {
   border-bottom-left-radius: 0.8rem;
   border-bottom-right-radius: 0.8rem;
 }
