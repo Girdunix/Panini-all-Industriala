@@ -114,40 +114,43 @@ SOFTWARE.
     Messaggio di errore
   </div>
   <!--Fine messaggio di errore-->
-
-        <!--Template dell'ordine che viene clonato con JS-->
-        <div class="column is-narrow" style="display: none;" id="template">
-          <div class="box is-receipt">
-            <div class="title is-3 has-text-centered classTitle" onclick="expandOrder(this)">
-              <span class="className"></span>
-              <span class="classNumber"></span>
-              <div class="expand"> ></div>
-            </div>
-            <div class="orderWrapper" style="max-height: 0vh;">
-              <table class="table has-text-left is-narrow is-fullwidth">
-                <tbody>
   
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th></th>
-                    <th></th>
-                    <th colspan="3" class="has-text-right price"></th>
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
-            <div class="has-text-centered" style="display: none;">
-              <div class="message">
-              </div>
-              <button class="button is-danger is-rounded" style="width: 115px"
-                onclick="deleteOrder(this)">Rifiuta</button>
-              <button class="button is-success is-rounded" style="width: 115px;"
-                onclick="confirmOrder(this)">Conferma</button>
-            </div>
-          </div>
+  <div class="columns">
+    <!--Template dell'ordine che viene clonato con JS-->
+    <div class="column is-narrow" style="display:none" id="template">
+      <div class="box is-receipt">
+        <div class="title is-3 has-text-centered classTitle" onclick="expandOrder(this)">
+          <span class="className"></span>
+          <span class="classNumber"></span>
+          <div class="expand"> ></div>
         </div>
-        <!--Fine template-->
+        <div class="orderWrapper" style="max-height: 0vh;">
+          <table class="table has-text-left is-narrow is-fullwidth">
+            <tbody>
+
+            </tbody>
+            <tfoot>
+              <tr>
+                <th></th>
+                <th></th>
+                <th colspan="3" class="has-text-right price"></th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div class="has-text-centered" style="display: none;">
+          <div class="message">
+          </div>
+          <button class="button is-danger" style="width: 115px"
+            onclick="deleteOrder(this)">Rifiuta</button>
+          <button class="button is-success" style="width: 115px;"
+            onclick="confirmOrder(this)">Conferma</button>
+        </div>
+      </div>
+    </div>
+    <!--Fine template-->
+  </div>
+
   <!--Ordini da confermare-->
   <div class="container is-fluid">
     <div class="columns is-multiline is-centered is-mobile" id="classWrapper">
@@ -160,7 +163,7 @@ SOFTWARE.
   <div class="container is-fluid status">
     <div class="columns is-multiline is-centered is-mobile">
       <div class="column">
-        <div class="box is-receipt statusWrapper" style="background-color: rgb(39, 43, 45); padding: 0.8rem; text-align: center;">
+        <div class="box is-receipt statusWrapper" style="background-color: #363636; padding: 0.8rem; text-align: center;">
           <span class="statusName has-text-weight-bold" style="color: white; font-size: 1.8rem;">Confermati</span>
           <div class="orderWrapper" id="confirmedOrders">
           </div>
@@ -174,7 +177,7 @@ SOFTWARE.
   <div class="container is-fluid status">
     <div class="columns is-multiline is-centered is-mobile">
       <div class="column">
-        <div class="box is-receipt statusWrapper" style="background-color: rgb(39, 43, 45); padding: 0.8rem; text-align: center;">
+        <div class="box is-receipt statusWrapper" style="background-color: #363636; padding: 0.8rem; text-align: center;">
           <span class="statusName has-text-weight-bold" style="color: white; font-size: 1.8rem;">Rifiutati</span>
           <div class="orderWrapper" id="rejectedOrders">
           </div>
@@ -188,11 +191,11 @@ SOFTWARE.
   <div class="container is-fluid" id="footer">
     <div class="content has-text-centered">
       <p>
-        <strong>EatSchool</strong> by 5AINF & 5BINF in "I.I.S. Mattei Vasto" - 2020. The source code is licensed under
+        <strong>EatSchool</strong> by 5AINF and 5BINF in "I.I.S. Mattei Vasto" - 2020. The source code is licensed under
         <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
         <a class="button is-small" style="margin-left: 10px" href="https://github.com/Specy-wot/Panini-all-Industriala.git">
           <span class="icon is-small">
-            <img src="../images/github.png" id="github"></img>
+            <img src="../images/github.png"></img>
           </span>
           <span>GitHub</span>
         </a>
