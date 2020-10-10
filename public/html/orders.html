@@ -121,8 +121,9 @@ SOFTWARE.
       <div class="box is-receipt">
         <div class="title is-3 has-text-centered classTitle" onclick="expandOrder(this)">
           <span class="className"></span>
-          <span class="classNumber"></span>
-          <div class="expand"> ></div>
+          <span class="classNumber" onclick="showOrderID(this)"></span>
+          <span class="orderID">Unset</span>
+          <div class="expand">></div>
         </div>
         <div class="orderWrapper" style="max-height: 0vh;">
           <table class="table has-text-left is-narrow is-fullwidth">

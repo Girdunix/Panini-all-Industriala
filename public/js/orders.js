@@ -135,8 +135,13 @@ async function initPage() {
             document.getElementById("confirmedOrders").innerHTML = ""
             document.getElementById("rejectedOrders").innerHTML = ""
             document.getElementById("classWrapper").innerHTML = ""
+
             response.message.forEach(order => {
-                makeOrder(order.order,order.status,order.classNumber)
+                try{
+                    makeOrder(order.order,order.status,order.classNumber,order.order.identification)
+                }catch(e){
+                    console.log("Error with order: ", order)
+                }
             })
         } else {
             showError(response.message, 2000)
@@ -218,14 +223,18 @@ function goToElement(element, scroll = 0.9) {
 
 }
 
+function showOrderID(element){
+    element.parentElement.querySelector(".orderID").style.display = "block"
+}
 //-----------------------------------------------------------------------------//
 
-function makeOrder(order,status,classNumber) {
+function makeOrder(order,status,classNumber,identification) {
     let template = document.getElementById("template").cloneNode(true)
     template.id = order.class
     template.style.display = "block"
     template.querySelector(".className").innerHTML = order.class
     template.querySelector(".classNumber").innerHTML = classNumber
+    template.querySelector(".orderID").innerHTML = identification.id
     let keys = Object.keys(order.order)
     let tbody = template.querySelector("tbody")
     template.querySelector(".price").innerHTML = "Totale: " + order.price.toFixed(2) + "€"

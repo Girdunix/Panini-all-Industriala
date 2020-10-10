@@ -12,6 +12,13 @@
 .status{
   padding: 0.5rem !important;
 }
+.orderID{
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 0.8rem;
+}
 .expand {
   position: absolute;
   right: 0;
@@ -19,6 +26,8 @@
 }
 .classNumber{
   font-size:1.2rem;
+  width: 20%;
+  text-align: left;
   position:absolute;
   left:0;
   top:0;

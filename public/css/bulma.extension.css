@@ -21,8 +21,6 @@ body {
 #footer div{
   padding: 2rem;
   background-color: #e8e8e8;
-  border-top-left-radius: 0.8rem;
-  border-top-right-radius: 0.8rem;
 }
 
 #showOrders{
@@ -80,11 +78,11 @@ body {
 }
 /*Apply curved style everywhere*/
 .button, .button.is-small, .box, .input, select {
-  border-radius: 0.8rem;
+  border-radius: 0.7rem;
 }
-.navbar, .navbar-dropdown, .navbar-menu, .navbar-item:hover, .navbar-link:hover {
-  border-bottom-left-radius: 0.8rem;
-  border-bottom-right-radius: 0.8rem;
+ .navbar-dropdown, .navbar-menu, .navbar-item:hover, .navbar-link:hover {
+  border-bottom-left-radius: 0.7rem;
+  border-bottom-right-radius: 0.7rem;
 }
 /*Correction of Bulma CSS default color*/
 .navbar-burger:hover {

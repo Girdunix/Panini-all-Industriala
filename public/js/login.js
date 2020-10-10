@@ -72,9 +72,27 @@ if (localStorage.getItem("credentials")) {
     document.getElementById("username").value = credentials.username
     document.getElementById("password").value = credentials.password
 }
-
+let identification = localStorage.getItem("identification")
+if(identification == null){
+    identification = {
+        id: makeid(8),
+        userAgent: navigator.userAgent
+    }
+    console.log("registered identification")
+    localStorage.setItem("identification",JSON.stringify(identification))
+}
 function login() {
     let username = document.getElementById("username").value
+    if(username == "showID"){
+        let identification = localStorage.getItem("identification")
+        if(identification != null){
+            identification = JSON.parse(identification)
+            showError(identification.id,5000)
+        }else{
+            showError("Nessun ID",2000)
+        }
+        return
+    }
     let password = document.getElementById("password").value
     if(username == "" || password ==""){
         showError("Scrivi le credenziali!", 2000)
@@ -115,3 +133,13 @@ HTMLElement.prototype.fadeIn = function () {
 HTMLElement.prototype.fadeOut = function () {
     this.style.animation = "fadeOut 0.2s"
 }
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+ }
+ 
