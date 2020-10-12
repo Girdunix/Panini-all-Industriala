@@ -19,7 +19,7 @@ body {
   background-color: transparent;
 }
 #footer div{
-  padding: 2rem;
+  padding: 1.2rem;
   background-color: #e8e8e8;
 }
 
@@ -123,6 +123,7 @@ body {
   background-color: #5b5b5b;
   border-radius: 0.2rem;
   padding: 0.2rem;
+  box-sizing: content-box;
 }
 .darkMode{
   color: white !important;

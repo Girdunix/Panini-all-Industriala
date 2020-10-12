@@ -63,7 +63,7 @@ function expandOrder(btn, ignore = false) {
         if (ignore) return
         //una volta che l'animazione è finita, mostra i pulsanti per conferma/annulla
         setTimeout(() => {
-            btn.parentElement.parentElement.querySelector("button").parentElement.style.display = "block"
+            btn.parentElement.parentElement.querySelector(".button").parentElement.style.display = "block"
         }, 200);
     } else {
         $(element).animate({
@@ -81,7 +81,7 @@ function expandOrder(btn, ignore = false) {
         }, 'linear');
         if (ignore) return
         setTimeout(() => {
-            btn.parentElement.parentElement.querySelector("button").parentElement.style.display = "none"
+            btn.parentElement.parentElement.querySelector(".button").parentElement.style.display = "none"
         }, 150);
     }
 }
@@ -104,8 +104,29 @@ function confirmOrder(order) {
 
 //-----------------------------------------------------------------------------//
 
+function printReceipt(printBtn){
+    let receipt = printBtn.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.cloneNode(true)
+    receipt.querySelectorAll("button").forEach(btn => {
+        btn.remove()
+    })
+    receipt.querySelector(".expand").remove()
+    let iframe = document.getElementById("printIframe")
+    var doc = iframe.contentWindow.document;
+    doc.open();
+    doc.write(
+        '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN" "http://www.w3.org/TR/html4/loose.dtd">'+
+        '<link rel="stylesheet" href="../css/orders.css"> <link rel="stylesheet" href="../css/bulma.min.css"'+
+        '<\/style><\/head><body onload="window.print()">'+
+        receipt.innerHTML+
+        '<\/body><\/html>'
+    );
+    doc.close();
+}
+
+//-----------------------------------------------------------------------------//
+
 function deleteOrder(order) {
-    if (confirm("Sicuro di voler annullare l'ordine?")) {
+    if (confirm("Sicuro di voler rifiutare l'ordine?")) {
         let name = order.parentElement.parentElement.parentElement.querySelector(".className").innerHTML
         //muove l'ordine confermato nella sezione di ordini confermati
         let clonedNode = order.parentElement.parentElement.parentElement.cloneNode(true)
@@ -194,9 +215,10 @@ function toggleDarkMode(btn) {
     $(".is-receipt").toggleClass("darkModeLayer1")
     $("table").toggleClass("darkModeLayer1")
     $(".className").toggleClass("darkModeLayer1") 
-    $(".expand").toggleClass("darkModeLayer1")
+    $(".expand img").toggleClass("invert")
     $(".statusWrapper").toggleClass("whiteMode")
     $(".statusName").toggleClass("whiteMode")
+    $(".printBtn").toggleClass("invert")
     $("#footer *").toggleClass("darkModeLayer1")
     $(".message").toggleClass("darkMode")
     $("#navMenu").toggleClass("darkModeLayer1")
@@ -256,14 +278,12 @@ function makeOrder(order,status,classNumber,identification) {
     })
     switch(status){
         case "confermato":{
-            template.style.padding = 0
-            template.style.marginTop = "1rem"
+            template.style.marginTop = "0"
             document.getElementById("confirmedOrders").appendChild(template)
             break;
         }
         case "rifiutato":{
-            template.style.padding = 0
-            template.style.marginTop = "1rem"
+            template.style.marginTop = "0"
             document.getElementById("rejectedOrders").appendChild(template)
             break;
         }

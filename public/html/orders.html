@@ -49,14 +49,13 @@ SOFTWARE.
   <link rel="stylesheet" href="../css/bulma.min.css">
   <link rel="stylesheet" href="../css/bulma.extension.css">
   <link rel="stylesheet" href="../css/orders.css">
-
 </head>
 
 <body>
   <!--Navbar-->
   <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../html/login.html">
+      <a class="navbar-item" href="../html/login.html" style="padding: 0; padding-left: 0.5rem;">
         <img src="../images/icon-192x192.png" class="logoImg">
       </a>
 
@@ -69,7 +68,7 @@ SOFTWARE.
 
     <div id="navMenu" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" href="../html/food_list.html">
+        <a class="navbar-item" href="../html/orders.html">
           Home
         </a>
 
@@ -82,11 +81,7 @@ SOFTWARE.
             <a class="navbar-item" href="../html/about.html">
               Chi siamo
             </a>
-            <a class="navbar-item">
-              Contatti
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item">
+            <a class="navbar-item" href="mailto:eatschool@gmail.com">
               Segnala un problema
             </a>
           </div>
@@ -109,6 +104,8 @@ SOFTWARE.
   <button class="button is-link" onclick="topFunction()" id="scrollToTopButton" title="Go to top">⬆️</button>
   <!--Fine Scroll To Top-->
 
+  <iframe id="printIframe" style="display: none;">
+  </iframe>
   <!--Messaggio di errore-->
   <div id="floatingMessage">
     Messaggio di errore
@@ -123,8 +120,8 @@ SOFTWARE.
           <span class="className"></span>
           <span class="classNumber" onclick="showOrderID(this)"></span>
           <span class="orderID">Unset</span>
-          <div class="expand">></div>
-        </div>
+          <div class="expand"><img src="../images/keyboard_arrow_right-24px.svg" class="customIcon"></div>
+        </div> 
         <div class="orderWrapper" style="max-height: 0vh;">
           <table class="table has-text-left is-narrow is-fullwidth">
             <tbody>
@@ -132,7 +129,11 @@ SOFTWARE.
             </tbody>
             <tfoot>
               <tr>
-                <th></th>
+                <th>
+                  <button class="printBtn" onclick="printReceipt(this)">
+                    <img src="../images/print-24px.svg">
+                  </button>
+                </th>
                 <th></th>
                 <th colspan="3" class="has-text-right price"></th>
               </tr>
@@ -140,8 +141,7 @@ SOFTWARE.
           </table>
         </div>
         <div class="has-text-centered" style="display: none;">
-          <div class="message">
-          </div>
+          <div class="message"></div>
           <button class="button is-danger" style="width: 115px"
             onclick="deleteOrder(this)">Rifiuta</button>
           <button class="button is-success" style="width: 115px;"
@@ -162,29 +162,21 @@ SOFTWARE.
 
   <!--Ordini confermati-->
   <div class="container is-fluid status">
-    <div class="columns is-multiline is-centered is-mobile">
-      <div class="column">
-        <div class="box is-receipt statusWrapper" style="background-color: #363636; padding: 0.8rem; text-align: center;">
+        <div class="box is-receipt statusWrapper">
           <span class="statusName has-text-weight-bold" style="color: white; font-size: 1.8rem;">Confermati</span>
-          <div class="orderWrapper" id="confirmedOrders">
+          <div class="orderWrapper columns is-multiline is-centered is-mobile" id="confirmedOrders">
           </div>
         </div>
-      </div>
-    </div>
   </div>
   <!--Fine ordini confermati-->
 
   <!--Ordini rifiutati-->
   <div class="container is-fluid status">
-    <div class="columns is-multiline is-centered is-mobile">
-      <div class="column">
-        <div class="box is-receipt statusWrapper" style="background-color: #363636; padding: 0.8rem; text-align: center;">
+        <div class="box is-receipt statusWrapper">
           <span class="statusName has-text-weight-bold" style="color: white; font-size: 1.8rem;">Rifiutati</span>
-          <div class="orderWrapper" id="rejectedOrders">
+          <div class="orderWrapper columns is-multiline is-centered is-mobile" id="rejectedOrders">
           </div>
         </div>
-      </div>
-    </div>
   </div>
   <!--Fine ordini rifiutati-->
 

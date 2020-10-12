@@ -1,6 +1,7 @@
 .classTitle {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   position: relative;
   cursor: pointer;
 }
@@ -35,7 +36,13 @@
 .orderWrapper {
   overflow: auto;
 }
-
+.statusWrapper{
+  padding-bottom: 2.2rem !important;
+  background-color: #363636; 
+  padding: 0.8rem; 
+  text-align: center;
+  margin: 0.4rem;
+}
 .noOrdersSaved {
   font-size: 1.5rem;
   color: white;
@@ -44,4 +51,13 @@
 .selectedRow {
   background-color: #48c774 !important;
   color: white !important;
+}
+.customIcon{
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.printBtn{
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
