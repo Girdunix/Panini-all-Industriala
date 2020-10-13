@@ -137,6 +137,9 @@ body {
   background: #464646 !important;
   color: white !important;
 }
+.thHighlight{
+  color: #f14668 !important;
+}
 .whiteMode {
   color: #222222 !important;
   background-color: white !important;

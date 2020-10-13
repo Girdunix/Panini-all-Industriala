@@ -87,6 +87,14 @@ SOFTWARE.
             </div>
           </div>
         </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <button class="button is-outlined" style="width: 50px" onclick="toggleDarkMode(this)" id="darkModeBtn">🌙</button>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
     <!--Fine Navbar-->
@@ -131,7 +139,7 @@ SOFTWARE.
           <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
           <button class="button is-small" style="margin-left: 10px" href="https://github.com/Specy-wot/Panini-all-Industriala.git">
             <span class="icon is-small">
-              <img src="../images/github.png"></img>
+              <img src="../images/github.png" id="github"></img>
             </span>
             <span>GitHub</span>
           </button>
@@ -147,6 +155,7 @@ SOFTWARE.
     </button>
     <!--Fine footer-->
   </body>
+  <script src="../scripts/jquery.js"></script>
   <script src="../js/bulma.js"></script>
   <script src="../js/login.js"></script>
 </html>

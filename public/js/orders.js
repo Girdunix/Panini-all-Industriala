@@ -212,6 +212,8 @@ function toggleDarkMode(btn) {
     $("html").toggleClass("darkMode")
     $("tr").toggleClass("darkModeLayer1")
     $("th").toggleClass("darkModeLayer1")
+
+    $(".orderID").toggleClass("darkModeLayer1")
     $(".is-receipt").toggleClass("darkModeLayer1")
     $("table").toggleClass("darkModeLayer1")
     $(".className").toggleClass("darkModeLayer1") 
@@ -224,14 +226,17 @@ function toggleDarkMode(btn) {
     $("#navMenu").toggleClass("darkModeLayer1")
     $("#navMenu *").toggleClass("darkModeLayer1")
     $("#navMenu a").removeClass("darkModeLayer1")
+    $("#exit").removeClass("darkModeLayer1")
     if(darkModeToggled){
         $("#navMenu a").css({"color":""}) 
+        $("th").removeClass("thHighlight")
     }else{
         $("#navMenu a").css({"color":"white"})
+        $("th").addClass("thHighlight")
     }
-
     $(".navbar").toggleClass("darkModeLayer1")
     $("#github").removeClass("darkModeLayer1")
+    $(btn).removeClass("darkModeLayer1")
     darkModeToggled = !darkModeToggled
     localStorage.setItem("darkMode", darkModeToggled)
 }
@@ -276,6 +281,11 @@ function makeOrder(order,status,classNumber,identification) {
             tbody.innerHTML += row
         })
     })
+    if(darkModeToggled){
+        template.querySelectorAll("th").forEach(e => {
+            e.classList.add("thHighlight")
+        })
+    }
     switch(status){
         case "confermato":{
             template.style.marginTop = "0"
@@ -316,7 +326,7 @@ HTMLElement.prototype.fadeIn = function () {
 HTMLElement.prototype.fadeOut = function () {
     this.style.animation = "fadeOut 0.2s"
 }
-initPage()
+
 function changeStatus(name,status){
     let request = new XMLHttpRequest();
     request.open("POST", "../php/changeOrderStatus.php");
@@ -339,3 +349,4 @@ function changeStatus(name,status){
     }
     request.send(JSON.stringify(data))
 }
+initPage()

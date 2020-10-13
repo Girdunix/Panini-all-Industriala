@@ -31,7 +31,6 @@ if ('serviceWorker' in navigator) {
     })
 }
 let deferredPrompt;
-
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
@@ -127,6 +126,38 @@ function login() {
     request.send(JSON.stringify(credentials))
 }
 
+let darkModeToggled = false
+function toggleDarkMode(btn) {
+    btn.innerHTML = "☀️"
+    if (darkModeToggled) {
+        btn.innerHTML = "🌙"
+    }
+    $("body").toggleClass("darkMode")
+    $("#github").toggleClass("invert")
+    $("html").toggleClass("darkMode")
+    $("#footer *").toggleClass("darkModeLayer1")
+    $("#navMenu").toggleClass("darkModeLayer1")
+    $("#navMenu *").toggleClass("darkModeLayer1")
+    $("#navMenu a").removeClass("darkModeLayer1")
+    $(".box").toggleClass("darkModeLayer1")
+    $(".title").toggleClass("darkModeLayer1")
+    $(".input").toggleClass("darkModeLayer2")
+    $(btn).removeClass("darkModeLayer1")
+    if(darkModeToggled){
+        $("#navMenu a").css({"color":""}) 
+    }else{
+        $("#navMenu a").css({"color":"white"})
+    }
+    $(".navbar").toggleClass("darkModeLayer1")
+    $("#github").removeClass("darkModeLayer1")
+
+    darkModeToggled = !darkModeToggled
+    localStorage.setItem("darkMode", darkModeToggled)
+}
+
+if (localStorage.getItem("darkMode") == "true") {
+    toggleDarkMode(document.getElementById("darkModeBtn"))
+}
 HTMLElement.prototype.fadeIn = function () {
     this.style.animation = "fadeIn 0.2s"
 }

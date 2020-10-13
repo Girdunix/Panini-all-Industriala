@@ -195,6 +195,12 @@ body {
 #showOrders:hover{
     background-color: white;
 }
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+body::-webkit-scrollbar {
+    width: 0px;
+}
 .messageWrapper{
     margin-top: 1vh;
     width: 80%;

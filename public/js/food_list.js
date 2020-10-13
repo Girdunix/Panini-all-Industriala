@@ -172,6 +172,7 @@ function renderCart() {
     let order = globalOrder.order
     //prende ogni proprietà nell'oggetto ordine e li aggiunge alla div del tipo corretto nel carrello
     let cart = document.getElementById("cartTable")
+    document.getElementById("cartText").innerHTML = "Il carrello è vuoto!"
     let cartWrapper = cart.parentElement.parentElement.parentElement.parentElement
     cartWrapper.classList.add("invisible")
     document.getElementById("cartPrice").innerHTML = "Totale: " + globalOrder.price.toFixed(2) + "€"
@@ -183,7 +184,7 @@ function renderCart() {
         if (order[type].length > 0) cart.append(row)
         order[type].forEach(food => {
             let innerRow = document.createElement("tr")
-
+            document.getElementById("cartText").innerHTML = "Il tuo ordine"
             cartWrapper.classList.remove("invisible")
             innerRow.className = "underlined"
             innerRow.innerHTML =
@@ -197,8 +198,8 @@ function renderCart() {
             if (darkModeToggled) {
                 cart.querySelectorAll("*").forEach(e => {
                     if (e.tagName == "BUTTON") return
-
                     e.classList.add("darkModeLayer1")
+                    if(e.tagName == "TH") e.classList.add("thHighlight")
                 })
             }
         })
@@ -230,7 +231,6 @@ function toggleDarkMode(btn) {
     if (darkModeToggled) {
         btn.innerHTML = "🌙"
     }
-    $(btn).toggleClass("whiteMode")
     $("#footer *").toggleClass("darkModeLayer1")
     $("#github").toggleClass("invert")
     $("#github").removeClass("darkModeLayer1")
@@ -238,6 +238,7 @@ function toggleDarkMode(btn) {
     $("html").toggleClass("darkMode")
     $("tr").toggleClass("darkModeLayer1")
     $("th").toggleClass("darkModeLayer1")
+    $("th").toggleClass("thHighlight")
     $("td").toggleClass("darkModeLayer1")
     $(".is-receipt").toggleClass("darkModeLayer1")
     $("table").toggleClass("darkModeLayer1")
@@ -255,6 +256,7 @@ function toggleDarkMode(btn) {
     $(".cartLandscape").removeClass("darkModeLayer1")
     $("#showOrders").removeClass("darkModeLayer1")
     $("select").toggleClass("darkModeLayer2")
+    $(btn).removeClass("darkModeLayer1")
     darkModeToggled = !darkModeToggled
     localStorage.setItem("darkMode", darkModeToggled)
 }
@@ -405,7 +407,6 @@ function updateStatus() {
                 globalOrder.order.panini = storedOrder.order.panini
                 globalOrder.price = storedOrder.price
                 renderCart()
-                document.querySelector(".orderWrapper").style.pointerEvents = "none"
                 document.getElementById("sendOrder").remove()
                 canOrder = false
                 document.getElementById("cartTable").querySelectorAll("button").forEach(button =>{
