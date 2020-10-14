@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2020, the respective contributors, as shown by the AUTHORS file. 
+Copyright (c) 2020, the respective contributors, as shown by the AUTHORS file.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -61,7 +61,7 @@ function toggleSelect(toShow) {
 
 function changeNum(num) {
     num = parseInt(document.getElementById("quantity").innerHTML) + num
-    if (num > 0) {
+    if (num > 0 && num < 31) {
         document.getElementById("quantity").innerHTML = num
     }
 }
@@ -376,7 +376,7 @@ class Food {
 //------------------------------------------------------------------------------------------//
 
 function showError(message, timeout) {
-    //funzione che mostra un messaggio di errore fluttuante 
+    //funzione che mostra un messaggio di errore fluttuante
     let floatingMessage = document.getElementById("floatingMessage")
     floatingMessage.innerHTML = message
     if (floatingMessage.style.display == "flex") return

@@ -21,6 +21,7 @@ body {
 #footer div{
   padding: 1.2rem;
   background-color: #e8e8e8;
+  /*font-size: 0.75rem;*/
 }
 
 #showOrders{
@@ -75,6 +76,10 @@ body {
   min-width: 320px;
   max-width: 100vw;
   margin-top: 0.75rem;
+}
+/*Correct dimension of icon inside input etc.*/
+.is-icon{
+  height: 1rem;
 }
 /*Apply curved style everywhere*/
 .button, .button.is-small, .box, .input, select {

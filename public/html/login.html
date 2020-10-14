@@ -48,6 +48,7 @@ SOFTWARE.
     <link rel="shortcut icon" href="../images/icon-192x192.png" type="image/x-icon"/>
     <link rel="stylesheet" href="../css/bulma.min.css">
     <link rel="stylesheet" href="../css/bulma.extension.css">
+    <link rel="stylesheet" href="../css/login.css">
 
   </head>
 
@@ -110,13 +111,25 @@ SOFTWARE.
             </h1>
           </div>
           <div class="field">
-            <p class="control has-icons-left has-icons-right">
+            <p class="control has-icons-left">
               <input class="input" type="text" placeholder="Nome utente" id="username">
+              <span class="icon is-small is-left">
+                <img class="is-icon" src="../images/user.svg"></img>
+              </span>
             </p>
           </div>
           <div class="field">
-            <p class="control has-icons-left">
+            <p class="control has-icons-left has-icons-right">
               <input class="input" type="password" placeholder="Password" id="password">
+              <span class="icon is-small is-left">
+                <img class="is-icon" src="../images/lock.svg"></img>
+              </span>
+              <!--Test showPassword()--
+              <span class="icon is-small is-right">
+                <input type="checkbox" class="checkpsswd" onclick="showPassword()">
+                <img name="eye" class="is-icon" src="../images/eye.svg"></img>
+              </span>
+              -->
             </p>
           </div>
           <div class="field has-text-centered">
@@ -149,7 +162,7 @@ SOFTWARE.
     <div id="floatingMessage">
       Messaggio di errore
     </div>
-  
+
     <button id="installPWA">
       Installa come app!
     </button>

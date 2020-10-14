@@ -1,7 +1,7 @@
 /*
   MIT License
 
-Copyright (c) 2020, the respective contributors, as shown by the AUTHORS file. 
+Copyright (c) 2020, the respective contributors, as shown by the AUTHORS file.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -53,7 +53,7 @@ window.addEventListener('appinstalled', (evt) => {
     console.log('INSTALL: Success');
 });
 function showError(message, timeout) {
-    //funzione che mostra un messaggio di errore fluttuante 
+    //funzione che mostra un messaggio di errore fluttuante
     let floatingMessage = document.getElementById("floatingMessage")
     floatingMessage.innerHTML = message
     if (floatingMessage.style.display == "flex") return
@@ -144,7 +144,7 @@ function toggleDarkMode(btn) {
     $(".input").toggleClass("darkModeLayer2")
     $(btn).removeClass("darkModeLayer1")
     if(darkModeToggled){
-        $("#navMenu a").css({"color":""}) 
+        $("#navMenu a").css({"color":""})
     }else{
         $("#navMenu a").css({"color":"white"})
     }
@@ -173,4 +173,13 @@ function makeid(length) {
     }
     return result;
  }
- 
+ //A function to hide and show password's text clicking an image*/
+ function showPassword() {
+   if(document.password.type == "text") {
+     document.password.type = "password";
+     document.eye.src="../images/eye.svg";
+   } else {
+     document.password.type = "text";
+     document.eye.src="../images/eye-slash.svg";
+   }
+ }
