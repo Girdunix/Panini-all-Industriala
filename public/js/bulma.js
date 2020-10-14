@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     acceptedWarning = JSON.parse(acceptedWarning)
     if (acceptedWarning) return
   }
+  if(!document.querySelector('.notification .delete')) return
   document.querySelector('.notification').style.display = "block"
   document.querySelector('.notification .delete').addEventListener('click',function(){
     this.parentNode.remove()
