@@ -198,3 +198,7 @@ body {
     opacity: 0;
   }
 }
+.notification{
+  position: absolute;
+  width: 100%;
+}

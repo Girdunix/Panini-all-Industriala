@@ -25,6 +25,7 @@ function toggleDarkMode(btn) {
     $(".navbar").toggleClass("darkModeLayer1")
     $(".nav-btn").toggleClass("darkModeLayer1")
     $(".layer2").toggleClass("darkMode").toggleClass("darkModeLayer1")
+    $("#allergens").toggleClass("invert")
     darkModeToggled = !darkModeToggled
     localStorage.setItem("darkMode", darkModeToggled)
 }
