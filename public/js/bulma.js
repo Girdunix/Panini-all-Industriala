@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if ($navbarBurgers.length > 0) {
 
     // Add a click event on each of them
-    $navbarBurgers.forEach( el => {
+    $navbarBurgers.forEach(el => {
       el.addEventListener('click', () => {
 
         // Get the target from the "data-target" attribute
@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
 mybutton = document.getElementById("scrollToTopButton");
 
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () {
+  scrollFunction()
+};
 
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -47,11 +49,14 @@ function topFunction() {
 //---------------------------------------------------------------------------------------------//
 //This function make the button on "notification" working
 document.addEventListener('DOMContentLoaded', () => {
-  (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
-    var $notification = $delete.parentNode;
-
-    $delete.addEventListener('click', () => {
-      $notification.parentNode.removeChild($notification);
-    });
-  });
-});
+  let acceptedWarning = localStorage.getItem("acceptedWarning")
+  if (acceptedWarning != null) {
+    acceptedWarning = JSON.parse(acceptedWarning)
+    if (acceptedWarning) return
+  }
+  document.querySelector('.notification').style.display = "block"
+  document.querySelector('.notification .delete').addEventListener('click',function(){
+    this.parentNode.remove()
+    localStorage.setItem("acceptedWarning", "true")
+  })
+})

@@ -125,14 +125,17 @@ body {
 .darkMode{
   color: white !important;
   background: rgb(27 25 35) !important;
+  box-shadow: unset !important;
 }
 .darkModeLayer1{
   background: rgb(42 41 51) !important;
   color: white !important;
+  box-shadow: unset !important;
 }
 .darkModeLayer2{
   background: #464646 !important;
   color: white !important;
+  box-shadow: unset !important;
 }
 .thHighlight{
   color: #f14668 !important;

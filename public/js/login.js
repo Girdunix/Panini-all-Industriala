@@ -142,6 +142,7 @@ function toggleDarkMode(btn) {
     $(".box").toggleClass("darkModeLayer1")
     $(".title").toggleClass("darkModeLayer1")
     $(".input").toggleClass("darkModeLayer2")
+    $(".is-icon").toggleClass("invert")
     $(btn).removeClass("darkModeLayer1")
     if(darkModeToggled){
         $("#navMenu a").css({"color":""})
