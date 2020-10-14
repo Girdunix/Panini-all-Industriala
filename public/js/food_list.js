@@ -203,6 +203,9 @@ function renderCart() {
                 })
             }
         })
+        if(globalOrder.status){
+            document.getElementById("cartText").innerHTML = "Stato ordine:<br>" + globalOrder.status
+        }
     })
 }
 
@@ -405,6 +408,7 @@ function updateStatus() {
                 globalOrder.order.dolci = storedOrder.order.dolci
                 globalOrder.order.pizze = storedOrder.order.pizze
                 globalOrder.order.panini = storedOrder.order.panini
+                globalOrder.status = response.message.status
                 globalOrder.price = storedOrder.price
                 renderCart()
                 document.getElementById("sendOrder").remove()
