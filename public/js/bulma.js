@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
 //---------------------------------------------------------------------------------------------//
 //This function create a "Scroll To Top" buttons//Get the button:
 mybutton = document.getElementById("scrollToTopButton");

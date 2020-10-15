@@ -268,3 +268,8 @@ body::-webkit-scrollbar {
         max-height: 65vh;
     }
 }
+.quantity {
+    margin: 0;
+    width: 45px;
+    border-color: transparent;
+}
