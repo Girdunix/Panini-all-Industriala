@@ -85,11 +85,11 @@ body {
   border-bottom-left-radius: 0.7rem;
   border-bottom-right-radius: 0.7rem;
 }
-/*Correction of Bulma CSS default color*/
+/*Correction of Bulma CSS default color and shadow*/
 .navbar-burger:hover {
   background-color: transparent;
 }
-.box {
+.navbar-dropdown, .box {
   box-shadow: 0pt 3pt 15pt -2pt grey;
 }
 /*Make the navbar bigger only when it haven't hamburger*/
